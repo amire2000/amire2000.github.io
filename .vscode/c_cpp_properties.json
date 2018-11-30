@@ -1,0 +1,36 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/user/git_ws/devel/include",
+                "/home/user/catkin_ws/devel/include",
+                "/opt/ros/kinetic/include",
+                "/home/user/catkin_ws/src/roscpp_tutorials/01_pub_sub/include",
+                "/home/user/catkin_ws/src/beginner_tutorials/include",
+                "/home/user/simulation_ws/src/dros_px4/include",
+                "/home/user/simulation_ws/src/gazebo_world_plugin/include",
+                "/home/user/simulation_ws/src/hector_ardupilot/include",
+                "/home/user/git_ws/src/hector_quad/hector_localization/hector_pose_estimation/include",
+                "/home/user/git_ws/src/hector_quad/hector_localization/hector_pose_estimation_core/include",
+                "/home/user/git_ws/src/hector_quad/hector_quadrotor/hector_quadrotor_controller/include",
+                "/home/user/git_ws/src/hector_quad/hector_quadrotor/hector_quadrotor_controller_gazebo/include",
+                "/home/user/git_ws/src/hector_quad/hector_quadrotor/hector_quadrotor_gazebo_plugins/include",
+                "/home/user/git_ws/src/hector_quad/hector_quadrotor/hector_quadrotor_model/include",
+                "/home/user/git_ws/src/hector_quad/hector_quadrotor/hector_quadrotor_pose_estimation/include",
+                "/home/user/git_ws/src/hector_quad/hector_quadrotor/hector_uav_msgs/include",
+                "/home/user/catkin_ws/src/mavros_demo/include",
+                "/home/user/catkin_ws/src/my_controller/include",
+                "/home/user/catkin_ws/src/my_turtle/include",
+                "/home/user/catkin_ws/src/pkg_gazebo_light_sensor_plugin/include",
+                "/usr/include"
+            ],
+            "name": "Linux",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
