@@ -5,7 +5,8 @@ permalink: /tags/
 ---
 {% for post in site.posts %}
 {% for tag in post.tags %}
-{% tag %}
+{% capture tag_name %}{{ tag }}{% endcapture %}
+<li> {{ tag_name }}
 {% endfor %}
 {% endfor %}
 
