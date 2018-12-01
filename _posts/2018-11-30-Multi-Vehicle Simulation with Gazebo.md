@@ -4,7 +4,6 @@ title: Multi-Vehicle Simulation with Gazebo
 categories: px4
 tags: [sitl, gazebo, px4]
 ---
-
 ### Gazebo env. variables
 - GAZEBO_MODEL_PATH: where gazebo search for modules
 - GAZEBO_PLUGIN_PATH: where gazebo search for plugins
