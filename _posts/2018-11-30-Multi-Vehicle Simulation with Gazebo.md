@@ -4,7 +4,6 @@ title: Multi-Vehicle Simulation with Gazebo
 categories: px4
 tags: [sitl, gazebo, px4]
 ---
-
 ### Gazebo env. variables
 - GAZEBO_MODEL_PATH: where gazebo search for modules
 - GAZEBO_PLUGIN_PATH: where gazebo search for plugins
@@ -107,8 +106,7 @@ gazebo --verbose Tools/sitl_gazebo/worlds/iris_multi.world
 
 ## Run QGroundcontrol
 - qgroundcontrol detect the to vehicle
-> The SITL with for connection from gazebo (mavlink plugin) and then continue to run 
-
+> The SITL wait for connection from gazebo (mavlink plugin) and then continue to run 
 
 ![](/images/2018-11-30-22-11-03.png)
 
@@ -123,6 +121,7 @@ gazebo --verbose Tools/sitl_gazebo/worlds/iris_multi.world
 
 ### SITL Ports
 ![](/images/2018-11-30-22-30-25.png)
+
 ## Resource
 - [px4](https://dev.px4.io/en/simulation/multi-vehicle-simulation.html)
 
