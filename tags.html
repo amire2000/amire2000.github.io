@@ -1,7 +1,7 @@
 ---
-layout: default
-title: Tag
+layout: page
 permalink: /tags/
+title: Tag
 ---
 
 {% comment%}
@@ -41,7 +41,7 @@ Here we generate all the tags.
 
 {% for tag in tags %}
 <h2 id="{{ tag | slugify }}">{{ tag }}</h2>
-<ul class="codinfox-category-list">
+<ul >
   {% for post in site.posts %}
   {% if post.tags contains tag %}
   <li>
@@ -51,7 +51,7 @@ Here we generate all the tags.
         <small>{{ post.date | date_to_string }}</small>
       </a>
       {% for tag in post.tags %}
-      <a class="codinfox-tag-mark" href="/blog/tag/#{{ tag | slugify }}">{{ tag }}</a>
+      <a href="/tag/#{{ tag | slugify }}">{{ tag }}</a>
       {% endfor %}
     </h3>
   </li>
@@ -62,14 +62,14 @@ Here we generate all the tags.
 
 </div>
 
-{% for post in site.posts %}
+<!-- {% for post in site.posts %}
 {% for tag in post.tags %}
 {% capture tag_name %}{{ tag }}{% endcapture %}
 <li> {{ tag_name }}
 {% endfor %}
 {% endfor %}
 
-
+ -->
 
 
 
