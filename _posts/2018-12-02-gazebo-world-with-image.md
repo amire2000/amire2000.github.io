@@ -117,3 +117,4 @@ material MyGroundPlane/Image
 ![](/images/2018-12-02-22-16-33.png)
 ## Reference 
 - [Gazebo Q&A](http://answers.gazebosim.org/question/4761/how-to-build-a-world-with-real-image-as-ground-plane/)
+- [google map and gazebo](http://gazebosim.org/tutorials?tut=static_map_plugin&cat=build_world)
