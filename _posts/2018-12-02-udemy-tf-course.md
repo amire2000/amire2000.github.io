@@ -48,3 +48,6 @@ docker run -it \
 source activate tfdeeplearning
 jupyter notebook --ip='*' --port=8888
 ~~~
+
+## Reference
+- [Understanding Docker Build Args, Environment Variables and Docker Compose Variables](https://vsupalov.com/docker-env-vars/)
