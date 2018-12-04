@@ -26,6 +26,7 @@ pip install Jinja2
 {{ title }}
 ~~~
 
+
 ### Control 
 - for loop
 ~~~bash
