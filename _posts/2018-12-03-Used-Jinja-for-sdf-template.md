@@ -22,7 +22,7 @@ pip install Jinja2
 
 ### Set variable
 ~~~jinja
-{% set title='hello world' }
+{% set title='hello world' %}
 {{ title }}
 ~~~
 
