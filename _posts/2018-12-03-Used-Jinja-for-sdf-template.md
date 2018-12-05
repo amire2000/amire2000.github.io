@@ -13,12 +13,7 @@ Jinja2 is a template engine
 pip install Jinja2
 ~~~
 
-### Syntax
-~~~
-{{ }} Print and Evaluate an expression
-{% %} Statement
-{# #} Comments
-~~~
+
 
 ### Set variable
 ~~~jinja
