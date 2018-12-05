@@ -16,15 +16,19 @@ pip install Jinja2
 ### Syntax
 
 ```bash
+{% raw %}
 {{ }} Print and Evaluate an expression
-"{%" %} Statement
+{% %} Statement
 {# #} Comments
+{% endraw %}
 ```
 
 ### Set variable
 ```
-{{ {% set title='hello world' %} }}
-{{ {{ title }} }}
+{% raw %}
+{% set title='hello world' %} 
+{{ title }}
+{% endraw %}
 ```
 
 
