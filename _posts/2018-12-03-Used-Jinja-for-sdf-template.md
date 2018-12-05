@@ -9,27 +9,27 @@ tags: [vscode, gazebo, jinja, sdf]
 Jinja2 is a template engine
 
 ### Install
-~~~
+```
 pip install Jinja2
-~~~
-`
+```
+
 ### Syntax
-~~~
+```bash
 {{ {{ }} }} Print and Evaluate an expression
 {{ {% %} }} Statement
 {{ {# #} }} Comments
-~~~`
+```
 
 ### Set variable
-~~~jinja
+```
 {{ {% set title='hello world' %} }}
 {{ {{ title }} }}
-~~~
+```
 
 
 ### Control 
 - for loop
-~~~bash
+```bash
 {{ {% set names = ['a', 'b', 'c']%} }} 
 {{ {% for name in names %} }} }}
     {{ {{ loop.index }} }}: {{ {{name}} }}
@@ -42,7 +42,7 @@ pip install Jinja2
     2: b
 
     3: c
-~~~
+```
 
 |  Variable   | Desc     |
 | --- | --- | 
@@ -50,19 +50,19 @@ pip install Jinja2
 | loop.index0   | index loop 
 
 - if statment
-~~~
+```
 {{ {% set name='' %} }}
 {{ {% if name %} }} 
     {{ {{ name }} }}
 {{ {% else %} }} 
     no name enter
 {{ {% endif %} }} 
-~~~
+```
 
 ### White space control
 use + and - are control whitespace
 - Run the loop example with hyphen at the end of line
-~~~bash
+```bash
 {{ {% set names = ['a', 'b', 'c'] -%} }}
 {{ {% for name in names -%} }}
     {{ {{ loop.index }} }}: {{ {{name}} }}
@@ -71,10 +71,10 @@ use + and - are control whitespace
 1: a
 2: b
 3: c
-~~~
+```
 
 ### Macro
-~~~bash
+```bash
 {{ {%- macro box(x, y, z) -%} }} 
 <geometry>
   <box>
@@ -85,7 +85,7 @@ use + and - are control whitespace
 
 # Call the macro
 {{ {{ box(1,1,1) }} }}
-~~~
+```
 
 ## CLI for Jinja2
 A CLI interface to Jinja2
