@@ -32,3 +32,11 @@ List of commands:
   topic     Lists information about topics on a Gazebo master
   world     Modify world properties
 ```
+
+### gz model 
+Change properties of a model, delete a model, or spawn a new model.
+
+- spawn
+```
+gz --verbose -m my_model -f 
+```
