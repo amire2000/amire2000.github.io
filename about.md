@@ -4,12 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+My life cycle
 
 ### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
-
-### Contact me
-
-[email@domain.com](mailto:email@domain.com)
+I woke every morning at 5:10 AM drink my coffee, drove 1 hr. work 10 hours. ride to home take another 1 hr.
