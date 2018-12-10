@@ -1,7 +1,7 @@
 ---
 layout: post
 title: VSCode python unittest 101
-categories: VSCode 
+categories: vscode 
 tags: [vscode, python, unittest]
 ---
 

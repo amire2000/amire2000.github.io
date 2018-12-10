@@ -122,6 +122,8 @@ gazebo --verbose Tools/sitl_gazebo/worlds/iris_multi.world
 ### SITL Ports
 ![](/images/2018-11-30-22-30-25.png)
 
+- Each SITL listen in different port
+
 ## Resource
 - [px4](https://dev.px4.io/en/simulation/multi-vehicle-simulation.html)
 
