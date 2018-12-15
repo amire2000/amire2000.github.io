@@ -6,6 +6,10 @@ tags: [pwm, dc motor]
 ---
 There are many different ways to control the speed of DC motors but one very simple and easy way is to use Pulse Width Modulation.
 
+![](/images/2018-12-14-22-26-12.png)
+
+- Examples
+
 ![](/images/2018-12-10-22-22-21.png)
 
 
