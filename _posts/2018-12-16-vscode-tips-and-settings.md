@@ -6,9 +6,8 @@ tags: [vscode]
 ---
 
 ## Extensions
-{:class="table table-bordered"}
-|                     |                                      |                                                                |
-| ------------------- | ------------------------------------ | ------------------------------------------------------------- |
+
+
 | Auto close tag      | ![](/images/2018-12-19-06-53-19.png) | Automatically add html/xml close tag                           |
 | Bookmarks           | ![](images/2018-12-19-06-56-03.png)  | Mark Link and jump to them                                     |
 | Code runner         | ![](/images/2018-12-19-07-07-33.png) | Run Current code                                               |
@@ -22,7 +21,7 @@ tags: [vscode]
 | Text Table          | ![](/images/2018-12-19-07-19-55.png) |                                                                |
 | Todo+               | ![](/images/2018-12-19-07-18-45.png) |                                                                |
 | XML Tools           | ![](/images/2018-12-19-07-15-36.png) |                                                                |
-|                     |                                      |                                                                |
+
 
 
 
