@@ -26,11 +26,10 @@ tags: [vscode]
 
 
 ### Language Ext.
-|        |                                      |                                                                                                     |
-| ------ | ------------------------------------ | --------------------------------------------------------------------------------------------------: |
+
 | Python | ![](/images/2018-12-19-07-05-05.png) | inting, Debugging (multi-threaded, remote), Intellisense, code formatting, refactoring, unit tests, |
 | C++    | ![](/images/2018-12-19-07-05-43.png) | C/C++ IntelliSense, debugging, and code browsing.                                                   |
-{:.table-striped}
+
 
 ## Python
 > VSCode intellisense not working

@@ -4,10 +4,8 @@ title: Tensorflow lite python raspberry pi
 categories: tensorflow
 tags: [tensorflow, raspberry pi]
 ---
+
 |![](/images/2018-12-18-23-44-59.png)     | ![](/images/2018-12-18-23-51-53.png)    | ![](/images/2018-12-18-23-45-36.png)    |
-| --- | --- | --- |
-
-
 
 ## Raspbian Image
 - Download Rasbian 9.0 desktop
