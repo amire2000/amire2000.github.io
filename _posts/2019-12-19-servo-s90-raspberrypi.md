@@ -49,7 +49,7 @@ Rpi bask frequency are `19.2MHz`
 - GPIO PWMR: Period range
 
 #### Calc for MarkSpace mode
-- $Tq: 100\mu s$
+- $ Tq: 100\mu s $
 - pwmClock
 $$
 divisor = 19200000[Hz] * 0.0001[s] = 1920
@@ -62,7 +62,7 @@ $$
 $$
 50 = \frac{10000}{range}
 $$
-OR
+OR  
 $$
 range=\frac{T}{Tq}=\frac{20[ms]}{0.1[ms]}=200
 $$
@@ -73,7 +73,6 @@ $$
 $$
 value(2ms)=\frac{T_H}{Tq}=\frac{2[ms]}{0.1[ms]}=20
 $$
-
 ### Code example (Tq as $10\mu s$)
 - Clock divsor: 192
 - Range: 2000
