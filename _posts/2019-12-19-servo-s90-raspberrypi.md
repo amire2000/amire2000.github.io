@@ -73,7 +73,6 @@ $$
 $$
 value(2ms)=\frac{T_H}{Tq}=\frac{2[ms]}{0.1[ms]}=20
 $$
-
 ### Code example (Tq as $10\mu s$)
 - Clock divsor: 192
 - Range: 2000
