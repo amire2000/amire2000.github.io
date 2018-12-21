@@ -3,7 +3,12 @@ layout: post
 title: servo motor and raspberryPi
 categories: hardware
 tags: [servo, raspberry]
+use_math: true
 ---
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 This post show how to control servo motor using raspberry and python.
 The motor shaft can be positioned to specific angular positions by sending the servo a coded signal. As long as the coded signal exists on the input line, the servo will maintain the angular position of the shaft.  
 Servo are controlled by sending PWM signal, usually servo turn 90 degree in either direction (180 total)
@@ -44,7 +49,6 @@ Rpi bask frequency are `19.2MHz`
 - GPIO PWMR: Period range
 
 #### Calc for MarkSpace mode
-{% raw %}
 - $Tq: 100\mu s$
 - pwmClock
 $$
@@ -69,7 +73,7 @@ $$
 $$
 value(2ms)=\frac{T_H}{Tq}=\frac{2[ms]}{0.1[ms]}=20
 $$
-{% endraw %}
+
 ### Code example (Tq as $10\mu s$)
 - Clock divsor: 192
 - Range: 2000
