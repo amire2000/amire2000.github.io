@@ -1,6 +1,6 @@
 ---
 layout: post
-title: servo motor and raspberryPi
+title: Servo motor and raspberryPi
 categories: hardware
 tags: [servo, raspberry]
 use_math: true
