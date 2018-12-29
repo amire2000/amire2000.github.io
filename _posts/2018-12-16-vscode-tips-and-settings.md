@@ -31,7 +31,21 @@ tags: [vscode]
 
 | Python | ![](/images/2018-12-19-07-05-05.png) | inting, Debugging (multi-threaded, remote), Intellisense, code formatting, refactoring, unit tests, |
 | C++    | ![](/images/2018-12-19-07-05-43.png) | C/C++ IntelliSense, debugging, and code browsing.                                                   |
+## Settings
 
+> Hide certain file from explorer
+```
+"files.exclude": {
+        "**/__pycache__": true
+    }
+```
+
+## Keybindings
+### Navigation
+| key                                                        | func                                                            | desc                    |
+| ---------------------------------------------------------- | --------------------------------------------------------------- | ----------------------- |
+| ctrl+Alt+Right error (not for me on ubuntu changed to `]`) | workbench.action.moveEditorToNextGroup                          | move tab to other group |
+| ctrl+Alt+Left error (not for me on ubuntu changed to `[`)  | workbench.action.moveEditorToNextmoveEditorToPreviousGroupGroup | move tab to other group |
 
 ## Python
 > VSCode intellisense not working
