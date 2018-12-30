@@ -40,6 +40,11 @@ tags: [vscode]
     }
 ```
 
+> Open goto definition in new TAB
+```
+"workbench.editor.enablePreview": false
+```
+
 ## Keybindings
 ### Navigation
 | key                                                        | func                                                            | desc                    |
