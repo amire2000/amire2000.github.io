@@ -14,12 +14,13 @@ tags: [arduino, bluetooth]
 
 ![](/images/2019-01-01-19-33-42.png)
 
-| Arduino | HC-05  |
-| ------- | ------ |
-| +5 VDC  | VCC    |
-| GND     | GND    |
-| TX      | 10(RX) |
-| RX      | 11(TX) |
+| Arduino | HC-05 |
+| ------- | ----- |
+| +5 VDC  | VCC   |
+| GND     | GND   |
+| 10(RX)  | TX    |
+| 11(TX)  | RX    |
+{:.mbtablestyle}
 
 ### platformio.ini
 ```ini
