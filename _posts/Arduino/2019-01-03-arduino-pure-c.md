@@ -17,6 +17,7 @@ sudo apt install binutils gcc-avr avr-libc uisp avrdude flex byacc bison
 ```
 
 ## Compile and ..
+{% mermaid %}
 ```mermaid
 graph LR
 A[Source] -->B(avr-gcc/compiler)
@@ -29,6 +30,7 @@ G --> H[hex]
 H --> I[avrdude/ upload]
 
 ```
+{% endmermaid %}
 
 ## Arduino ports
 - PORTB: digital pin 8-13
