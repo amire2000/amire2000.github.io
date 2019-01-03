@@ -23,6 +23,7 @@ tags: [vscode]
 | Test Explorer UI    | ![](/images/2018-12-22-19-28-00.png) | This extension provides an extensible user interface for running your tests in VS Code. |
 | Google Test Adapter | ![](/images/2018-12-19-07-12-48.png) | Easily run GoogleTest from VsCode                                                       |
 | Python test explorer| ![](/images/2018-12-22-19-30-11.png) | 
+| Markdown Preview Mermaid Support | ![](/images/2019-01-03-12-20-45.png) | Adds Mermaid diagram and flowchart support |
 
 
 
