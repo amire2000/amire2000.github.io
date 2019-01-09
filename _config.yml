@@ -72,9 +72,9 @@ kramdown:
 sass:
   style: :expanded # You might prefer to minify using :compressed
 
-mermaid:
-  src: '/js/mermaid.js'
-  src_config: '/js/mermaid_config.js'
+# mermaid:
+#   src: '/js/mermaid.js'
+#   src_config: '/js/mermaid_config.js'
   
 # Use the following plug-ins
 gems:
