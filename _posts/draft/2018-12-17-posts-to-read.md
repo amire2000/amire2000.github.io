@@ -12,3 +12,4 @@ tags: []
 - [Library, Port Manipulation, Bit Math, Faster PWM/ADC](https://www.youtube.com/watch?v=EVm0qVJ56II)
 - [STM](Easy & Powerful Arduino Alternative? STM32 Beginner's Guide
 )
+-[VSCode JTAG Debugging of ESP32](https://gojimmypi.blogspot.com/2017/05/vscode-jtag-debugging-of-esp32-part-1.html)
