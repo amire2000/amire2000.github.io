@@ -39,3 +39,4 @@ gst-launch-1.0 -v udpsrc port=1234 ! application/x-rtp, encoding-name=JPEG,paylo
 - [GStreamer-1.0 personal cheat sheet](https://gist.github.com/strezh/9114204)
 - [Play webcam using gstreamer](https://medium.com/@petehouston/play-webcam-using-gstreamer-9b7596e4e181)
 - [Videostreaming with Gstreamer](http://z25.org/static/_rd_/videostreaming_intro_plab/index.html)
+- [Wide Area Network Emulator](https://sourceforge.net/projects/wanem/)
