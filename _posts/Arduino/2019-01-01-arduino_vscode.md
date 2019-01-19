@@ -4,37 +4,35 @@ title: Arduino and VSCode
 categories: Arduino
 tags: [arduino, vscode]
 ---
-VSCode setup for arduino coding and other IoT devices
+![](/images/2019-01-18-08-42-04.png)
+The Arduino extension makes it easy to develop, build, deploy and debug your Arduino sketches in Visual Studio Code  
+The extension require that arduino IDE installed (I use version 1.8.8) 
 
-# Install vscode extension
-- PlatformIO IDE: Development environment for IoT, Arduino, ARM mbed, Espressif 
-- Arduino: Arduino for visual studio code depend on Arduino IDE
-![](/images/2019-01-01-12-30-53.png)
+## Setup arduino project
+- Open folder
+- From command pallet `Arduino: initialize"
+  - Select arduino board
+> The init process create  
+>   .vscode: arduino.json  
+>   .vscode:c_cpp_properties.json  
+>   .vscode: settings.json
 
-## Create a new project (Arduino nano)
-- From PIO Home
-    - select board 328 not like in the picture
-![](/images/2019-01-01-12-35-33.png)
-
-- PlatformIO create project files
-  - platformio.ini
-  
-## platformio.ini
-- Fix upload_port
-- Fix/Select board
-
-```ini
-[env:nanoatmega328]
-platform = atmelavr
-board = nanoatmega328
-framework = arduino
-upload_port=/dev/ttyUSB0
+- Select Arduino port from status bar or add to `arduino.json`
 ```
-
+{
+    "sketch": "app.ino",
+    "board": "arduino:avr:uno",
+    "port": "/dev/ttyUSB0"
+}
+```
+- Add /  update `C_Cpp.intelliSenseEngine` in settings.json (see note)
+```
+{
+    "C_Cpp.intelliSenseEngine": "Tag Parser"
+}
+```
 ## src/main.cpp
-```cpp
-#include <Arduino.h>
-
+```c
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
@@ -51,13 +49,13 @@ void loop() {
 
 ## Build and upload
 From Command palette
-- PlatformIO: build (Ctrl+Alt+B)
-- PlatformIO: Upload (Ctrl+Alt+U)
+- Arduino: Verify 
+- Arduino: Upload (Ctrl+Alt+U)
 
 ## Reference
-- [PlatformIO support boards](https://platformio.org/boards)
-- [PlatformIO ini file](https://docs.platformio.org/en/latest/projectconf.html)
-
+- [IntelliSense engines](https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/IntelliSense%20engine.md)
+## Notes
+* Without update `intelliSenseEngine` the vscode 
 
 
 
