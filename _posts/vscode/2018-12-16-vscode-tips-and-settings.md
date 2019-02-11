@@ -41,17 +41,32 @@ tags: [vscode]
     }
 ```
 
+### File Association
+```json
+"files.associations": {
+        "*.myphp": "php"
+    }
+```
+
 > Open goto definition in new TAB
 ```
 "workbench.editor.enablePreview": false
 ```
 
 ## Keybindings
-### Navigation
-| key                                                        | func                                                            | desc                    |
-| ---------------------------------------------------------- | --------------------------------------------------------------- | ----------------------- |
-| ctrl+Alt+Right error (not for me on ubuntu changed to `]`) | workbench.action.moveEditorToNextGroup                          | move tab to other group |
-| ctrl+Alt+Left error (not for me on ubuntu changed to `[`)  | workbench.action.moveEditorToNextmoveEditorToPreviousGroupGroup | move tab to other group |
+### Add new file under the selected working directory
+```json
+  {
+        "key": "ctrl+n",
+        "command": "explorer.newFile",
+        "when": "explorerViewletFocus"
+    },
+    {
+        "key": "ctrl+shift+n",
+        "command": "explorer.newFolder",
+        "when": "explorerViewletFocus"
+    }
+```
 
 ## Python
 > VSCode intellisense not working
