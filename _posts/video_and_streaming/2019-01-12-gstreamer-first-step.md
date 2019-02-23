@@ -4,21 +4,54 @@ title: gstreamer first step
 categories: gstreamer
 tags: [gstreamer]
 ---
+## Install
+```bash
+sudo apt-get install gstreamer1.0-tools \
+  gstreamer1.0-plugins-base \
+  gstreamer1.0-plugins-good \
+  gstreamer1.0-plugins-bad \
+  gstreamer1.0-plugins-ugly
+```
+## Basic
+Gstreamer difine a pipeline, the first  element are source the last are sink
+ 
+![](.2019-01-12-gstreamer-first-step_images/d7d59066.png)
 
-![](/images/2019-01-13-19-55-07.png)
+The  basic pipe contain source and a  sink
+
+```bash
+gst-launch-1.0 videotestsrc ! autovideosink
+```
+
 
 ## Tools
 - gst-inspect: discover gstreamer  elements
 - gst-launch: build a  gstreamer pipeline on the command line
 
+### bash TAB auto complete
+- [gst-launch tab-completion](http://gstreamer-devel.966125.n4.nabble.com/gst-launch-tab-completion-td4657538.html)
+```bash
+# wget https://raw.github.com/drothlis/gstreamer/bash-completion-master/tools/gstreamer-completion
+cp gstreamer-completion  /etc/bash_completion.d/
+source /etc/bash_completion.d/gstreamer-completion
 ```
-gst-launch filesrc location=~/Music/sample.mp3 ! decodebin ! audioconvert ! autoaudiosink
+##  Streaming  pipeline
+### Sender
+- acquire video data
+- compress
+- cut the data into smaller data
+- send over the network
 
-gst-launch filesrc location=~/Music/sample.mp3 ! decodebin ! audioconvert ! wavenc ! filesink location=~/Music/sample.wav
+###  Reciver
+- recive packets from  the network
+- reassemble
+- decompress the video
+- display
 
-gst-launch filesrc location=~/Music/sample.wav ! decodebin ! audioconvert ! autoaudiosink
-```
-
+## Demo
+Gstreamer  pipline  that use h264  as codec and rtp as transmit protocol over udp
+- `videotestsrc`  and `autovideosink` to  genereate and display an image
+- `x264enc` and `` as codec
 ### Video
 - install `sudo  apt install v4l-utils`
 - My camera support to types of video capture
