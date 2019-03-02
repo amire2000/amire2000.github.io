@@ -12,6 +12,8 @@ Method of compression
 - H.265
 - VP9
 
+- x264: open source  implementation for H.264 codec
+  
 ### Network protocols
 - RTSP: Real Time Streaming Protocol, **Control** streaming server action like PLAY STOP, 
 **Raw UDP** or **RTP** over udp are transmit the stream
@@ -23,7 +25,8 @@ Method of compression
 ### API
 - WebRTC: Web Real-Time Communication: API  to create RTP application
 - GStreamer: 
-
+- FFmpeg: A complete, cross-platform solution to record, convert and stream audio and video ([link](www.ffmpeg.org))
+- 
 ### Compression
 - Inter-Frame: Compress each frame (as jpeg for example - Motion-JPEG)
 - Intra-Frame: Compression the difference im images (H.264, XVID Divx)

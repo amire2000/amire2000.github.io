@@ -13,7 +13,7 @@ tags: [px4, mavlink]
     <enums>
     </enums>
     <messages>
-        <message id="150" name="key_command">
+        <message id="229" name="key_command">
             <description> mavlink message creating test </description>
             <field type="char" name="command"> </field>
         </message>
@@ -92,6 +92,51 @@ MavlinkReceiver::handle_message_key_command(mavlink_message_t *msg)
 ```
 make px4_sitl_default
 ```
+
+# MAVROS
+relative to `catkin_ws/src`
+- cpp: mavros/mavros/src/plugins/keyboard_command.cpp
+- /mavros_plugins.xml: /mavros
+- mavlink_dialect.h: /mavros/libmavconn/include/mavconn/
+- 
+## mavros_plugins.xml
+- `/home/user/catkin_ws/src/mavros/mavros`
+
+## Edit CMakeLists.txt
+- `/home/user/catkin_ws/src/mavros/mavros`
+- Add to `mavros_plugins`
+```cmake
+add_library( 
+  src/plugins/keyboard_command.cpp
+)
+```
+
+## Add Mavlink defination
+- Add folder v2.0 under `/home/user/catkin_ws/src/mavlink/message_definitions`
+
+##  Mavlink_dialect.h
+`/home/user/catkin_ws/src/mavros/libmavconn/include/mavconn`
+
+## Run
+```
+roslaunch mavros px4.launch fcu_url:="udp://:14540@127.0.0.1:14557"
+```
+
+### Log (note keyboard_command)
+```
+Plugin keyboard_command loaded
+[ INFO] [1551553345.796222537]: KeyboardCommandPlugin::initialize
+[ INFO] [1551553345.796253935]: Plugin keyboard_command initialized
+
+```
+
+## Pub to topic
+```
+rostopic pub -r 10 /mavros/keyboard_command/keyboard_sub std_msgs/Char 97
+```
+
 # Reference
 - [Sending custom nessage from mavros to px4](https://github.com/mavlink/mavros/issues/781)
 - [middleware/mavlink messaging](https://dev.px4.io/en/middleware/mavlink.html)
+- [Sending custom nessage from mavros to px4](https://github.com/mavlink/mavros/issues/783)
+- [Sending custom nessage from mavros to px4](https://github.com/JoonmoAhn/Sending-Custom-Message-from-MAVROS-to-PX4/issues/1)
