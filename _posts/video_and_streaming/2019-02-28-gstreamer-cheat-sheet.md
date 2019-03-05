@@ -1,4 +1,57 @@
 
+# First pipe
+```
+gst-launch-1.0 videotestsrc ! video/x-raw,width=640,height=480 ! autovideosink
+```
+- Read from camera
+```
+gst-launch-1.0 v4l2src device="/dev/video1" ! video/x-raw,width=640,height=480 ! videoconvert ! autovideosink
+```
+
+## Encoding
+- mjpeg: jpegenc
+- VP8: vp8enc
+- Mpeg2: avenc_mpeg4
+
+## Payload
+packing the data into network protocol
+- RTP: Real Time Prorocol
+- GDP: Gstreamer Data Protocol
+
+### Examples
+- rtpkpegpay
+- rtpv8pay
+- rtpmp4vpay
+- rtpvrawpay
+
+Send stream
+- udp
+- tcp
+- multiudpsink
+
+source -> encode ->  pack -> send
+
+recv -> unpack -> decode -> sink
+
+
+### Mpeg 2 streaming
+```
+gst-launch-1.0 v4l2src device="/dev/video1" \
+! video/x-raw,width=640,height=480 \
+! videoconvert \
+! avenc_mpeg4 \
+! rtpmp4vpay \
+! udpsink host=127.0.0.1 port=5600
+```
+
+```
+gst-launch-1.0 -v udpsrc port=5600 \
+! application/x-rtp,clock-rate=90000,payload=96 \
+! rtpmp4vdepay \
+! avdec_mpeg4 \
+! autovideosink
+```
+
 ## Networking 
 - h264 codec
 - rtp
@@ -82,3 +135,7 @@ videorate ! \
 video/x-raw,framerate=1/1 ! \
 autovideosink
 ```
+
+# Reference
+- [NVIDIA Accelerated gstreamer user guide](https://usermanual.wiki/Document/AcceleratedGStreamerUserGuideRelease2421.1763245798/view)
+- [RTP UDP](https://m.blog.naver.com/PostView.nhn?blogId=chandong83&logNo=221263551742&categoryNo=54&proxyReferer=https%3A%2F%2Fwww.google.com%2F)
