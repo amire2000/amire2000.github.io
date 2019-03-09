@@ -1,3 +1,9 @@
+---
+layout: post
+title: Gstreamer cheat-sheet
+categories: Gstreamer
+tags: [video, gstreamer]
+---
 
 # First pipe
 ```
@@ -33,44 +39,111 @@ source -> encode ->  pack -> send
 
 recv -> unpack -> decode -> sink
 
+### MJPEG
+- Tx
+```
+gst-launch-1.0 -v v4l2src device="/dev/video1" \
+! video/x-raw,width=640,height=480 \
+! videoconvert \
+! jpegenc \
+! rtpjpegpay \
+! udpsink host=127.0.0.1 port=5000
+```
+-Rx
+```
+gst-launch-1.0 udpsrc port=5000 \
+! application/x-rtp,encoding-name=JPEG,ayload=26 \
+! rtpjpegdepay \
+! jpegdec \
+! autovideosink
+```
+
+### h264
+- Tx
+```
+gst-launch-1.0 -v v4l2src device="/dev/video1" \
+! video/x-raw,framerate=20/1 \
+! videoconvert \
+! x264enc tune=zerolatency bitrate=500 speed-preset=superfast \
+! rtph264pay \
+! udpsink host=127.0.0.1 port=5000
+```
+
+- Rx
+```
+gst-launch-1.0 udpsrc port=5000 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" \
+! rtph264depay \
+! decodebin \
+! videoconvert \
+! autovideosink
+```
+
+> Caps format as element  property
+
+
 
 ### Mpeg 2 streaming
+- Codec from `libav`
 ```
-gst-launch-1.0 v4l2src device="/dev/video1" \
+gst-launch-1.0 -v v4l2src device="/dev/video1" \
 ! video/x-raw,width=640,height=480 \
 ! videoconvert \
 ! avenc_mpeg4 \
-! rtpmp4vpay \
-! udpsink host=127.0.0.1 port=5600
+! rtpmp4vpay config-interval=3 \
+! udpsink host=127.0.0.1 port=5200
 ```
-
+- config-interval: Send Config Insertion Interval in seconds (0=disabled), without this properties the recv is out of sink
 ```
-gst-launch-1.0 -v udpsrc port=5600 \
+gst-launch-1.0 -v udpsrc port=5200 \
 ! application/x-rtp,clock-rate=90000,payload=96 \
 ! rtpmp4vdepay \
 ! avdec_mpeg4 \
 ! autovideosink
 ```
+> Don't forget config-interval
 
-## Networking 
-- h264 codec
-- rtp
+
+
+### tee and queue
+- Split camera and display image as color and gray scale
+- Queue, Create thread that handle queue data
 ```
-gst-launch-1.0 videotestsrc pattern="ball" ! \
- video/x-raw,width=640,height=480 ! \
- videoconvert ! \
- x264enc ! \
- rtph264pay ! \
- udpsink host=127.0.0.1 port=5600
+gst-launch-1.0 -v v4l2src device="/dev/video1" \
+! video/x-raw,width=640,height=480 \
+! tee name=t \
+t. ! queue ! videoconvert \
+! autovideosink sync=false \
+t. !  queue ! videoconvert ! \
+video/x-raw,format=GRAY8 \
+! videoconvert \
+! autovideosink sync=false
 ```
+
+#### Demo (time overlay)
+- Tx
 ```
-gst-launch-1.0 udpsrc port=5600 ! \
- application/x-rtp,encoding-name=H264 ! \
- rtph264depay ! \
- h264parse ! \
- avdec_h264 ! \
- autovideosink
+gst-launch-1.0 v4l2src  device="/dev/video1" \
+ ! video/x-raw,width=640,height=480 \
+ ! timeoverlay \
+ ! tee name="local" \
+ ! queue \
+ ! videoconvert \
+ ! autovideosink sync=false\
+ local. \
+ ! queue \
+ ! jpegenc \
+ ! rtpjpegpay \
+ ! udpsink host=127.0.0.1 port= 5000
 ```
+- Rx
+```
+gst-launch-1.0 udpsrc port=5000 \
+! application/x-rtp,encoding-name=JPEG,payload=26 \
+! rtpjpegdepay \
+! jpegdec \
+! autovideosink sync=false
+```
+![](2019-03-08-14-12-43.png)
 
 ## Mixer
 ```
@@ -139,3 +212,4 @@ autovideosink
 # Reference
 - [NVIDIA Accelerated gstreamer user guide](https://usermanual.wiki/Document/AcceleratedGStreamerUserGuideRelease2421.1763245798/view)
 - [RTP UDP](https://m.blog.naver.com/PostView.nhn?blogId=chandong83&logNo=221263551742&categoryNo=54&proxyReferer=https%3A%2F%2Fwww.google.com%2F)
+- [Videostreaming with Gstreamer](http://z25.org/static/_rd_/videostreaming_intro_plab/index.html)

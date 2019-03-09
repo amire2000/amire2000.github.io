@@ -13,7 +13,7 @@ sudo apt-get install gstreamer1.0-tools \
   gstreamer1.0-plugins-ugly
 ```
 ## Basic
-Gstreamer difine a pipeline, the first  element are source the last are sink
+Gstreamer difine a pipeline, The pipe contain elements the first  element are source  and the last are sink
  
 ![](.2019-01-12-gstreamer-first-step_images/d7d59066.png)
 
@@ -23,6 +23,36 @@ The  basic pipe contain source and a  sink
 gst-launch-1.0 videotestsrc ! autovideosink
 ```
 
+## Elements / Plugins
+### Input elements
+- v4l2src
+- fdsrc
+- videotestsrc
+- udpsrc
+
+### Sink elements
+- filesink
+- autovideosink
+- udpsink
+- multiudpsink
+
+## caps
+Caps / Capabilities describe the type off data that is streamed between two pads / elements
+- **caps do not modify data**
+- They ensure compatibility between elements
+
+## Other type of element
+- tee
+- queue
+- Converter
+  - color change
+  - cropping
+  - videoscale
+  - rotation
+  - videoconvert
+- Payers/Depayers: prepare data (payload) to network transport 
+  - rtp
+    - rtph264/rtph264depay
 
 ## Tools
 - gst-inspect: discover gstreamer  elements
@@ -35,6 +65,9 @@ gst-launch-1.0 videotestsrc ! autovideosink
 cp gstreamer-completion  /etc/bash_completion.d/
 source /etc/bash_completion.d/gstreamer-completion
 ```
+
+
+
 ##  Streaming  pipeline
 ### Sender
 - acquire video data
