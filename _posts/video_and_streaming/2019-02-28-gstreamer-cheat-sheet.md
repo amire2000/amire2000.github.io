@@ -209,6 +209,20 @@ video/x-raw,framerate=1/1 ! \
 autovideosink
 ```
 
+## Convert mjpeg to h264
+- Tx
+  - convert mjpeg to h264
+  - Use x264 rx example to watch the stream
+```
+gst-launch-1.0 v4l2src device="/dev/video1" \
+! image/jpeg,width=800,height=600,framerate=10/1 \
+! jpegdec \
+! x264enc tune=zerolatency \
+! rtph264pay \
+! udpsink host=127.0.0.1 port=5000
+```
+
+
 # Reference
 - [NVIDIA Accelerated gstreamer user guide](https://usermanual.wiki/Document/AcceleratedGStreamerUserGuideRelease2421.1763245798/view)
 - [RTP UDP](https://m.blog.naver.com/PostView.nhn?blogId=chandong83&logNo=221263551742&categoryNo=54&proxyReferer=https%3A%2F%2Fwww.google.com%2F)
