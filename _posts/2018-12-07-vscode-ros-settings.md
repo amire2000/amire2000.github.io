@@ -21,3 +21,17 @@ tags: [ros, vscode]
     ".world": "xml"
 },
 ~~~
+
+### tasks.json
+- config `catkin` tasks
+
+### build
+- config use to extend workspace
+- build with debug symbols
+```json
+{
+    "label": "build",
+    "type": "shell",
+    "command": "catkin config --extend /opt/ros/melodic && catkin build -DCMAKE_BUILD_TYPE=Debug -j4"
+}
+```
