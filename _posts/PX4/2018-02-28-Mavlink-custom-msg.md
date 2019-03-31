@@ -140,3 +140,5 @@ rostopic pub -r 10 /mavros/keyboard_command/keyboard_sub std_msgs/Char 97
 - [middleware/mavlink messaging](https://dev.px4.io/en/middleware/mavlink.html)
 - [Sending custom nessage from mavros to px4](https://github.com/mavlink/mavros/issues/783)
 - [Sending custom nessage from mavros to px4](https://github.com/JoonmoAhn/Sending-Custom-Message-from-MAVROS-to-PX4/issues/1)
+- [Send a new custom mavlink message from PX4 to mavros ](https://www.bountysource.com/issues/43563124-send-a-new-custom-mavlink-message-from-px4-to-mavros)
+- [Send a new custom mavlink message from PX4 to mavros #682](https://github.com/mavlink/mavros/issues/682)
