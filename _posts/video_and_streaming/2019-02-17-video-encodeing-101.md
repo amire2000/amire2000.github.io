@@ -40,7 +40,7 @@ Method of compression
 - latency: is amount  ot time between from capture and when it's display
 - DSB: Decoder Stream Buffer
 
-![](.2019-02-17-video-encodeing-101_images/3afc5487.png)
+![](images/3afc5487.png)
 
 ### Delivery Modes
 - Streaming: 

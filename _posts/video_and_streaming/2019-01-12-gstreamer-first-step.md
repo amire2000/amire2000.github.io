@@ -10,12 +10,15 @@ sudo apt-get install gstreamer1.0-tools \
   gstreamer1.0-plugins-base \
   gstreamer1.0-plugins-good \
   gstreamer1.0-plugins-bad \
-  gstreamer1.0-plugins-ugly
+  gstreamer1.0-plugins-ugly \
+  gstreamer1.0-libav \
+  gstreamer1.0-doc \
+  gstreamer1.0-tools
 ```
 ## Basic
 Gstreamer difine a pipeline, The pipe contain elements the first  element are source  and the last are sink
  
-![](.2019-01-12-gstreamer-first-step_images/d7d59066.png)
+![](images/d7d59066.png)
 
 The  basic pipe contain source and a  sink
 

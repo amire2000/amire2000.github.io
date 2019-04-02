@@ -143,7 +143,7 @@ gst-launch-1.0 udpsrc port=5000 \
 ! jpegdec \
 ! autovideosink sync=false
 ```
-![](2019-03-08-14-12-43.png)
+![](images/2019-03-08-14-12-43.png)
 
 ## Mixer
 ```
@@ -191,7 +191,7 @@ gst-launch-1.0 videomixer name=mix \
 gst-launch-1.0 -v videotestsrc pattern="ball" !  video/x-raw,width=320,height=240 !  textoverlay text="CAM1"  font-desc="Sens 24" valignment=top halignment=left ! \
 autovideosink
 ``` 
-![](2019-02-28-21-53-45.png)
+![](images/2019-02-28-21-53-45.png)
 
 ## Video scale
 ```
