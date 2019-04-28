@@ -26,7 +26,15 @@ tags: [vscode]
 | Markdown Preview Mermaid Support | ![](/images/2019-01-03-12-20-45.png) | Adds Mermaid diagram and flowchart support |
 
 
-
+### Backup to dropbox
+- backup user settings to dropbox
+- Use ubuntu dropbear client and sync local folder
+- Backup `.config/Code/User`
+- Move `User` to dropbox location
+- Create a shortcut from ~/user/.config/Code/ to dropbox location
+```
+ln -s ~/Dropbox/vscode/Code/User ~/.config/Code/User
+```
 
 ### Language Ext.
 
@@ -83,3 +91,8 @@ tags: [vscode]
 ```json
 "terminal.integrated.shellArgs.linux": ["-c", "source ./.env/bin/activate; bash -i"]
 ```
+
+
+# Reference
+- [vscode-extension-samples](https://github.com/Microsoft/vscode-extension-samples)
+- [/awesome-vscode](https://viatsko.github.io/awesome-vscode/#jumpy)
