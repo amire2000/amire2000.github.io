@@ -4,16 +4,23 @@ layout: default
 
 <article class="post">
   <h1>{{ page.title }}</h1>
+  
   <div class="entry">
     {{ content }}
   </div>
 
+  <hr/>
   <div class="date">
     Written on {{ page.date | date: "%B %e, %Y" }}
   </div>
   <div class="date">
     categories: {{ page.categories | join: ', ' }}
   </div>
-
+  <div class="date">
+      tags: 
+      {% for tag in page.tags %}
+      <a href="/tags/#{{ tag | slugify }}">{{ tag }}</a>  
+      {% endfor %}
+  </div>
   {% include disqus.html %}
 </article>

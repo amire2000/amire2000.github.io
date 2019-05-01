@@ -2,7 +2,7 @@
 layout: post
 title: RUN ROS on Odroid
 categories: ros
-tags: [ros, odroid]
+tags: [ros, odroid,]
 image: odroid_xu4.jpg
 description: Install ROS Melodic on ODROID board and connect it to Arduino Mega
 public: true
@@ -111,6 +111,7 @@ rostopic pub -1 /toggle_led std_msgs/Empty "{}"
 > Tip: install tmux
 
 > Tip: Don't forget to add user to dialout group
+
 ### install packages
 ```bash
 sudo apt install ros-melodic-rosserial
@@ -135,9 +136,9 @@ rostopic list
 /rosout_agg
 /toggle_led
 
-# send message to toggle LED on
+#send message to toggle LED on
 rostopic pub -1 /toggle_led std_msgs/Empty "{}"
-# send message to toggle LED off
+#send message to toggle LED off
 rostopic pub -1 /toggle_led std_msgs/Empty "{}"
 ```
 
