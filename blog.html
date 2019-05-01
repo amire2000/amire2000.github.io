@@ -1,19 +1,59 @@
 ---
-layout: page
+layout: default
 permalink: /blog/
-title: Blog
 ---
+
+
+
 <div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+  {% for post in site.posts limit:5 %}
+  {% if post.public %}
+  <article class="post">
+    <table >
+      <tr>
+        <td>
+          <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          tags: 
+          {% for tag in post.tags %}
+          <a href="/tags/#{{ tag | slugify }}">{{ tag }}</a>  
+          {% endfor %}
+        </td>
+      </tr>
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-      
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+      {% if post.description != null %}
+      <tr>
+        <td>
+          {{ post.description }}
+        </td>
+      </tr>
+      {% endif %}
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
+      {% if post.image != null %}
+      <tr>
+        <td>
+          <img src="{{ site.baseurl }}/images/{{ post.image }}" />
+        </td>
+      </tr>
+      {% endif %}
+
+      <tr>
+        <td>
+          <div class="entry">
+            {{ post.excerpt }}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="{{ site.baseurl }}{{ post.url }}" class="button">Continue Reading</a>
+        </td>
+      </tr>
+    </table>
+  </article>
+  {% endif %}
   {% endfor %}
 </div>

@@ -4,61 +4,62 @@ permalink: /ros/
 ---
 <div class="row">
     {% assign i=0 %}
-{% for post_item in site.data.ros_posts %}
+    {% for post_item in site.data.ros_posts %}
     {% for post in site.posts %}
-        {% if post.title == post_item.title %}
-        {% assign i = i | plus:1 %}
-<section class="6u">
-    <div class="box post">
-        <a href="{{ site.baseurl }}{{ post.url }}" class="image left"><img src="{{ site.baseurl }}/images/{{ post.image }}"/></a>
-        <div class="inner">
-        <h3>{{ post.title }}</h3>
-        <p>{{ post.description }}</p>
+    {% if post.title == post_item.title %}
+    {% assign i = i | plus:1 %}
+    <section class="6u">
+        <div class="box post">
+            <a href="{{ site.baseurl }}{{ post.url }}" class="image left"><img
+                    src="{{ site.baseurl }}/images/{{ post.image }}" /></a>
+            <div class="inner">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.description }}</p>
+            </div>
         </div>
-    </div>
-</section>
-{% assign value = i | modulo:2 %}
-{% if value == 0 %}
-  </div>
-  <div class="row">
-{% endif %}
-        {% endif  %}
+    </section>
+    {% assign value = i | modulo:2 %}
+    {% if value == 0 %}
+</div>
+<div class="row">
+    {% endif %}
+    {% endif  %}
     {% endfor %}
-{% endfor %}
+    {% endfor %}
 </div>
 
 <section id="banner_ros">
-<header>
-    <!-- <h2>ROS: <em> Other posts</em></h2> -->
-</header>
+    <header>
+        <!-- <h2>ROS: <em> Other posts</em></h2> -->
+    </header>
 </section>
 
 <div class="posts">
     {% for post in site.posts %}
     {% if post.categories contains 'ROS' %}
     <div class="row">
-    <section class="6u">
+        <section class="6u">
             <div class="box post">
-                    {% if post.image != null %}
-                    <div class="image left">
-                    <img src="{{ site.baseurl }}/images/{{ post.image }}"/>
+                {% if post.image != null %}
+                <div class="image left">
+                    <img src="{{ site.baseurl }}/images/{{ post.image }}" />
                 </div>
                 <div class="inner">
-                {% else %}
-                <dev>
-                    {% endif %}
-                
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.excerpt }}</p>
+                    {% else %}
+                    <dev>
+                        {% endif %}
+
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.excerpt }}</p>
                 </div>
             </div>
         </section>
     </div>
 
 
-        <a href="{{ site.baseurl }}{{ post.url }}" class="button">Continue Reading</a>
+    <a href="{{ site.baseurl }}{{ post.url }}" class="button">Continue Reading</a>
 
-    <hr/>
+    <hr />
     {% endif %}
     {% endfor %}
 </div>
