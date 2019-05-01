@@ -3,7 +3,38 @@ layout: page
 permalink: /categories/
 title: Categories
 ---
+<table>
+  <tr>
+    {% assign i=0 %}
+    {% assign categories_list = site.categories %}
+      {% if categories_list.first[0] == null %}
 
+        {% for category in categories_list %}
+          <li><a href="#{{ category | downcase | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a></li>
+        {% endfor %}
+
+      {% else %}
+        {% for category in categories_list %}
+        <td>
+        {% assign cat_name = category[0] | downcase %}
+          
+          {% assign cat_image = site.data.categories[cat_name] %}
+          {% if cat_image %}
+          <a href="#{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}"><img src="{{ site.baseurl }}/images/{{ cat_image }}" width="32" height="32" title="{{ category[0] | camelcase }}"/></br> ({{ category[1].size }})</a>
+          {% else %}
+          <a href="#{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} </br> ({{ category[1].size }})</a>
+          {% endif %}
+        </td>
+        {% assign i = i | plus:1 %}
+        {% assign value = i | modulo:6 %}
+{% if value == 0 %}
+      </tr>
+  <tr >
+{% endif %}
+        {% endfor %}
+      {% endif %}
+    {% assign categories_list = nil %}
+  </table>
 
 <div id="archives">
 {% for category in site.categories %}
