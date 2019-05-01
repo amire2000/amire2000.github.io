@@ -3,8 +3,11 @@
 
 //
 // IMPORTS
-//
 
+//
+// @import url("assets/style.css");
+// @import url("assets/skel.css");
+// @import url("assets/font-awesome.min.css");
 @import "reset";
 @import "variables";
 // Syntax highlighting @import is at the bottom of this file
@@ -12,6 +15,18 @@
 /**************/
 /* BASE RULES */
 /**************/
+.wrapper {
+  padding: 5em 0 0em 0;
+}
+
+  .wrapper.style1 {
+    background: #fff;
+  }
+
+
+.box.highlight {
+  text-align: center;
+}
 
 html {
   font-size: 100%;
@@ -25,8 +40,8 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
-  padding: 0 10px;
+  max-width: 1024px;
+  padding: 0 0px;
   width: 100%;
 }
 
@@ -151,7 +166,7 @@ img {
 //
 
 .wrapper-masthead {
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .masthead {
@@ -211,8 +226,9 @@ img {
 }
 
 nav {
-  float: right;
+  float: left;
   margin-top: 23px; // @TODO: Vertically middle align
+  margin-left: 50px;
   font-family: $helveticaNeue;
   font-size: 18px;
 

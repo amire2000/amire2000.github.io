@@ -1,8 +1,10 @@
 ---
 layout: post
-title: ROS developer with Visual Studio Code
+title: ROS and VSCode
 categories: ROS
 tags: [ros,  vscode]
+image: vscode.png
+description: Using VSCode as IDE install extension , using snippets and other settings, use all the goodies that VSCode offer
 ---
 
 ## VSCode extensions

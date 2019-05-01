@@ -1,8 +1,10 @@
 ---
 layout: post
 title: ROS Navigation
-categories: ros
+categories: ROS
 tags: [ros, navigation]
+image: robot_navigation.jpeg
+description: Using ROS Navigation stack, using SLAM create maps, navigate and use robot sensors
 ---
 Mapping
 Localization

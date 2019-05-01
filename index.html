@@ -1,18 +1,54 @@
 ---
 layout: default
 ---
-
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
-
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
-</div>
+<section id="banner">
+  <header>
+    <h2>Robots: <em> ROS, Programing and other</em></h2>
+  </header>
+</section>
+<!-- Posts -->
+<section class="wrapper style1">
+  <div class="container">
+    <div class="row">
+      <section class="6u">
+        <div class="box post">
+          <a href="{{ site.baseurl }}/ros" class="image left"><img src="{{ site.baseurl }}/assets/images/ros.png" alt="" /></a>
+          <div class="inner">
+            <h3></h3>
+            <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+          </div>
+        </div>
+      </section>
+      <section class="6u">
+        <div class="box post">
+          <a href="#" class="image left"><img src="{{ site.baseurl }}/assets/images/gazebo.png" alt="" /></a>
+          <div class="inner">
+            <h3>Gazebo</h3>
+            <p>Duis neque nisi, dapibus sed mattis et quis, nibh. Sed et dapibus nisl amet mattis, sed a rutrum accumsan sed. Suspendisse eu.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="row">
+      <section class="6u">
+        <div class="box post">
+          <a href="#" class="image left"><img src="{{ site.baseurl }}/assets/images/ArduPilot.png" alt="" /></a>
+          <div class="inner">
+            <h3>Ardupilot PX4</h3>
+            <p>Using Ardupilot And PX4 for drone and rover over PIXHAWK using Companion computer power by ROS</p>
+          </div>
+        </div>
+      </section>
+      <section class="6u">
+        <div class="box post">
+          <a href="#" class="image left"><img src="{{ site.baseurl }}/assets/images/programing.jpg" alt="" /></a>
+          <div class="inner">
+            <h3>Make Code</h3>
+            <p>Python and C++ using VSCode</p>
+            
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

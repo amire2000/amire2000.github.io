@@ -61,4 +61,5 @@ Examples/Stereo/EuRoC_TimeStamps/SEQUENCE.txt
 ## Reference
 - [Cartographer SLAM for Non-GPS Navigation](http://ardupilot.org/dev/docs/ros-cartographer-slam.html)
 - [Run orb_slam2 on ubuntu](http://www.voidcn.com/article/p-gzjqneuf-bgn.html)
+- [jzijlmans/orb_slam2_mod](https://github.com/jzijlmans/orb_slam2_mod)
 

@@ -22,7 +22,7 @@
                 "/home/user/git_ws/src/hector_quad/hector_quadrotor/hector_quadrotor_model/include",
                 "/home/user/git_ws/src/hector_quad/hector_quadrotor/hector_quadrotor_pose_estimation/include",
                 "/home/user/git_ws/src/hector_quad/hector_quadrotor/hector_uav_msgs/include",
-                "/home/user/catkin_ws/src/mavros_demo/include",
+                "/home/user/catkin_ws/src/mavros/mavros/include/**",
                 "/home/user/catkin_ws/src/my_controller/include",
                 "/home/user/catkin_ws/src/my_turtle/include",
                 "/home/user/catkin_ws/src/pkg_gazebo_light_sensor_plugin/include",
