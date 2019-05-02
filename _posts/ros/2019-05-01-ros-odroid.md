@@ -147,3 +147,4 @@ rostopic pub -1 /toggle_led std_msgs/Empty "{}"
 # Reference
 - [Odroid wiki](https://wiki.odroid.com/odroid-xu4/hardware/hardware)
 - [Arduino IDE Setup](http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup)
+- [Getting Started with ROS — Arduino](https://www.servomagazine.com/magazine/article/november2016_ros-arduino-interfacing-for-robotics-projects)
