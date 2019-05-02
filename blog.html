@@ -9,10 +9,17 @@ permalink: /blog/
   {% for post in site.posts limit:5 %}
   {% if post.public %}
   <article class="post">
-    <table >
+    <table>
       <tr>
         <td>
           <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <div class="date">
+                Written on: {{ post.date | date: "%B %e, %Y" }}
+              </div>
         </td>
       </tr>
       <tr>

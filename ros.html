@@ -36,7 +36,8 @@ permalink: /ros/
 
 <div class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'ROS' %}
+    {% if post.categories contains 'ros' %}
+    {% if post.public %}
     <div class="row">
         <section class="6u">
             <div class="box post">
@@ -46,10 +47,13 @@ permalink: /ros/
                 </div>
                 <div class="inner">
                     {% else %}
-                    <dev>
+                    <div>
                         {% endif %}
 
                         <h3>{{ post.title }}</h3>
+                        <div class="date">
+                                Written on: {{ post.date | date: "%B %e, %Y" }}
+                              </div>
                         <p>{{ post.excerpt }}</p>
                 </div>
             </div>
@@ -60,6 +64,7 @@ permalink: /ros/
     <a href="{{ site.baseurl }}{{ post.url }}" class="button">Continue Reading</a>
 
     <hr />
+    {% endif %}
     {% endif %}
     {% endfor %}
 </div>
