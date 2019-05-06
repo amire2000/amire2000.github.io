@@ -3,6 +3,9 @@ layout: post
 title: PX4 custom Stream mavlink message
 categories: PX4
 tags: [px4, mavlink, stream, custom]
+public: true
+image: mavlink.png
+description: Create and Stream custom mavlink message on PX4 stack from PIXHAWK to ground station 
 ---
 ![](/images/mavlink.png)
 # Stream / Publish mavlink custom message
@@ -78,9 +81,12 @@ custom_messages.xml
 
 ### Copy generated into
 copy / move `custom_messages` folder into `Firmware/mavlink/include/mavlink/v2.0` folder
-
-![](/images/px4_autopilot.png)
+   
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # Firmware custom message support
+![](/images/px4_autopilot.png)
 - mavlink_messages.cpp
   - Add `Stream` class and declaration
   - Register `Stream` publish interval
@@ -209,5 +215,4 @@ make px4_sitl_default
 # Reference
 - [custom mavlink](https://dev.px4.io/en/middleware/mavlink.html)
 - [Stream](https://dev.px4.io/en/middleware/modules_communication.html)
-# stream
 - [Custom MAVLink message for Pixhawk native firmware PX4](https://codar.club/blogs/custom-mavlink-message-for-pixhawk-native-firmware-px4.html)
