@@ -1,0 +1,70 @@
+---
+layout: default
+permalink: /autopilot/
+---
+<div class="row">
+    {% assign i=0 %}
+    {% for post_item in site.data.autopilot_posts %}
+    {% for post in site.posts %}
+    {% if post.title == post_item.title %}
+    {% assign i = i | plus:1 %}
+    <section class="6u">
+        <div class="box post">
+            <a href="{{ site.baseurl }}{{ post.url }}" class="image left"><img
+                    src="{{ site.baseurl }}/images/{{ post.image }}" /></a>
+            <div class="inner">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.description }}</p>
+            </div>
+        </div>
+    </section>
+    {% assign value = i | modulo:2 %}
+    {% if value == 0 %}
+</div>
+<div class="row">
+    {% endif %}
+    {% endif  %}
+    {% endfor %}
+    {% endfor %}
+</div>
+
+<!-- <section id="banner_ros">
+    <header>
+        
+    </header>
+</section> -->
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'PX4' or  post.categories contains `ardupilot`%}
+    {% if post.public %}
+    <div class="row">
+        <section class="6u">
+            <div class="box post">
+                {% if post.image != null %}
+                <div class="image left">
+                    <img src="{{ site.baseurl }}/images/{{ post.image }}" />
+                </div>
+                <div class="inner">
+                    {% else %}
+                    <div>
+                        {% endif %}
+
+                        <h3>{{ post.title }}</h3>
+                        <div class="date">
+                                Written on: {{ post.date | date: "%B %e, %Y" }}
+                              </div>
+                        <p>{{ post.excerpt }}</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <a href="{{ site.baseurl }}{{ post.url }}" class="button">Continue Reading</a>
+
+    <hr />
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+</div>
