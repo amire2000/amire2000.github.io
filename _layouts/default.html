@@ -1,67 +1,89 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
-    {% include meta.html %}
+<head>
+  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
-    <!--[if lt IE 9]>
+  {% include meta.html %}
+
+  <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-			<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/skel.css" />
-			<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
-			<!-- <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style-wide.css" /> -->
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/skel.css" />
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
+  <!-- <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style-wide.css" /> -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/tipuesearch/css/tipuesearch.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/tipuesearch/css/normalize.css">
 
-    
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}"
+    href="{{ site.baseurl }}/feed.xml" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 
-    {% if page.tipue_search_active or layout.tipue_search_active %}
-    <link rel="stylesheet" href="{{ "/assets/tipuesearch/css/normalize.css" | relative_url }}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="{{ "/assets/tipuesearch/tipuesearch_content.js" | relative_url }}"></script>
-    <link rel="stylesheet" href="{{ "/assets/tipuesearch/css/tipuesearch.css" | relative_url }}">
-    <script src="{{ "/assets/tipuesearch/tipuesearch_set.js" | relative_url }}"></script>
-    <script src="{{ "/assets/tipuesearch/tipuesearch.min.js" | relative_url }}"></script>
-    {% endif %}
-  </head>
+  <!-- {% if page.tipue_search_active or layout.tipue_search_active %} -->
 
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="{{ site.baseurl }}/assets/tipuesearch/tipuesearch_content.js"></script>
+  <script src="{{ site.baseurl }}/assets/tipuesearch/tipuesearch_set.js"></script>
+  <script src="{{ site.baseurl }}/assets/tipuesearch/tipuesearch.min.js"></script>
+  <!-- {% endif %} -->
+</head>
 
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
+<body>
+  <div class="wrapper-masthead">
+    <div class="container">
+      <header class="masthead clearfix">
+        <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
 
-          <nav>
-            <a href="{{ site.baseurl }}/blog">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-            <a href="{{ site.baseurl }}/categories">Categories</a>
-            <a href="{{ site.baseurl }}/tags">Tags</a>
-            <a href="{{ site.baseurl }}/search">Search</a>
-          </nav>
-        </header>
-      </div>
+        <div class="site-info">
+          <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
+          <p class="site-description">{{ site.description }}</p>
+        </div>
+        <nav>
+          <table style="border:1px">
+            <tr>
+              <td>
+                <a href="{{ site.baseurl }}/blog">Blog</a>
+              </td>
+              <td>
+                <a href="{{ site.baseurl }}/about">About</a>
+                <a href="{{ site.baseurl }}/categories">Categories</a>
+                <a href="{{ site.baseurl }}/tags">Tags</a>
+              </td>
+              <td>
+                <a href="{{ site.baseurl }}/search">Search: </a>
+              </td>
+              <td>
+                  <form action="{{ site.baseurl }}/search" >
+                    <input type="text" name="q" id="tipue_search_input" pattern=".{3,}" title="At least 3 characters"
+                      required />
+                      <img src="{{ site.baseurl }}/assets/tipuesearch/search.png" }}" class="tipue_search_icon">
+                  </form>
+              
+              </td>
+              
+            </tr>
+          </table>
+        </nav>
+      </header>
     </div>
+  </div>
 
-    <div id="main" role="main" class="container">
-      {{ content }}
+  <div id="main" role="main" class="container">
+    {{ content }}
+  </div>
+
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer">
+        {% include svg-icons.html %}
+      </footer>
     </div>
+  </div>
+  <!-- 
+  {% include analytics.html %} -->
+  
+</body>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
-
-    {% include analytics.html %}
-  </body>
 </html>

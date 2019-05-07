@@ -10,13 +10,13 @@ http://www.tipue.com/search
 /* fonts */
 
 
-#tipue_search_input, #tipue_search_foot_boxes
+/* #tipue_search_input, #tipue_search_foot_boxes
 {
-     font: 300 14px/1 Roboto, sans-serif;
+     font: 100 14px/1 Roboto, sans-serif;
 }
 #tipue_search_results_count, #tipue_search_warning, .tipue_search_content_url, .tipue_search_content_debug, .tipue_search_related_text
 {
-     font: 300 14px/1.7 Roboto, sans-serif;
+     font: 100 14px/1.7 Roboto, sans-serif;
 }
 .tipue_search_content_title
 {
@@ -29,7 +29,7 @@ http://www.tipue.com/search
 .tipue_search_content_bold, .tipue_search_related_bold
 {
      font-weight: 400;
-}
+} */
 
 
 /* search box */
@@ -38,22 +38,23 @@ http://www.tipue.com/search
 #tipue_search_input
 {
      color: rgb(153, 65, 65);
-     max-width: 400px;
-	padding: 17px;
+     max-width: 150px;
+     max-height: 18px;
 	border: 1px solid #e3e3e3;
 	border-radius: 0;
 	-moz-appearance: none;
 	-webkit-appearance: none;
      box-shadow: none; 
-	outline: 0;
-	margin: 0;
+	/* outline: 0;
+	margin: 2; */
 }
 .tipue_search_icon
 {
+     padding-top: 5px;
      width: 24px;
      height: 24px;
 }
-.tipue_search_left
+/* .tipue_search_left
 {
      float: left;
      padding: 15px 9px 0 0;
@@ -61,7 +62,7 @@ http://www.tipue.com/search
 .tipue_search_right
 {
      float: left;
-}
+} */
 
 
 /* search results */
