@@ -1,32 +1,61 @@
 ---
 layout: post
-title: MQTT mosquitto hello world
+title: Setup MQTT mosquitto on RaspberryPI
 categories: MQTT
-tags: [mqtt, mosquitto, python]
----
+tags: [mqtt, mosquitto, python, raspberryPi]
+public: true
 
-# Ubuntu install 
-- Server
+---
+![](/images/mosquitto_rpi_logo.jpg)
+
+MQTT is a lightweight publish/subscribe messaging protocol.  
+Eclipse Mosquitto is an open source message broker that implements the MQTT.
+
+MQTT stands for MQ Telemetry Transport, MQTT is a tcp based subscribe and publish messaging protocol.  
+MQTT is main protocol for IOT.  
+
+
+# MQTT terms 
+- MQTT Broker: MQTT server
+- Topic: Name/String define specific channel
+- Publisher: Send/Pub messages
+- Subscriber: Receive me
+- Message
+- MQTT Client: `subscribe` or `publish` to specific `topic`
+
+
+![](/images/2019-05-08-14-27-04.png)
+
+# Lab
+- PI 3+
+- Raspbian Stretch
+- > Install tmux for ssh multi screen
+- Python paho-mqtt (mqtt version 3.1/3.1.1)
+
+
+# RaspberryPI Install 
+
 ```bash
+#server
 sudo apt-get install mosquitto
-```
-- Client
-```bash
+#client
 sudo apt-get install mosquitto-clients
 ```
 
 ## Test install
-- Terminal 1
+- Run tmux `tmux`
+- Pane 1 (subscriber)
 ```bash
 #-t topic name
 mosquitto_sub -t "test"
 ```
 
-- Terminal 2
+- Pane 2 (publisher)
 ```bash
 mosquitto_pub -m "message from mosquitto_pub client" -t "test"
 ```
 
+![](/images/2019-05-08-18-40-55.png)
 
 # Python
 ```bash
