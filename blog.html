@@ -2,13 +2,40 @@
 layout: default
 permalink: /blog/
 ---
-
-<section id="banner_blog">
+<div class="row">
+    {% assign i=0 %}
+    {% for post in site.posts limit:6%}
+    {% if post.public %}
+    {% assign i = i | plus:1 %}
+    <section class="6u">
+        <div class="box post">
+            <a href="{{ site.baseurl }}{{ post.url }}" class="image left"><img
+                    src="{{ site.baseurl }}/images/{{ post.image }}" /></a>
+            <div class="inner">
+                <a href="{{ site.baseurl }}{{ post.url }}">
+                <h3>{{ post.title }}</h3>
+              </a>
+                <div class="date">
+                    category: {{ post.categories | join: ","}}
+                </div>
+                <p>{{ post.description }}</p>
+            </div>
+        </div>
+    </section>
+    {% assign value = i | modulo:2 %}
+    {% if value == 0 %}
+</div>
+<div class="row">
+    {% endif  %}
+    {% endif  %}
+    {% endfor %}
+</div>
+<!-- <section id="banner_blog">
     
-  </section>
+  </section> -->
 
 <div class="posts">
-  {% for post in site.posts limit:5 %}
+  {% for post in site.posts limit:12 offset:6 %}
   {% if post.public %}
   <article class="post">
     <table>

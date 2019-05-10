@@ -5,6 +5,7 @@ categories: OpenVino
 tags: [openvino, intel, opencv, rpi, setup]
 description: Setup intel Neural compute stick with raspberry pi 3+, Install toolkit and run sample application 
 public: true
+image: openvino_logo.png
 ---
 <style>
     img[src*='#logo'] {
@@ -13,7 +14,7 @@ public: true
     
 </style>
 
-# RaspberryPI OpenVino Setup
+
 ![](/images/open_vino_rpi_install.jpg)
 
 ## Objectives
@@ -61,11 +62,12 @@ sudo apt install cmake
 ```
 ### Download toolkit
 - Download last version `https://download.01.org/opencv`
+  
 ```bash
 cd ~/Download
 wget --no-check-certificate https://download.01.org/opencv/2019/openvinotoolkit/l_openvino_toolkit_raspbi_p_2019.1.094.tgz
-
 ```
+
 ### Install toolkit
 ```bash
 #create install folder
