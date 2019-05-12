@@ -1,23 +1,23 @@
 ---
 layout: default
-permalink: /ros/
+permalink: /vscode/
 ---
 <section id="banner" style="height: 100px">
-        <table >
-            <tr>
-                <td width="20%">
-                    <img style="height: 100px" src="{{ site.baseurl }}/images/ros.png" /></td>
-                <td  style="color: #fff;text-align: left;vertical-align: middle">
-                    <h2>ROS: robotics melodic</h2>
-                </td>
-                
-            </tr>
-        </table>
-    </section>
+    <table>
+        <tr>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/vscode.png"/></td>
+            <td style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>VSCode: <em> One stop editor for all</em></h2>
+            
+            </td>
+        </tr>
+    </table>
+</section>
+
 
 <div class="row">
     {% assign i=0 %}
-    {% for post_item in site.data.ros_posts %}
+    {% for post_item in site.data.vscode_posts %}
     {% for post in site.posts %}
     {% if post.title == post_item.title %}
     {% assign i = i | plus:1 %}
@@ -41,11 +41,13 @@ permalink: /ros/
     {% endfor %}
 </div>
 
-<hr/>
+<hr />
+<!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
+
 
 <div class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'ros' %}
+    {% if post.categories contains 'vscode'%}
     {% if post.public %}
     <div class="row">
         <section class="6u">

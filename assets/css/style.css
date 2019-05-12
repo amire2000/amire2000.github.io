@@ -710,6 +710,15 @@
 		}
 
 /* Banner */
+#banner_vscode{
+	background-image: url("../images/vscode_banner.jpg");
+	background-position: center center;
+	background-size: cover;
+	height: 10em;
+	text-align: center;
+	bottom: 0;
+	position: relative;
+}
 #banner_blog{
 	background-image: url("../images/blog_banner.png");
 	background-position: center center;

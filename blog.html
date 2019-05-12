@@ -2,6 +2,19 @@
 layout: default
 permalink: /blog/
 ---
+<section id="banner" style="height: 100px">
+    <table >
+        <tr>
+            <td width="20%">
+                <img style="height: 100px" src="{{ site.baseurl }}/images/ai.png" /></td>
+            <td  style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>My Blog: <em>Posts Notes and codes</em></h2>
+            </td>
+            
+        </tr>
+    </table>
+</section>
+
 <div class="row">
     {% assign i=0 %}
     {% for post in site.posts limit:6%}
@@ -30,9 +43,8 @@ permalink: /blog/
     {% endif  %}
     {% endfor %}
 </div>
-<!-- <section id="banner_blog">
-    
-  </section> -->
+
+<hr/>
 
 <div class="posts">
   {% for post in site.posts limit:12 offset:6 %}
@@ -93,3 +105,4 @@ permalink: /blog/
   {% endif %}
   {% endfor %}
 </div>
+<div>Icons made by <a href="https://www.flaticon.com/authors/photo3idea-studio" title="photo3idea_studio">photo3idea_studio</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
