@@ -5,6 +5,7 @@ categories: ROS
 tags: [gazebo, ros, realsense, camera]
 image: intel_realsense_logo.png
 public: true
+description: Simulation intel realsense camera with gazebo, installation and usages
 ---
 # Objective
 - Simulate intel realsense in gazebo

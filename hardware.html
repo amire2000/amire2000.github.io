@@ -1,15 +1,16 @@
 ---
 layout: default
-permalink: /gazebo/
+permalink: /hardware/
 ---
 <section id="banner" style="height: 100px">
     <table>
         <tr>
-            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/gazebo.png" /></td>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/raspberry-pi.png" /></td>
             <td style="color: #fff;text-align: left;vertical-align: middle">
-                <h2>Gazebo: <em> Worlds models and plugins</em></h2>
+                <h2>Hardware: <em> IoT in the edge</em></h2>
 
             </td>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/arduino_logo.png" /></td>
         </tr>
     </table>
 </section>
@@ -17,7 +18,7 @@ permalink: /gazebo/
 
 <div class="row">
     {% assign i=0 %}
-    {% for post_item in site.data.gazebo_posts %}
+    {% for post_item in site.data.hw_posts %}
     {% for post in site.posts %}
     {% if post.title == post_item.title %}
     {% assign i = i | plus:1 %}
@@ -47,7 +48,7 @@ permalink: /gazebo/
 
 <table class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'gazebo'%}
+    {% if post.categories contains 'hw'%}
     {% if post.public %}
     <tr class="row">
         {% if post.image != null %}

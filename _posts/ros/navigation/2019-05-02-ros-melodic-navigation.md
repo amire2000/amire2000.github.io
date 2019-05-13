@@ -14,9 +14,9 @@ Implement SLAM navigation using gmapping algorithm
 - Build a map
 - Localization using amcl
 - Path planning
-- 
+
 > melodic distro don't support gmapping package
-We need to install package from source
+We need to install package from source  
 
 ![](/images/2019-05-02-09-48-25.png)
 
@@ -121,7 +121,7 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 roslaunch kbot_navigation gmapping.launch 
 ```
 
-- Map created after traveling the are with the robot
+- Map created after traveling the area with the robot
 - Add map topic and laser scan to rviz
 > Tip: change the :Laser scan `size` to view the scan more clearly
 

@@ -1,13 +1,14 @@
 ---
 layout: post
-title: Gazebo camera
+title: Gazebo make a movie
 categories: gazebo
 tags: [gazebo, camera]
+public: true
+description: Create video movie from gazebo camera sensor
+image: gazebo.png
 ---
-
-
-# Create a Video with a Camera
-## camera sensor save images
+Using Gazebo camera sensor to create movie sense 
+## Camera sensor save images
 ```xml
 <sensor name="my_camera">
   <camera>
@@ -41,6 +42,8 @@ ffmpeg -r 30 \
 -r : frame rate ()
 
 ## model demo
+- Add camera model as static 2 meter high and titled to the ground
+- The camera sensor save the images to `/tmp/camera_save_tutorial`
 ```xml
 <model name='camera'>
     <static>true</static>
