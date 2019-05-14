@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Openvino RaspberryPi setup
-categories: OpenVino
+categories: vision
 tags: [openvino, intel, opencv, rpi, setup]
 description: Setup intel Neural compute stick with raspberry pi 3+, Install toolkit and run sample application 
 public: true
@@ -15,9 +15,9 @@ image: openvino_logo.png
 </style>
 
 
-![](/images/open_vino_rpi_install.jpg)
 
-## Objectives
+
+## Content
 - Install Raspbian OS (lite for me)
 - Install OpenVino toolkit
 - Setup the environment
@@ -183,3 +183,5 @@ cv.imwrite('out.png', frame)
 - [Install OpenVINO™ toolkit for Raspbian* OS](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_raspbian.html)
 - [OpenVINO, OpenCV, and Movidius NCS on the Raspberry Pi](https://www.pyimagesearch.com/2019/04/08/openvino-opencv-and-movidius-ncs-on-the-raspberry-pi/)
 - [Python example](https://github.com/leswright1977/RPi3_NCS2)
+
+![](/images/open_vino_rpi_install.jpg)
