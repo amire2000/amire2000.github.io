@@ -99,6 +99,103 @@ altitude: 0.0}"
 &nbsp;  
 &nbsp;  
 
+# Code sample
+Python node to get UAV state and arming
+- Subscribe to `/mavros/state` topic
+- Using `/mavros/cmd/arming` to ARM.
+
+```python
+#!/usr/bin/env python
+"""
+mavros px4 demo
+"""
+import rospy
+from geometry_msgs.msg import PoseStamped
+from mavros_msgs.srv import CommandBool
+from mavros_msgs.srv import SetMode
+from mavros_msgs.msg import State
+
+current_state = None
+
+class OffboardNode(object):
+    def __init__(self):
+        self._current_state  = State()
+        self._rate = rospy.Rate(20)
+
+        self._state_sub = rospy.Subscriber("/mavros/state",
+            State,
+            self.state_cb)
+
+        self._arming_srv = rospy.ServiceProxy("/mavros/cmd/arming",
+            CommandBool)
+
+        # wait for connection
+        while not rospy.is_shutdown() and not self._current_state.connected:
+            self._rate.sleep()
+            rospy.loginfo("Wait for connection")
+        
+        rospy.loginfo("Connected")
+
+
+    def state_cb(self, msg):
+        """
+        connected: True
+        armed: False
+        guided: True
+        mode: "AUTO.LOITER"
+        system_status: 3
+        """
+        rospy.loginfo(msg)
+        self._current_state = msg
+
+    def arming(self):
+        try:
+            response = self._arming_srv(True)
+            rospy.loginfo(response)
+            if not response.success:
+                raise Exception("Failed to ARMING")
+
+        except rospy.ServiceException, e:
+            rospy.logerr("Failed to ARMED")
+            raise
+
+
+    def run(self):
+        self.arming()
+
+        while not rospy.is_shutdown():
+            self._rate.sleep()
+
+def main():
+    rospy.init_node("offboard")
+    node = OffboardNode()
+    node.run()
+
+
+if __name__ == "__main__":
+    main()
+```
+&nbsp;  
+&nbsp;  
+&nbsp;  
+
+## State message 
+```
+[INFO] [1557908111.694454]: header: 
+  seq: 3026
+  stamp: 
+    secs: 1557908111
+    nsecs: 693815730
+  frame_id: ''
+connected: True
+armed: True
+guided: True
+mode: "AUTO.LOITER"
+system_status: 4
+```
+
+> Note: check way mode not changed to OFFBOARD
+
 # SITL Network ports 
 ![](/images/2019-05-14-07-57-27.png)
 

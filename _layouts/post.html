@@ -2,9 +2,23 @@
 layout: default
 ---
 
+
+<section id="banner" style="height: 80px">
+    <table >
+        <tr>
+            <td width="20%">
+                <img style="height: 80px" src="{{ site.baseurl }}/images/{{ page.categories[0] | downcase }}.png" />
+            </td>
+              
+            <td  style="color: #fff;text-align: left;vertical-align:middle;font-size: 44px;font-weight: bold">
+                {{ page.title }}
+            </td>
+            
+        </tr>
+    </table>
+</section>
+
 <article class="post">
-  <h1>{{ page.title }}</h1>
-  
   <div class="entry">
     {{ content }}
   </div>
@@ -24,3 +38,4 @@ layout: default
   </div>
   {% include disqus.html %}
 </article>
+<div>Icons made by <a href="https://www.flaticon.com/authors/kiranshastry" title="Kiranshastry">Kiranshastry</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
