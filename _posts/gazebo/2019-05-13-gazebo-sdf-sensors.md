@@ -73,6 +73,7 @@ Gazebo publish `gazebo.msgs.ImageStamped` message into `image`  topic
   - format: default R8G8B8 (other format check the spec.)
 - clip: Objects closer or farther are not render
   - nar, far
+  
 ```xml
 <link>
 ...

@@ -2,12 +2,11 @@
 layout: post
 title: Gazebo ROS sensors
 categories: ROS
-tags: [ros, gazebo, sensors, plugin]
+tags: [gazebo, sensors, plugin]
 ---
 
-# Objectives
-- Add model to world
-  - Using 
+# Content
+- Add model to world (depth camera)
 - Integrated Gazebo model sensor with ROS using plugin
 - View Plugin and Sensor output
   - rviz
@@ -36,6 +35,7 @@ tags: [ros, gazebo, sensors, plugin]
 ## Depth camera
 ### Kinect
 - Download model and place it in `models` folder
+
 #### Spawn model
 - Spawn from file
 ```

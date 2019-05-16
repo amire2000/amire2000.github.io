@@ -2,10 +2,15 @@
 layout: post
 title: PX4 first step uORB
 categories: px4
-tags: [px4, uorb, nsh]
+tags: [uorb, nsh]
+public: true
+image: uORB.jpg
+description: uORB and PX4 
 ---
-
-# PX4
+#  Content
+- PX4 Architecture
+- uORB
+- 
 ## PX4 Architecture
 The flight control run Nuttx system.
 > NuttX: Real time operation system

@@ -1,11 +1,22 @@
 ---
 description: "Search this site"
-layout: page
+layout: default
 permalink: /search/
 tipue_search_active: true
 exclude_from_search: true
 ---
-<h2>Quick links</h2>
+<section id="banner" style="height: 100px">
+    <table >
+        <tr>
+            <td width="20%">
+                <img style="height: 100px" src="{{ site.baseurl }}/images/searching.png" /></td>
+            <td  style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>Search <em></em></h2>
+            </td>
+            
+        </tr>
+    </table>
+</section>
 <table>
   <tr>
     <td><a href="{{ site.baseurl }}/ros"><img src="{{ site.baseurl }}/images/ros.png" alt="" width="128"  height="128"/></a></td>
@@ -30,3 +41,5 @@ $(document).ready(function() {
 });
 </script>
 
+<hr/>
+<div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>

@@ -1,8 +1,11 @@
 ---
 layout: post
 title: APMRover gazebo and DroneKit
-categories: Ardupilot
-tags: [ardupilot, rover, gazebo]
+categories: ardupilot
+tags: [rover, gazebo,  dronekit]
+image: mars-rover.png
+public: true
+description: Run ardurover gazebo and control with dronkit sdk
 ---
 
 - Get model and world from SwiftGust git repo.

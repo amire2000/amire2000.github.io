@@ -1,8 +1,8 @@
 ---
 layout: post
 title: PX4 custom Stream mavlink message
-categories: PX4
-tags: [px4, mavlink, stream, custom]
+categories: px4
+tags: [mavlink, stream, custom]
 public: true
 image: mavlink.png
 description: Create and Stream custom mavlink message on PX4 stack from PIXHAWK to ground station 

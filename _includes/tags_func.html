@@ -1,0 +1,26 @@
+
+{% assign previousTag = "" %}
+{% assign counter = 0 %}
+
+{% for currentTag in tags %}
+
+  {% comment %}first loop : initializing previousTag{% endcomment %}
+  {% if previousTag == "" %}
+    {% assign previousTag = currentTag %}
+  {% endif %}
+
+  {% if currentTag == previousTag %}
+    {% assign counter = counter | plus: 1 %}
+  {% else %}
+  <a href="#{{ previousTag | slugify }}" > {{ previousTag }} ({{ counter }}) </a> &nbsp;&nbsp;
+    {% assign counter = 1 %}
+  {% endif %}
+
+  {% comment %}last loop : flushing what's left to print{% endcomment %}
+  {% if forloop.last %}
+  <a href="#{{ currentTag | slugify }}" > {{ currentTag }} ({{ counter }}) </a> &nbsp;&nbsp;
+  {% endif %}
+
+  {% assign previousTag = currentTag %}
+
+{% endfor %}
