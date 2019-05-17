@@ -4,66 +4,94 @@ permalink: /tags/
 ---
 <style>
   .imglogo {
-    max-width:150px;
-}
-    
+    max-width: 150px;
+  }
 </style>
 <section id="banner" style="height: 100px">
-    <table >
-        <tr>
-            <td width="20%">
-                <img style="height: 100px" src="{{ site.baseurl }}/images/tag_logo.png" /></td>
-            <td  style="color: #fff;text-align: left;vertical-align: middle">
-                <h2>Tags: <em>grouped and sorted</em></h2>
-            </td>
-            
-        </tr>
-    </table>
+  <table>
+    <tr>
+      <td width="20%">
+        <img style="height: 100px" src="{{ site.baseurl }}/images/tag_logo.png" /></td>
+      <td style="color: #fff;text-align: left;vertical-align: middle">
+        <h2>Tags: <em>grouped and sorted</em></h2>
+      </td>
+
+    </tr>
+  </table>
 </section>
-&nbsp;  
-&nbsp;  
+&nbsp;
+&nbsp;
+<!-- ros -->
 <table style="width: 800px;">
   <tr>
-    <td><img src="{{ site.baseurl }}/assets/images/ros.png" alt="" class="imglogo"/></td>
-  <td style="text-align: left;vertical-align: top; padding-left: 10px">
-{% comment %}map, flatten and sort{% endcomment %}
-{% assign tags =  site.posts | where: 'public','true' | where: 'categories','ros'| map: 'tags' | join: ','  | split: ',' | sort %}
-{% include tags_func.html %}
-</td>
-</tr>
+    <td>
+      <a href="{{ site.baseurl }}/ros">
+        <img src="{{ site.baseurl }}/assets/images/ros.png" alt="" class="imglogo" />
+      </a>
+    </td>
+    <td style="text-align: left;vertical-align: top; padding-left: 10px">
+      {% comment %}map, flatten and sort{% endcomment %}
+      {% assign tags =  site.posts | where: 'public','true' | where: 'categories','ros'| map: 'tags' | join: ','  | split: ',' | sort %}
+      {% include tags_func.html %}
+    </td>
+  </tr>
 </table>
 
-&nbsp;  
-&nbsp;  
+&nbsp;
+&nbsp;
+<!-- gazebo -->
 <table style="width: 800px;">
   <tr>
-    <td><img src="{{ site.baseurl }}/assets/images/gazebo.png" alt="" class="imglogo"/></td>
-  <td style="text-align: left;vertical-align: top; padding-left: 10px">
-{% comment %}map, flatten and sort{% endcomment %}
-{% assign tags =  site.posts | where: 'public','true' | where: 'categories','gazebo'| map: 'tags' | join: ','  | split: ',' | sort %}
-{% include tags_func.html %}
-</td>
-</tr>
+    <td>
+        <a href="{{ site.baseurl }}/gazebo">
+      <img src="{{ site.baseurl }}/assets/images/gazebo.png" alt="" class="imglogo" />
+    </a>
+    </td>
+    <td style="text-align: left;vertical-align: top; padding-left: 10px">
+      {% comment %}map, flatten and sort{% endcomment %}
+      {% assign tags =  site.posts | where: 'public','true' | where: 'categories','gazebo'| map: 'tags' | join: ','  | split: ',' | sort %}
+      {% include tags_func.html %}
+    </td>
+  </tr>
 </table>
 
-&nbsp;  
-&nbsp;  
+&nbsp;
+&nbsp;
+<!-- autopilot -->
 <table style="width: 800px;">
   <tr>
-    <td><img src="{{ site.baseurl }}/images/ardupilot-and-px4.jpg" alt="" class="imglogo"/></td>
-  <td style="text-align: left; vertical-align: top; padding-left: 10px">
-{% comment %}map, flatten and sort{% endcomment %}
-{% assign tags =  site.posts | where: 'public','true' | where: 'categories','px4'| map: 'tags' | join: ','  | split: ',' | sort %}
-{% include tags_func.html %}
+    <td>
+        <a href="{{ site.baseurl }}/autopilot">
+      <img src="{{ site.baseurl }}/images/ardupilot-and-px4.jpg" alt="" class="imglogo" />
+    </a>
+    </td>
+    <td style="text-align: left; vertical-align: top; padding-left: 10px">
+      {% comment %}map, flatten and sort{% endcomment %}
+      {% assign tags =  site.posts | where: 'public','true' | where: 'categories','px4'| map: 'tags' | join: ','  | split: ',' | sort %}
+      {% include tags_func.html %}
 
-{% assign tags =  site.posts | where: 'public','true' | where: 'categories','ardupilot'| map: 'tags' | join: ','  | split: ',' | sort %}
-{% include tags_func.html %}
+      {% assign tags =  site.posts | where: 'public','true' | where: 'categories','ardupilot'| map: 'tags' | join: ','  | split: ',' | sort %}
+      {% include tags_func.html %}
 
-</td>
-</tr>
+    </td>
+  </tr>
 </table>
 
-
+<!-- ai code vision -->
+<table style="width: 800px;">
+    <tr>
+      <td>
+          <a href="{{ site.baseurl }}/make_code">
+        <img src="{{ site.baseurl }}/images/ai-rob.png" title="vision AI python and other" class="imglogo" />
+      </a>
+      </td>
+      <td style="text-align: left;vertical-align: top; padding-left: 10px">
+        {% comment %}map, flatten and sort{% endcomment %}
+        {% assign tags =  site.posts | where: 'public','true' | where: 'categories','vision'| map: 'tags' | join: ','  | split: ',' | sort %}
+        {% include tags_func.html %}
+      </td>
+    </tr>
+  </table>
 
 
 
@@ -107,34 +135,34 @@ Here we generate all the tags.
 
 
 <div class="posts">
-<!-- <p>
+  <!-- <p>
 {% for tag in tags %}
 <a href="#{{ tag | slugify }}" > {{ tag }} </a> &nbsp;&nbsp;
 {% endfor %} -->
 
-{% assign tags =  site.posts | where: 'public','true' | map: 'tags' | join: ','  | split: ',' | uniq | sort %}
-{% for tag in tags %}
-<h2 id="{{ tag | slugify }}">{{ tag }}</h2>
-<ul >
-  {% for post in site.posts %}
-  {% if post.tags contains tag %}
-  <li>
-    <h3>
-      <a href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h3>
+  {% assign tags =  site.posts | where: 'public','true' | map: 'tags' | join: ','  | split: ',' | uniq | sort %}
+  {% for tag in tags %}
+  <h2 id="{{ tag | slugify }}">{{ tag }}</h2>
+  <ul>
+    {% for post in site.posts %}
+    {% if post.tags contains tag %}
+    <li>
+      <h3>
+        <a href="{{ post.url }}">
+          {{ post.title }}
+        </a>
+      </h3>
       <!-- <div class="date">
       {% for tag in post.tags %}
       <a href="/tag/#{{ tag | slugify }}">{{ tag }}</a>
       {% endfor %}
     </div> -->
-    
-  </li>
-  {% endif %}
+
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
   {% endfor %}
-</ul>
-{% endfor %}
 
 </div>
 
@@ -149,5 +177,8 @@ Here we generate all the tags.
 
 
 
-<hr/>
-<div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+<hr />
+<div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a
+    href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a
+    href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+</div>

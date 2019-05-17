@@ -143,6 +143,104 @@ All sensors include base link file with visual and inetia data
 
 </launch>
 ```
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# Depth
+Depth camera based on camera sensor
+- Change type to depth `<sensor type="depth" name="depth">`
+- Add `<depth_camera>`  tag
 
+  ```xml
+  <camera name="head">
+    <depth_camera>
+        <output>depths</output>
+    </depth_camera>
+    ...
+  ```
+
+```xml
+<gazebo reference="sensor">
+    <sensor type="depth" name="depth">
+        <update_rate>30.0</update_rate>
+        <visualize>1</visualize>
+        <pose frame="sensor">${width/2} 0 ${height1/2} 0 0 0</pose>
+        <camera name="head">
+            <depth_camera>
+                <output>depths</output>
+            </depth_camera>
+            <horizontal_fov>1.3962634</horizontal_fov>
+            <image>
+                <width>800</width>
+                <height>600</height>
+                <format>R8G8B8</format>
+            </image>
+            <clip>
+                <near>0.02</near>
+                <far>300</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.007</stddev>
+            </noise>
+        </camera>
+        <plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>10.0</updateRate>
+            <cameraName>camera</cameraName>
+            <frameName>camera_frame</frameName>
+            <!-- <frameName>camera_rgbd_frame</frameName> -->
+            <imageTopicName>/camera/rgb/image_raw</imageTopicName>
+            <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
+            <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
+            <cameraInfoTopicName>/camera/rgb/camera_info</cameraInfoTopicName>
+            <depthImageCameraInfoTopicName>/camera/depth/camera_info</depthImageCameraInfoTopicName>
+            <pointCloudCutoff>0.4</pointCloudCutoff>
+            <hackBaseline>0.07</hackBaseline>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+            <CxPrime>0.0</CxPrime>
+            <Cx>0.0</Cx>
+            <Cy>0.0</Cy>
+            <focalLength>0.0</focalLength>
+        </plugin>
+    </sensor>
+</gazebo>
+```
+
+> Tip: Pointcloud `libgazebo_ros_openni_kinect.so` has wrong tf,
+```xml
+<joint name="camera_depth_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="${-PI/2} 0 ${-PI/2} "/>
+    <parent link="camera_link"/>
+    <child link="camera_depth_link"/>
+</joint>
+<link name="camera_depth_link"/>
+```
+
+OR  Add tf message to fix it
+
+```xml
+<node pkg="tf" 
+    type="static_transform_publisher" 
+    name="ime_slam_camera_tf" 
+    args="0 0 0 -1.58 0 -1.58 /camera/camera_link /camera/camera_depth_link 30"/>
+```
+
+
+
+## gazebo
+![](/images/2019-05-16-12-16-37.png)
+## rviz
+![](/images/2019-05-16-12-15-44.png)
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # References
-- [ROS Robotics projects](https://github.com/qboticslabs/ros_robotics_projects/tree/master/chapter_10_codes/sensor_sim_gazebo)
+1. [ROS Robotics projects](https://github.com/qboticslabs/ros_robotics_projects/tree/master/chapter_10_codes/sensor_sim_gazebo)
+2. [Gazebo 1.5: libgazebo_openni_kinect.so: pointcloud data is rotated and flipped?](http://answers.gazebosim.org/question/4266/gazebo-15-libgazebo_openni_kinectso-pointcloud-data-is-rotated-and-flipped/)
+3. [University of Washington Robotics Capstone](https://github.com/cse481wi18/cse481wi18/wiki)
