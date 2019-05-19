@@ -1,0 +1,19 @@
+{% for post in site.posts %}
+{% if post.title == post_item.title %}
+{% assign i = i | plus:1 %}
+<section class="6u">
+    <div class="box post">
+        <img class="image left" src="{{ site.baseurl }}/images/{{ post.image }}" alt="{{ post.title }}" title="{{ post.title }}" />
+        <div class="inner">
+            <h3><a href="{{ site.baseurl }}{{ post.url }}" >{{ post.title }}</a></h3>
+            <p>{{ post.description }}</p>
+        </div>
+    </div>
+</section>
+{% assign value = i | modulo:2 %}
+{% if value == 0 %}
+</div>
+<div class="row">
+{% endif %}
+{% endif  %}
+{% endfor %}

@@ -1,0 +1,28 @@
+{% if post.public %}
+<div class="row">
+    <section class="8u">
+        <div class="box post">
+            {% if post.image != null %}
+            <div class="image left">
+                <img src="{{ site.baseurl }}/images/{{ post.image }}" alt="{{ post.title }}"/>
+            </div>
+            <div class="inner">
+                {% else %}
+                <div>
+                    {% endif %}
+
+                    <h3>{{ post.title }}</h3>
+                    <div class="date">
+                        Written on: {{ post.date | date: "%B %e, %Y" }}
+                    </div>
+                    <p>{{ post.description }}</p>
+                </div>
+            </div>
+    </section>
+</div>
+
+
+<a href="{{ site.baseurl }}{{ post.url }}" class="button">Continue Reading</a>
+
+<hr />
+{% endif %}

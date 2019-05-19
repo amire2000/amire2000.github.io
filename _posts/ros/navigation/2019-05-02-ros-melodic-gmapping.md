@@ -1,10 +1,10 @@
 ---
 layout: post
-title: SLAM First step
+title: ROS melodic install and use gmapping
 categories: ros
-tags: [ros, slam, gmapping, amcl, octomap]
+tags: [navigation, slam, gmapping]
 image: robot_maze.jpg
-description: ROS SLAM Navigation 101 using gmapping and other algorithms
+description: ROS SLAM Navigation 101 using gmapping
 public: true
 ---
 
@@ -18,7 +18,7 @@ Implement SLAM navigation using gmapping algorithm
 > melodic distro don't support gmapping package
 We need to install package from source  
 
-![](/images/2019-05-02-09-48-25.png)
+![gmapping ros page](/images/2019-05-02-09-48-25.png)
 
 ## install from source
 - check that all dependencies installed
@@ -125,16 +125,10 @@ roslaunch kbot_navigation gmapping.launch
 - Add map topic and laser scan to rviz
 > Tip: change the :Laser scan `size` to view the scan more clearly
 
-![](/images/2019-05-03-01-35-04.png)
+![gmapping map](/images/2019-05-03-01-35-04.png)
 
 
 ## Save the map
 ```
 rosrun map_server map_saver -f $(rospack find kbot_navigation)/maps/playground_map
 ```
-
-
-
-# More to read
-- [mrpt_rbpf_slam](http://wiki.ros.org/mrpt_rbpf_slam)
-

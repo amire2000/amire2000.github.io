@@ -18,26 +18,7 @@ permalink: /gazebo/
 <div class="row">
     {% assign i=0 %}
     {% for post_item in site.data.gazebo_posts %}
-    {% for post in site.posts %}
-    {% if post.title == post_item.title %}
-    {% assign i = i | plus:1 %}
-    <section class="6u">
-        <div class="box post">
-            <a href="{{ site.baseurl }}{{ post.url }}" class="image left"><img
-                    src="{{ site.baseurl }}/images/{{ post.image }}" /></a>
-            <div class="inner">
-                <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-                <p>{{ post.description }}</p>
-            </div>
-        </div>
-    </section>
-    {% assign value = i | modulo:2 %}
-    {% if value == 0 %}
-</div>
-<div class="row">
-    {% endif %}
-    {% endif  %}
-    {% endfor %}
+    {% include 2columns.html %}
     {% endfor %}
 </div>
 
@@ -48,41 +29,7 @@ permalink: /gazebo/
 <table class="posts">
     {% for post in site.posts %}
     {% if post.categories contains 'gazebo'%}
-    {% if post.public %}
-    <tr class="row">
-        {% if post.image != null %}
-        {% assign w=2 %}
-        <td>
-            <img style="width: 100px" src="{{ site.baseurl }}/images/{{ post.image }}" />
-        </td>
-        {% else %}
-        {% assign w=1 %}
-        {% endif %}
-        <td>
-            <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
-            <div class="date">
-                Written on: {{ post.date | date: "%B %e, %Y" }}
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="{{ w }}">
-            <p>{{ post.excerpt }}</p>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="{{ w }}">
-            <a href="{{ site.baseurl }}{{ post.url }}" class="button">Continue Reading</a>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="{{ w }}">
-            <hr />
-        </td>
-    </tr>
-
-
-    {% endif %}
+    {% include list.html %}
     {% endif %}
     {% endfor %}
 </table>
