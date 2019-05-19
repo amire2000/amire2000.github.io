@@ -3,11 +3,16 @@ layout: post
 title: ROS Navigation stack , Hello
 categories: ros
 tags: [navigation stack, gmapping]
+desscription: Post base on Construct live class "navigation stack", SLAM Tutorial show gmapping and AMCL algorithm for mapping and localization
+image: route.png
+public: true
 ---
 # Content
 - Setup environment
-- Run gmapping
-  - Save the map
+- Mapping
+  - Using gmapping
+- Localization
+  - Using AMCL
 
 
 ## launch world and spawn robot
@@ -48,9 +53,12 @@ tags: [navigation stack, gmapping]
 
 ## gmapping
 - Set scan_topic (LaserScan topic)
-- odom_frame
-- base_frame
-- map_frame (publish)
+- odom_frame: Odom topic name (publish by the robot gazebo ros plugin)
+- base_frame: Robot base frame
+- map_frame: publish map topic
+- maxRange: Sensor maximum range
+- maxURange: Usage range to build the map from sensor reading
+
 ```xml
 <launch>
 
@@ -112,6 +120,15 @@ tags: [navigation stack, gmapping]
 
 ![](/images/2019-05-18-23-54-53.png)
 
+
+
+
+
+# Localization
+- Provide a map (created by gmapping)
+  - `rosrun map_server map_server my_map.yaml`
+
+{% gist 5603c818b12321c43c32cc71480b7978 %}
 
 # Reference
 - [ROS Developers LIVE-Class #13: ROS Navigation Stack How To](https://www.youtube.com/watch?v=fTizQneURWo&t=3675s)
