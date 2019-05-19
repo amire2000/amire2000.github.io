@@ -1,6 +1,8 @@
 ---
 layout: default
 permalink: /blog/
+title: Robotics Blog
+description: Post about ROS, Gazebo, Ardupilot, PX4 and programing for robotics using python, cpp and framework like opencv
 ---
 <section id="banner" style="height: 100px">
     <table >
@@ -23,7 +25,7 @@ permalink: /blog/
     <section class="6u">
         <div class="box post">
             <a href="{{ site.baseurl }}{{ post.url }}" class="image left"><img
-                    src="{{ site.baseurl }}/images/{{ post.image }}" /></a>
+                    src="{{ site.baseurl }}/images/{{ post.image }}" alt="{{ post.title }}" title="{{ post.title }}"/></a>
             <div class="inner">
                 <a href="{{ site.baseurl }}{{ post.url }}">
                 <h3>{{ post.title }}</h3>

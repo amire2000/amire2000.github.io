@@ -13,7 +13,10 @@ public: true
 - [ROS Q&A](http://www.theconstructsim.com/ros-qa/#eluidcee6a604)
 - [ROS Live class](http://www.theconstructsim.com/ros-developers-live-class-develop-with-ros/)
 - [Learn ROS](http://www.theconstructsim.com/)
-  
+&nbsp;  
+&nbsp;    
+![](/images/web.png)
+- [http://ros-developer.com/](http://ros-developer.com/)
 &nbsp;  
 &nbsp;  
 ![](/images/ros_org.png)
