@@ -3,19 +3,18 @@ layout: post
 title: ROS Navigation stack , Hello
 categories: ros
 tags: [navigation stack, gmapping]
-desscription: Post base on Construct live class "navigation stack", SLAM Tutorial show gmapping and AMCL algorithm for mapping and localization
+description: Post base on Construct live class "navigation stack", SLAM Tutorial show gmapping and AMCL algorithm for mapping and localization
 image: route.png
 public: true
 ---
 # Content
-- Navigation stack
-- Setup environment
-- Mapping
-  - Using gmapping
-- Localization
-  - Using AMCL
-- Robot autonomous
-  - Using move base
+- [Navigation stack](#navigation-stack)
+- [Setup environment](#setup-environment)
+- [gmapping](#gmapping)
+- [Localization](#localization)
+- [Robot autonomous](#robot-autonomous)
+  
+  
   
 &nbsp;  
 &nbsp;  
@@ -36,7 +35,10 @@ It takes in information from the odometryand sensors, and a goal pose and output
 ```
 sudo apt install ros-melodic-amcl
 ```
-
+- Install dwa_local_planner
+```
+sudo apt install ros-melodic-dwa-local-planne
+```
 - Using `jackal_race.world` from jackal_gazebo package
 - 
 ## launch world and spawn robot
@@ -92,32 +94,7 @@ sudo apt install ros-melodic-amcl
 - maxRange: Sensor maximum range
 - maxURange: Usage range to build the map from sensor reading
 
-```xml
-<launch>
-
-  <!-- used to map scan topic name -->
-  <arg name="scan_topic" default="/diff/scan"/>
-
-  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
-    <remap from="scan" to="$(arg scan_topic)"/>
-    
-    <param name="odom_frame" value="odom"/>
-    <param name="base_frame" value="base_footprint"/>
-    <param name="map_frame" value="map"/>
-
-    <!-- Process 1 out of every this many scans (set it to a higher number to skip more scans)  -->
-    <param name="throttle_scans" value="1"/>
-
-    <param name="map_update_interval" value="1.0"/> <!-- default: 5.0 -->
-
-    <!-- The maximum usable range of the laser. A beam is cropped to this value.  -->
-    <param name="maxUrange" value="9.0"/>
-
-    <!-- The maximum range of the sensor. If regions with no obstacles within the range of the sensor should appear as free space in the map, set maxUrange < maximum range of the real sensor <= maxRange -->
-    <param name="maxRange" value="10.0"/>
-
-    ....
-```
+{% gist 980b85ec4fd9c83da76eadf29134aa24 %}
 
 ## Running
 - Terminal 1
@@ -223,24 +200,82 @@ A data structure that represents places that are safe for the robot to be in a g
 Each cell in the costmaphas an integer value in the range [0 (FREE_SPACE), 255 (UNKNOWN)]
 
 Configuration of the costmaps consists of three files: 
-- costmap_common_params.yaml
-- global_costmap_params.yaml
-- local_costmap_params.yaml
+- [costmap_common_params.yaml](#costmapcommonparamsyaml)
+  - Set `robot_radius` param
+  - Check `laser_scan_sensor` for correct `topic` attribute
+  - Check `map_topic` param
+  - Check `global_frame` param
+  - Check `robot_base_frame` param
+- [global_costmap_params.yaml](#global-costmapparamsyaml)
+  - Check `global_frame` param
+  - Check `robot_base_frame` param
+- [local_costmap_params.yaml](#localcostmapparamsyaml)
+  - Check `global_frame` param
+  - Check `robot_base_frame` param
 
-- move_base launch file
-```xml
-<launch>
-  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <rosparam file="$(find diff_wheeled_robot_gazebo)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find diff_wheeled_robot_gazebo)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find diff_wheeled_robot_gazebo)/param/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find diff_wheeled_robot_gazebo)/param/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find diff_wheeled_robot_gazebo)/param/base_local_planner_params.yaml" command="load" />
-    <rosparam file="$(find diff_wheeled_robot_gazebo)/param/dwa_local_planner_params.yaml" command="load" />
-    <rosparam file="$(find diff_wheeled_robot_gazebo)/param/move_base_params.yaml" command="load" />
-  </node>
-</launch>
+The costmap performs map update cycles, in each cycle:
+- Read sensor data
+- marking and clearing operations are performed in the underlying occupancy structure of the costmap
+
+### rviz 
+#### costmap
+- Add `map` with Topic `/move_base_node/global_costmap/costmap`
+- Add `map` with Topic `/move_base_node/local_costmap/costmap`
+
+#### Navigation Plans
+- NavFn topic `/move_base/NavfnROS/plan`
+- Global Plan topic `/move_base/DWAPlannerROS/global_plan`
+- Local Plan topic `/move_base/DWAPlannerROS/local_plan`
+
+## Running
+- Terminal1 (gazebo)
+```bash
+roslaunch kbot_navigation nav_world.launch
 ```
+
+- Terminal2 (map provider)
+  > From map location
+```bash
+rosrun map_server map_server my_map.yaml
+```
+
+- Terminal3 (amcl)
+```bash
+roslaunch kbot_navigation amcl.launch
+```
+
+- Terminal4 (move_base)
+```
+roslaunch kbot_navigation move_base.launch
+```
+
+- Terminal5 (rviz)
+```
+rosrun rviz rviz
+```
+
+## Move base launch and config files
+#### move_base launch file
+{% gist 4c43bbbb3fea70313c98c0e961b1f972 %}
+
+#### move_base_params.yaml
+{% gist e3e1240dd682e63a154e49dcc9f4e9b2 %}
+
+### costmap_common_params.yaml
+{% gist a24f917fcb6049bb0f53dc5fe457bc17 %}
+
+### global costmap_params.yaml
+{% gist 79f051ec68c7afb09e36594ee183bd80 %}
+
+### local_costmap_params.yaml
+{% gist b3dc029e7a15efe586d687a6cd94584d %}
+
+### dwa_local_planner_params.yaml
+{% gist 9ac349a1753f88dd291ff45bf80b72c9 %}
+
+### base_local_planner_params.yaml
+{% gist af48d25280e1d0a05e4025f85c90df16 %}
+
 &nbsp;  
 &nbsp;  
 &nbsp;  
@@ -260,3 +295,6 @@ Configuration of the costmaps consists of three files:
 # Reference
 - [ROS Developers LIVE-Class #13: ROS Navigation Stack How To](https://www.youtube.com/watch?v=fTizQneURWo&t=3675s)
 - [Bar-Ilan ROS Lesson 7](https://u.cs.biu.ac.il/~yehoshr1/89-685/Fall2015/ROS_Lesson7.pdf)
+- [
+A ROS move_base local planner plugin for Car-Like robots with Ackermann or 4-Wheel-Steering.
+](https://github.com/gkouros/rsband_local_planner)
