@@ -11,3 +11,4 @@ package.json
 *.bin
 .idea/
 *.ipch
+_config.yml

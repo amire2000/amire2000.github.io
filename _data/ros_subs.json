@@ -1,0 +1,14 @@
+{
+  "python": {
+    "title": "ROS Python",
+    "page": "ros_python",
+    "image": "python-icon.png",
+    "description": "Python"
+  },
+  "navigation": {
+    "title": "ROS Vision",
+    "page": "ros_vision",
+    "image": "ai_vision.png",
+    "description": "Vision and AI"
+  }
+}

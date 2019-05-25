@@ -1,13 +1,13 @@
 ---
 layout: post
-title: action tutorial
+title: ROS Action 101
 categories: ros
 tags: [rospy, tutorial, action server, action client, action msg]
 image: action.png
 description: ROS Actionlib tutorial for beginners, create and compile action msg, Define action server and use it by implement action client
 public: true
 ---
-# Contennt
+# Content
 - Action
 - Demo project
 - [Action messages](#action-message)

@@ -18,6 +18,16 @@ description: ROS posts, controls, navigation vision and others nodes
 
 <div class="row">
     {% assign i=0 %}
+    {% for subs in site.data.ros_subs %}
+    {% assign item=subs[1] %}
+    {% include 2columns_yaml.html %}
+    {% endfor %}
+</div>
+
+<hr/>
+
+<div class="row">
+    {% assign i=0 %}
     {% for post_item in site.data.ros_posts %}
     {% include 2columns.html %}
     {% endfor %}

@@ -1,0 +1,29 @@
+---
+layout: default
+permalink: /ros_python/
+description: ROS posts, controls, navigation vision and others nodes
+---
+<section id="banner" style="height: 100px">
+    <table>
+        <tr>
+            <td width="20%">
+                <img style="height: 100px" src="{{ site.baseurl }}/images/ros-icon.png" /></td>
+            <td style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>ROS: powered with python</h2>
+            </td>
+            <td width="20%">
+                <img style="height: 100px" src="{{ site.baseurl }}/images/python-icon.png" /></td>
+            </td>
+
+        </tr>
+    </table>
+</section>
+
+<div class="row">
+    {% assign i=0 %}
+    {% for post_item in site.data.ros_python_posts %}
+    {% include 2columns.html %}
+    {% endfor %}
+</div>
+
+<hr />

@@ -14,7 +14,8 @@
     "gstreamer": "gstreramer.png",
     "rpi": "rpi.png",
     "esp": "espress.png",
-    "os": "linux.png"
+    "os": "linux.png",
+    "hw": "hardware.png"
 
     
 }
