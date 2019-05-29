@@ -1,23 +1,82 @@
 ---
 layout: post
-title: APMRover gazebo and DroneKit
-categories: ardupilot
-tags: [rover, gazebo,  dronekit]
-image: mars-rover.png
+title: APMRover
+categories: APM
+tags: [gazebo, dronkit, rover]
 public: true
-description: Run ardurover gazebo and control with dronkit sdk
+image: mars-rover.png
+description: Running Ardupilot SITL with gazebo and control the Rover using RC override commands, show samples code using pymavlink and DroneKit SDK
 ---
+# Content
+- Install Ardupilot SITL
+- Install Ardupilot GAZEBO plugins
+- Running APMRover over GAZEBO
+- Control Rover using RC command
+  - Using pymavlink
+  - Using DroneKit
+
+
+
+ 
+# Install Ardupilot SITL
+## Setup environment
+- Lubuntu 18.04
+- Gazebo 9.0 (Installed with ROS melodic)
+- Installed folder ~/apm
+
+## Install Ardupilot
+- Clone from github
+```bash
+git clone https://github.com/ArduPilot/ardupilot
+cd ardupilot
+git submodule update --init --recursive
+```
+> Note: [Git submodels](http://ardupilot.org/dev/docs/git-submodules.html)
+
+- Add `PATH` to .bashrc
+```
+export PATH=$PATH:$HOME/ardupilot/Tools/autotest
+```
+
+> Note: check [Setting up the Build Environment ](http://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux) for more setting instructions
+  
+> Note: permission: add  user to dialout group  
+> `sudo usermod -a -G dialout $USER`
+
+## First run
+```bash
+cd ardupilot/APMRover2
+# wipe the virtual EEPROM and load the right default parameters for your vehicle
+sim_vehicle.py -w
+```
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# Install Ardupilot GAZEBO plugins
+There are two github projects that implement Ardupilot gazebo plugins
+- [SwiftGust](https://github.com/SwiftGust/ardupilot_gazebo): checkout `gazebo9` branch
+- [khancyr](https://github.com/khancyr/ardupilot_gazebo): master gazebo 8.x and higher
+  
 
 - Get model and world from SwiftGust git repo.
-    - model: rover_ardupilot, husky
-    - world: rover_ardupilot.world
- 
-## gazebo
-> gazebo ardupilot installed from swift repo or khancyr
-```bash
-source /usr/share/gazebo/setup.sh
-export GAZEBO_MODEL_PATH=~/<project_path>/models:${GAZEBO_MODEL_PATH}
-```
+    
+> The tutorial using khancyr version plugin, model and world from  SwiftGust repo
+> - model: rover_ardupilot, husky
+> - world: rover_ardupilot.world
+
+## setup
+- Clone
+- Install `libgazebo9-dev`
+- Compile source
+- Modify gazebo environment variables
+  - GAZEBO_MODEL_PATH
+  - GAZEBO_RESOURCE_PATH
+
+check [project github](https://github.com/khancyr/ardupilot_gazebo) for instructions
+
+&nbsp;  
+&nbsp;  
+&nbsp;
 ## Run
 > Run gazebo before SITL
 
@@ -32,18 +91,29 @@ gazebo --verbose rover_ardupilot.world
 ```bash
 sim_vehicle.py -v APMrover2 -f gazebo-rover  -m --mav10 -I1
 ```
+- -v VEHICLE
+- -f frame
+- -m MAVPROXY_ARGS
+- -I INSTANCE
 
-![](../../images/gazebo_rover.png)
+
+![ardupilot gazebo rover](../../images/gazebo_rover.png)
+
+
+&nbsp;  
+&nbsp;  
+&nbsp;
+# RC command
 - Use rc_override
     - Servo 1: wheel
     - Servo 3: Throttle
-    
-## Send rc command
-- from Terminal 1
+  
+- Terminal 1 (SITL)
+
 ```bash
 MANUAL> mode MANUAL
 MANUAL> Got MAVLink msg: COMMAND_ACK {command : 11, result : 0}
-
+# ARM
 MANUAL> arm throttle
 MANUAL> APM: Throttle armed
 Got MAVLink msg: COMMAND_ACK {command : 400, result : 0}
@@ -61,6 +131,7 @@ MANUAL> rc 3 1500
 MANUAL> status servo*
 MANUAL> 155543: SERVO_OUTPUT_RAW {time_usec : 278102261, port : 0, servo1_raw : 1500, servo2_raw : 0, servo3_raw : 1500, servo4_raw : 0, servo5_raw : 0, servo6_raw : 0, servo7_raw : 0, servo8_raw : 0}
 ```
+
 > To stop the vehicle both servo (1,3) need to set: pwm 1500 
 
 ## pymavlink Example

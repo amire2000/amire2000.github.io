@@ -29,9 +29,8 @@ permalink: /autopilot/
 
 <div class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'PX4' or  post.categories contains 'ardupilot'%}
+    {% if post.categories contains 'PX4' or post.categories contains 'APM'%}
     {% include list.html %}
     {% endif %}
     {% endfor %}
 </div>
-<img src="{{ site.baseurl }}/images/autopilot_logo.jpg" />

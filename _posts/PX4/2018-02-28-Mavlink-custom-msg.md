@@ -1,7 +1,7 @@
 ---
 layout: post
 title: px4 custom mavlink message
-categories: px4
+categories: uav
 tags: [px4, mavlink]
 ---
 ## Defination
