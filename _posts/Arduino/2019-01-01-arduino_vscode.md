@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Arduino and VSCode
-categories: Arduino
+categories: arduino
 tags: [arduino, vscode]
 image: 2019-01-18-08-42-04.png
 public: true
@@ -63,6 +63,7 @@ The Arduino extension makes it easy to develop, build, deploy and debug your Ard
 ]
 }
 ```
+
 ## app.ino
 ```c
 #include <Arduino.h>
