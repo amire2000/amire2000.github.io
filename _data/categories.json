@@ -15,7 +15,8 @@
     "rpi": "rpi.png",
     "esp": "espress.png",
     "os": "linux.png",
-    "hw": "hardware.png"
+    "hw": "hardware.png",
+    "apm": "ardupilot.png"
 
     
 }

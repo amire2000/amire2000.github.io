@@ -3,47 +3,83 @@ layout: post
 title: Arduino and VSCode
 categories: Arduino
 tags: [arduino, vscode]
+image: 2019-01-18-08-42-04.png
+public: true
+description: Install setup and usage Arduino vscode extension
 ---
-![](/images/2019-01-18-08-42-04.png)
+# Content
+- Install Extension
+- Init Arduino VSCode extension
+- c/cpp plugin tips
+ 
+# Install
+![](/images/2019-05-29-22-52-50.png)
+
 The Arduino extension makes it easy to develop, build, deploy and debug your Arduino sketches in Visual Studio Code  
-The extension require that arduino IDE installed (I use version 1.8.8) 
+> The extension require that arduino IDE installed (I use version 1.8.9) 
 
-## Setup arduino project
-- Open folder
-- From command pallet `Arduino: initialize"
+## settings
+- Arduino: Path `/home/user/ide/arduino-1.8.9`
+> Restart after set
+
+# Setup arduino project
+- Create new project 
+- From command pallet `Arduino: initialize`
   - Select arduino board
-> The init process create  
->   .vscode: arduino.json  
->   .vscode:c_cpp_properties.json  
->   .vscode: settings.json
+- The init process create  
+  - .vscode/arduino.json  
+  - .vscode/c_cpp_properties.json  
+  - .vscode/settings.json
 
-- Select Arduino port from status bar or add to `arduino.json`
+- Arduino board and port selection from VSCode status bar
+  
+![](/images/2019-05-29-23-27-46.png)
+
+## `arduino.json`
 ```
 {
     "sketch": "app.ino",
-    "board": "arduino:avr:uno",
-    "port": "/dev/ttyUSB0"
+    "board": "arduino:avr:mega",
+    "configuration": "cpu=atmega2560",
+    "port": "/dev/ttyACM0"
 }
 ```
-- Add /  update `C_Cpp.intelliSenseEngine` in settings.json (see note)
+
+## `c_cpp_properties.json` 
+- Add include to remove `<Arduino.h>` and dependencies warnings
+- Add `USBCON` to remove `Serial` undefined warning
 ```
 {
-    "C_Cpp.intelliSenseEngine": "Tag Parser"
+"includePath": [
+  "${workspaceFolder}/**",
+  "/home/user/ide/arduino-1.8.9/tools/**",
+  "/home/user/ide/arduino-1.8.9/hardware/arduino/avr/**",
+  "/home/user/ide/arduino-1.8.9/hardware/arduino/avr/cores/arduino/**",
+  "/home/user/ide/arduino-1.8.9/hardware/tools/avr/avr/include/**",
+  "/home/user/ide/arduino-1.8.9/hardware/arduino/avr/variants/mega/**"
+],
+"defines": [
+  "USBCON"
+]
 }
 ```
-## src/main.cpp
+## app.ino
 ```c
-void setup() {
-  // initialize digital pin LED_BUILTIN as an output.
+#include <Arduino.h>
+
+void setup()
+{
+  Serial.begin(115200);
   pinMode(LED_BUILTIN, OUTPUT);
 }
 
-// the loop function runs over and over again forever
-void loop() {
-  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(500);                       // wait for a second
-  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
-  delay(500);                       // wait for a second
+void loop()
+{
+  digitalWrite(LED_BUILTIN, HIGH);
+  Serial.println("turn");
+  delay(1000);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(1000);
 }
 ```
 
@@ -54,8 +90,7 @@ From Command palette
 
 ## Reference
 - [IntelliSense engines](https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/IntelliSense%20engine.md)
-## Notes
-* Without update `intelliSenseEngine` the vscode 
+
 
 
 

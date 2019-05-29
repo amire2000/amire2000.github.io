@@ -1,6 +1,6 @@
 ---
 layout: post
-title: APMRover
+title: APMRover and RC commands
 categories: APM
 tags: [gazebo, dronkit, rover]
 public: true
