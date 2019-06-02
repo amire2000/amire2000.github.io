@@ -5,6 +5,7 @@ categories: gazebo
 tags: [sdf]
 description: Set color and texture in sdf files
 image: terrain.png
+public: true
 ---
 # Content
 - [Gazebo colors](#colors)

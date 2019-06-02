@@ -3,6 +3,8 @@ layout: post
 title: stream gstreamer in and out from opencv
 categories: gstreamer
 tags: [gstreamer, python, opencv, appsrc]
+public: true
+description: Gazebo camera sensor plugin , convert gazebo image to OpenCV Mat
 ---
 
 # Stream from opencv
