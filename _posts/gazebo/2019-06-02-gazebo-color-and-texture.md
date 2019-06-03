@@ -38,6 +38,8 @@ material Gazebo/Red
 ```
 
 - Usage
+
+
 ```xml
 <link>
 ...
@@ -60,6 +62,7 @@ material Gazebo/Red
 ```
 
 ## sdf material specification
+
 ![](/images/2019-06-02-21-38-41.png)
 
 &nbsp;  
@@ -81,6 +84,7 @@ For requested model add folders
 ```
 
 ## mybox.material
+
 ```
 material mybox/aruco
 {
@@ -98,6 +102,7 @@ material mybox/aruco
 ```
 
 ## model sdf link visual script
+
 ```
 <link>
 ...
