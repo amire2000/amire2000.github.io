@@ -124,7 +124,7 @@ python3
 {% gist 90d9f761b64ce5a47bede5e306f75c93 %}
 
 ### cv_camera model
-{% 4127e797b8722d04ed68c3b3cbf81330 %}
+{% gist 4127e797b8722d04ed68c3b3cbf81330 %}
 
 ### Set gazebo environment variables
 ```bash
