@@ -1,10 +1,11 @@
 ---
 layout: post
 title: Setup MQTT mosquitto on RaspberryPI
-categories: MQTT
+categories: iot
 tags: [mqtt, mosquitto, python, raspberryPi]
 public: true
-
+description: Install and used Masquitto MQTT Broker, using paho-mqtt python library to publish and subscribe to broker topics
+image: rss.png
 ---
 ![](/images/mosquitto_rpi_logo.jpg)
 

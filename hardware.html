@@ -30,7 +30,7 @@ description: Post about hardware setup and integration, RPi, NVIDIA, Intel, Odro
 
 <table class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'hw' or post.categories contains 'arduino'%}
+    {% if post.categories contains 'hw' or post.categories contains 'arduino' or post.categories contains 'iot'%}
     {% include list.html %}
     {% endif %}
     {% endfor %}
