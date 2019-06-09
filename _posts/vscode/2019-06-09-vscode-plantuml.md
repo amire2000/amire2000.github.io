@@ -28,6 +28,7 @@ sudo apt install default-jre graphviz
 # Basic usage
 ## Markdown
 - Activity diagram
+
 ```plantuml
 @startuml
 (*) --> "Initialization"
@@ -43,6 +44,9 @@ endif
 
 @enduml
 ```
+
+![cached image](http://www.plantuml.com/plantuml/proxy?src=https://robobe.github.io/assets/images/github.plantuml.txt]
+
 
 ## Examples
 Diagrams from [real-world-plantuml](https://real-world-plantuml.com/)
