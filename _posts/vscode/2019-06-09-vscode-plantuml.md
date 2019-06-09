@@ -45,7 +45,7 @@ endif
 @enduml
 ```
 
-![cached image](http://www.plantuml.com/plantuml/proxy?src=https://robobe.github.io/assets/images/github.plantuml.txt]
+![uncached image](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://robobe.github.io/assets/images/github.plantuml.txt]
 
 
 ## Examples
