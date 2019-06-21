@@ -6,7 +6,10 @@ tags: [rviz, markers]
 image: marker.jpg
 description: Shows how to use visualization_msgs/Marker messages to send basic shapes (cube, sphere, cylinder, arrow) to rviz.
 ---
-
+# Content
+- Create basic marker
+- Code explain (python)
+- Usage
 
 Unlike other displays, the Marker Display lets you visualize data in rviz without rviz knowing anything about interpreting that data. Instead, primitive objects are sent to the display through `visualization_msgs/Marker` messages, which let you show things like arrows, boxes, spheres and line
 
@@ -52,6 +55,7 @@ self.marker_obj.action = Marker.ADD
 &nbsp;  
 &nbsp;  
 &nbsp;  
+
 # Usage
 - Terminal 1
 
