@@ -47,6 +47,8 @@ self.marker_obj.id = index
 self.marker_obj.type = Marker.SPHERE
 self.marker_obj.action = Marker.ADD
 ```
+
+> Other marker properties see [...](http://wiki.ros.org/rviz/DisplayTypes/Marker#Message_Parameters)
 &nbsp;  
 &nbsp;  
 &nbsp;  
@@ -82,3 +84,4 @@ rosrun rviz rviz
 - [ROS Developers LIVE-Class #24: How to create basic markers in ROS Rviz](https://www.youtube.com/watch?v=5pGzW-M6iGQ)
 - [JSK](https://jsk-visualization.readthedocs.io/en/latest/index.html)
 - [Python visualization_msgs.msg.Marker() Examples ](https://www.programcreek.com/python/example/88812/visualization_msgs.msg.Marker)
+- [Rviz Display types](http://wiki.ros.org/rviz/DisplayTypes/Marker#Message_Parameters)
