@@ -5,6 +5,7 @@ categories: ros
 tags: [rviz, markers]
 image: marker.jpg
 description: Shows how to use visualization_msgs/Marker messages to send basic shapes (cube, sphere, cylinder, arrow) to rviz.
+public: true
 ---
 # Content
 - Create basic marker
