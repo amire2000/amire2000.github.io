@@ -38,10 +38,16 @@ In my spare time, I loved to swim especially in the sea ride my x-trailer bike a
 &nbsp;  
 <table>
 <tr>
-<td>funny-toy-robot.png</td>
-<td>familiar-meeting-on-table.png</td>
-<td>swimming-figure.png</td>
-<td>bicycle-rider.png</td>
+<td><img style="height: 100px" src="{{ site.baseurl }}/images/funny-toy-robot.png"/></td>
+<td><img style="height: 100px" src="{{ site.baseurl }}/images/familiar-meeting-on-table.png"/></td>
+<td><img style="height: 100px" src="{{ site.baseurl }}/images/swimming-figure.png"/></td>
+<td><img style="height: 100px" src="{{ site.baseurl }}/images/bicycle-rider.png"/></td>
 </tr>
 </table>
+## Robotics Coursers That O done.
+- The construct: ROS for beginners (Python)
+- The construct: ROS Navigation
+- The construct: TF 101
+- 
 <hr/>
+
