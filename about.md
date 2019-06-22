@@ -15,7 +15,22 @@ permalink: /about/
     </table>
 </section>
 
-TBD
+I bore in the 70's start my journey as a programmer in 2000  
+First I used Visual Basic move to C# done a lot of I.T, Databases and Web sites.  
+&nbsp;  
+In the last 10 years, I moved to Linux and Embedded world.  
+Start programming in **Python** and **C++**, Done some Networking projects and Reversing stuff.
+&nbsp;  
+Recently I start a new journey in **Robotics** using **Open source** projects like:
+- ROS
+- Ardupilot and PX4
+- Arduino, Raspberry PI, and other embedded boards.
+- OpenCV
+&nbsp;  
+My new blog focus on these fields especially ROS, Gazebo, Pixhawk and of course **Coding**.
+Most of the time I used Python but Gazebo and ROS force me to C++ glances.
+&nbsp;  
+In my spare time, I loved to swim especially in the sea ride my x-trailer bike and be with my family cooking good meals and enjoy my close's circle.
+
 
 <hr/>
-<div>Icons made by <a href="https://www.flaticon.com/authors/surang" title="surang">surang</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
