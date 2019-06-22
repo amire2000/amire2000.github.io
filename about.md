@@ -15,11 +15,11 @@ permalink: /about/
     </table>
 </section>
 &nbsp;  
-I bore in the 70's start my journey as a programmer in 2000  
+I was borne in the 70's and I began my journey as a programmer in 2000.  
 First I used Visual Basic move to C# done a lot of I.T, Databases and Web sites.  
 &nbsp;  
 In the last 10 years, I moved to Linux and Embedded world.  
-Start programming in **Python** and **C++**, Done some Networking projects and Reversing stuff.  
+Started programming in **Python** and **C++**, Done some Networking projects and Reversing stuff.  
 &nbsp;  
 Recently I start a new journey in **Robotics** using **Open source** projects like:
 - ROS
@@ -28,13 +28,13 @@ Recently I start a new journey in **Robotics** using **Open source** projects li
 - OpenCV  
 
 &nbsp;  
-My new blog focus on these fields especially ROS, Gazebo,   
+My new blog focuses on these fields especially ROS, Gazebo,   
 Pixhawk and of course **Coding**.  
 I always love to learn new things and do some hands-on.  
-Most of the time I used Python but Gazebo and ROS force me to C++ glances.  
+Most of the time I used Python but Gazebo and ROS forces me to C++ glances.  
 
 &nbsp;  
-In my spare time, I loved to swim especially in the sea ride my x-trailer bike and be with my family cooking good meals and enjoy my close's circle.
+In my spare time, I love to swim especially in the sea ride my x-trailer bike and be with my family cooking good meals and enjoy my close's circle.
 &nbsp;  
 <table>
 <tr>
@@ -44,10 +44,12 @@ In my spare time, I loved to swim especially in the sea ride my x-trailer bike a
 <td><img style="height: 100px" src="{{ site.baseurl }}/images/bicycle-rider.png"/></td>
 </tr>
 </table>
-## Robotics Coursers That O done.
+## Robotics Coursers That I done.
 - The construct: ROS for beginners (Python)
 - The construct: ROS Navigation
-- The construct: TF 101
-- 
+- The construct: TF ROS 101
+- The construct: RTAB-MAP 101
+- The construct: Live class and ROS Q&A
+- Angela Sodemann: Kinematics
 <hr/>
 
