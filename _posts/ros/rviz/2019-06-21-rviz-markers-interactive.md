@@ -16,6 +16,8 @@ Interactive markers are similar to the "regular" markers, however they allow the
 
 For interactive markers we need to instantiate an `InteractiveMarkerServer` object. This will handle the connection to the client (usually RViz) and make sure that all changes we make are being transmitted and that your application is being notified of all the actions the user performs on the interactive markers. 
 
+![](/images/2019-06-22-14-29-40.png)
+
 ![](/images/2019-06-21-18-54-21.png)
 image from ROS wiki
 
@@ -23,8 +25,13 @@ image from ROS wiki
 &nbsp;  
 &nbsp;  
 # Code
+- Declare interactive marker server
+- Add box marker
+- Assign box control to interactive marker
+- Attach interactive server callback
+- Run ROS loop and apply changes to the server  
 
-{ %gist 35f7cfbae5b3b25c833c3ad105864f0c % }
+{% gist 35f7cfbae5b3b25c833c3ad105864f0c %}
 
 
 &nbsp;  
