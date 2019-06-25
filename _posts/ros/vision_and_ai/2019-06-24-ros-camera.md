@@ -11,8 +11,10 @@ public: true
 - [cv_camera](#cvcamera)
 - [libuvc_camera](#libuvccamera)
 - [web video server](#web-video-server)
+- [Image recorder](#imagerecorder)
+- [Using ROS Bag to capture image](#using-ros-bag)
 
-This post show how to work with different ROS camera package and camera manager and utils
+This post show how to work with different ROS camera package and camera manager and utils to save image and stream data
 
 # cv_camera
 [ROS Wiki](http://wiki.ros.org/cv_camera)
@@ -137,11 +139,88 @@ rosrun web_video_server web_video_server
 > Remapping image topic to `/image`
 
 > Default file: `output.avi` locate in current path
+
 ```
 rosrun image_view video_recorder /image:=/cv/image_raw
 
 [ INFO] [1561416818.567201194]: Waiting for topic /cv/image_raw...
-[ INFO] [1561416818.821224267]: Starting to record MJPG video at [1280 x 720]@15fps. Press Ctrl+C to stop recording.
-^CINFO] [1561416821.651921930]: Recording frame 85
+[ INFO] [1561416818.821224267]: Starting to record MJPG video at [1280 x 720]@15fps. 
+```
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# Using ROS Bag
+Using ROS bag to recorded and play image data
+
+## Usage
+- Terminal 1
+
+```bash
+roscore
+```
+
+- Terminal 2(camera)
+
+```bash
+#Set device id
+rosparam set cv_camera/device_id 1
+rosrun cv_camera cv_camera_node
+```
+
+- Terminal 3 (record)
+    - Check topics
+    - Run ROS bag
+
+
+```bash
+#Ros topics
+rostopic list
+
+/cv_camera/camera_info
+/cv_camera/image_raw
+/cv_camera/image_raw/compressed
+...
+
+#Run rosbag
+rosbag record -O subset /cv_camera/image_raw
+# -O output
+
+# Hit Ctrl-c
 
 ```
+
+---
+- Terminal 4 (info and play)
+
+```bash
+#bag info
+rosbag info subset.bag 
+path:        subset.bag
+version:     2.0
+duration:    17.2s
+start:       Jun 25 2019 20:39:49.03 (1561484389.03)
+end:         Jun 25 2019 20:40:06.23 (1561484406.23)
+size:        454.6 MB
+messages:    517
+compression: none [517/517 chunks]
+types:       sensor_msgs/Image [060021388200f6f0f447d0fcd9c64743]
+topics:      /cv_camera/image_raw   517 msgs    : sensor_msgs/Image
+
+#bag play
+rosbag play subset.bag
+```
+
+## Bag usage demo
+- Save image from bag as video
+
+```bash
+# Save video from rosbag
+rosrun image_view video_recorder /image:=/cv_camera/image_raw
+# Run play
+rosbag play subset.bag
+```
+
+
+# Reference
+- [ROS Bag Cookbook](http://wiki.ros.org/rosbag/Cookbook)
