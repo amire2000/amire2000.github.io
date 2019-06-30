@@ -1,0 +1,8 @@
+{
+  "Gazebo": {
+    "title": "ROS2 Gazebo",
+    "page": "ros_python",
+    "image": "python-icon.png",
+    "description": "Python"
+  }
+}

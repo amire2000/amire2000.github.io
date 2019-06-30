@@ -1,0 +1,27 @@
+---
+layout: default
+permalink: /ros/
+description: ROS posts, controls, navigation vision and others nodes
+---
+<section id="banner" style="height: 100px">
+        <table >
+            <tr>
+                <td width="20%">
+                    <img style="height: 100px" src="{{ site.baseurl }}/images/ros2.png" /></td>
+                <td  style="color: #fff;text-align: left;vertical-align: middle">
+                    <h2>ROS2: crystals robotics</h2>
+                </td>
+                
+            </tr>
+        </table>
+    </section>
+
+
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'ros2' %}
+    {% include list.html %}
+    {% endif %}
+    {% endfor %}
+</div>
