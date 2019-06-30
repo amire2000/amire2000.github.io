@@ -22,6 +22,24 @@ description: Blog tags categories by subjects ROS, Gazebo, PX4 , Ardupilot, Visi
 </section>
 &nbsp;
 &nbsp;
+<!-- ros2 -->
+<table style="width: 800px;">
+  <tr>
+    <td>
+      <a href="{{ site.baseurl }}/ros2">
+        <img src="{{ site.baseurl }}/assets/images/ros2.png" alt="ROS tags" class="imglogo" />
+      </a>
+    </td>
+    <td style="text-align: left;vertical-align: top; padding-left: 10px">
+      {% comment %}map, flatten and sort{% endcomment %}
+      {% assign tags =  site.posts | where: 'public','true' | where: 'categories','ros2'| map: 'tags' | join: ','  | split: ',' | sort %}
+      {% include tags_func.html %}
+    </td>
+  </tr>
+</table>
+
+&nbsp;
+&nbsp;
 <!-- ros -->
 <table style="width: 800px;">
   <tr>
