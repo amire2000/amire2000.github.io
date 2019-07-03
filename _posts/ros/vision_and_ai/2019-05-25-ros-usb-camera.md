@@ -20,7 +20,10 @@ A ROS Driver for V4L USB Cameras
 Interface standard USB cameras and publishes images as `sensor_msgs::Image`
 
 # Installation
-```
+```bash
+# v4l utils
+sudo apt install v4l-utils
+# ros package working with v4l cameras
 sudo apt install ros-melodic-usb-cam
 ```
 

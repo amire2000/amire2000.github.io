@@ -16,12 +16,18 @@ description: ROS posts, controls, navigation vision and others nodes
         </table>
     </section>
 
+    <div class="row">
+            {% assign vposts =  site.posts | where: 'public','true' | where: 'categories','ros2' %}
+            {% assign i=0 %}
+            {% for post_item in vposts %}
+            {% include 2columns.html %}
+            {% endfor %}
+        </div>
 
-
-<div class="posts">
+<!-- <div class="posts">
     {% for post in site.posts %}
     {% if post.categories contains 'ros2' %}
     {% include list.html %}
     {% endif %}
     {% endfor %}
-</div>
+</div> -->

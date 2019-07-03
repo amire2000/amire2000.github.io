@@ -20,8 +20,9 @@ description: ROS posts, vision and AI
 </section>
 
 <div class="row">
+    {% assign vposts =  site.posts | where: 'public','true' | where: 'tags','vision' %}
     {% assign i=0 %}
-    {% for post_item in site.data.ros_vision_posts %}
+    {% for post_item in vposts %}
     {% include 2columns.html %}
     {% endfor %}
 </div>
