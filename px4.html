@@ -1,0 +1,27 @@
+---
+layout: default
+permalink: /px4/
+---
+<section id="banner" style="height: 100px">
+    <table >
+        <tr>
+                <td width="20%">
+                        <img style="height: 100px" src="{{ site.baseurl }}/images/px4.png" /></td>
+            <td  style="color: #fff;text-align: center;vertical-align: middle">
+                <h2></h2>
+            </td>
+            
+        </tr>
+    </table>
+</section>
+
+
+<hr/>
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'PX4'%}
+    {% include list.html %}
+    {% endif %}
+    {% endfor %}
+</div>
