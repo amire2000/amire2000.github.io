@@ -17,6 +17,7 @@ eProsima Fast RTPS has been adopted by multiple organizations in many sectors in
   - Fast RTPS
   - Fast CDR
   - DDS
+  - IDL
 - Installation (linux)
 - Simple Hello World
 
@@ -37,7 +38,9 @@ OMG Interface Description Language
 &nbsp;  
 # Installation
 - Clone from git
-- Create build foders
+- Create build folders
+
+
 ```
 git clone https://github.com/eProsima/Fast-RTPS
 mkdir Fast-RTPS/build && cd Fast-RTPS/build
@@ -69,6 +72,7 @@ sudo make install
 - Run
 
 ## Project structure
+
 ```
 hello_eprosima
   └── build

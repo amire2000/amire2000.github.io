@@ -10,11 +10,5 @@
     "page": "ros_vision",
     "image": "ai_vision.png",
     "description": "Vision and AI"
-  },
-  "ros2": {
-    "title": "ROS2",
-    "page": "ros2",
-    "image": "ros2.png",
-    "description": "ROS2: ROS Framework next generation, No more roscore, support Real time, new Ideas better performance"
   }
 }
