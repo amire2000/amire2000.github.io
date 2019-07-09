@@ -27,3 +27,8 @@ description: ROS posts, controls, navigation vision and others nodes
 </div>
 
 <hr />
+
+{% assign posts =  site.posts | where: 'public','true' | where: 'categories','ros'| where: 'tags', 'rospy' %}
+{% for post in posts %}
+{% include list.html %}
+{% endfor %}
