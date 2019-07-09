@@ -8,15 +8,38 @@ description: ROS UnitTest using python and rostest,
 image: unittest.png
 ---
 
-- unit test
-- integration test
-
-
 # Content
+- UnitTest 101
+- ROS UnitTest
 - Install
 - Rostest
 - Usage
 
+# UnitTest 101
+- unit test: Test one node
+- integration test: Test multiple nodes
+
+## Testing tips
+- Test only your libraries
+- Code must be ROS Agnostic
+- Test
+  - common case
+  - extreme case
+  - input error
+
+## Test world
+- Test fixtures: The purpose of a test fixture is to ensure that there is a well known and fixed environment in which tests are run so that results are repeatable
+  - Create environment like database and tmp file structure
+  - Clean all at the end.
+- AAA: Arrange, Act, Assert
+- TestCase: A test case is the individual unit of testing. It checks for a specific response to a particular set of inputs
+- test suite: A test suite is a collection of test cases, test suites, or both. It is used to aggregate tests that should be executed together.
+
+&nbsp;  
+&nbsp;  
+# ROS UnitTest
+- Python UnitTest (this post)
+- GTest, GMock (Google cpp unittest framework)
 &nbsp;  
 &nbsp;  
 # Install
@@ -29,7 +52,7 @@ sudo apt install ros-melodic-rostest
 Integration test suite based on roslaunch that is compatible with xUnit frameworks.
 
 ```
-package
+ros_package
 |
 ├── launch
 │   └── test_code.test
@@ -82,8 +105,10 @@ rostest py_tutorial test_code.test
   - add_rostest
 
 ```cmake
-find_package(rostest REQUIRED)
-add_rostest(launch/test_code.test)
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest(launch/test_code.test)
+endif()
 ```
 
 ### Execute 
