@@ -66,10 +66,13 @@ rqt_image_view
 
 This package provides a ROS interface for digital cameras meeting the USB Video Class standard (UVC) using libuvc. Most webcams are UVC-compliant.
 
+## Install
+
 ```
 sudo apt install ros-melodic-libuvc-camera
 ```
 
+## Find vendor and product for udev rule
 ```
 lsusb
 
@@ -86,17 +89,110 @@ Bus 003 Device 032: ID 045e:0779 Microsoft Corp. LifeCam HD-3000
 Bus 003 Device 030: ID 046d:c534 Logitech, Inc. Unifying Receiver
 
 ```
+Or use udevmonitor
+
+
+```bash
+# Disconnect / Connect device
+udevadm monitor --subsystem-match=usb --property
+## Output
+#... part of the output
+ID_BUS=usb
+ID_MODEL=Microsoft®_LifeCam_HD-3000
+ID_MODEL_ENC=Microsoft®\x20LifeCam\x20HD-3000
+ID_MODEL_FROM_DATABASE=LifeCam HD-3000
+ID_MODEL_ID=0779
+ID_REVISION=0106
+ID_SERIAL=Microsoft_Microsoft®_LifeCam_HD-3000
+ID_USB_INTERFACES=:0e0100:0e0200:010100:010200:
+ID_VENDOR=Microsoft
+ID_VENDOR_ENC=Microsoft
+ID_VENDOR_FROM_DATABASE=Microsoft Corp.
+ID_VENDOR_ID=045e
+MAJOR=189
+MINOR=295
+PRODUCT=45e/779/106
+SEQNUM=88716
 
 ```
+
+- ID_VENDOR_ID=045e
+- ID_MODEL_ID=0779
+
+> Tip: http://www.linux-usb.org/usb.ids for vendor and products list
+> 
+&nbsp;  
+&nbsp;  
+&nbsp;  
+## First run
+- Using `rosrun`
+- Fail on permission
+  
+```bash
 rosrun libuvc_camera camera_node vendor:=Microsoft Corp. LifeCam HD-3000
+# output
 [ INFO] [1561400044.824887437]: Opening camera with vendor=0x0, product=0x0, serial="", index=0
 [ERROR] [1561400044.825854077]: Permission denied opening /dev/bus/usb/001/004
 ```
 
+![](/images/2019-07-16-22-29-01.png)
+
+### udev rule
+Fix camera permission  with udev rule
+
+- Create udev rule file
+- Reload rules
+- Disconnect and connect camera to implement the rule
+  
+&nbsp;  
+&nbsp;  
+
+#### Create udev rule file
+- Create file `sudo vim /etc/udev/rules.d/99-uvc.rules`
+- Paste line
+  - > Set camera vendor and product
 ```
-sudo chmod o+w /dev/bus/usb/001/004
+SUBSYSTEMS=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="0779", MODE="0666"
+```
+&nbsp;  
+#### Reload rules
+```
+sudo udevadm control --reload-rules
+```
+&nbsp;  
+#### Reconnect camera
+- Disconnect camera from usb port
+- Connect again
+
+## launch
+```xml
+<launch>
+  <node pkg="libuvc_camera" type="camera_node" 
+    name="libuvc_camera" output="screen">
+    <param name="frame_id" value="uvc_camera" />
+    <!-- Parameters used to find the camera -->
+    <param name="vendor" value="0x045e"/>
+    <param name="product" value="0x0779"/>
+
+    <!-- Image size and type -->
+    <param name="width" value="640"/>
+    <param name="height" value="480"/>
+    <param name="video_mode" value="mjpeg"/>
+    <param name="frame_rate" value="15"/>
+  </node>
+</launch>
 ```
 
+## Usage
+```bash
+roslaunch camera101 uvc.launch
+# Check topics
+# View image with rqt
+```
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # web video server
 [ROS Wiki](http://wiki.ros.org/web_video_server)
 
