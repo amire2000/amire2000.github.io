@@ -2,7 +2,7 @@
 layout: post
 title: ROS Camera 
 categories: ros
-tags: [vision, usb_camera. uvc]
+tags: [vision, usb_camera, uvc, udev]
 image: camera_icon.png
 description: How to work with different ROS camera packages
 public: true
@@ -10,12 +10,16 @@ public: true
 # Content
 - [cv_camera](#cvcamera)
 - [libuvc_camera](#libuvccamera)
-- [web video server](#web-video-server)
-- [Image recorder](#imagerecorder)
-- [Using ROS Bag to capture image](#using-ros-bag)
+- USB Tips
+  - [udev rules](#udev)
+- Viewers and Savers
+  - [web video server](#web-video-server)
+  - [Image recorder](#imagerecorder)
+  - [Using ROS Bag to capture image](#using-ros-bag)
 
 This post show how to work with different ROS camera package and camera manager and utils to save image and stream data
-
+&nbsp;  
+&nbsp;  
 # cv_camera
 [ROS Wiki](http://wiki.ros.org/cv_camera)
 ## Install
@@ -120,7 +124,7 @@ SEQNUM=88716
 - ID_MODEL_ID=0779
 
 > Tip: http://www.linux-usb.org/usb.ids for vendor and products list
-> 
+
 &nbsp;  
 &nbsp;  
 &nbsp;  
@@ -193,6 +197,32 @@ roslaunch camera101 uvc.launch
 &nbsp;  
 &nbsp;  
 &nbsp;  
+
+# USB Tips
+## udev names / symlink
+Changed (Add symlink)  device name  with udev `symlink` rule
+
+```
+SUBSYSTEMS=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="0779", SYMLINK+="MyCamera"
+```
+
+- Reload rules `udevadm control --reload`
+- Disconnect and Connect device to implement rules
+- Check which `ls` command
+
+```bash
+ls /dev/MyCam*
+#
+..... /dev/MyCamera -> bus/usb/003/042
+```
+
+&nbsp;  
+&nbsp;  
+# Viewers and Savers
+- web video server
+- Image recorder
+- ROS Bag
+
 # web video server
 [ROS Wiki](http://wiki.ros.org/web_video_server)
 
