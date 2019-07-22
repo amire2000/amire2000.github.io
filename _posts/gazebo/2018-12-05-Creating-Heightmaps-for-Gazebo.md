@@ -3,6 +3,9 @@ layout: post
 title: Creating Terrain maps for Gazebo
 categories: gazebo
 tags: [gazebo, sdf]
+description: Create and using 
+image: terrain.png
+public: true
 ---
 
 In order to have more realistic environments for robotics scenarios, Gazebo is capable of using 3D terrain heightmaps created from greyscale images.
