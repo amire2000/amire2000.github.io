@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Ardupilot mavlink stream
-categories: apm
+categories: APM
 tags: [mavlink, stream, dronekit]
 image: mavlink_logo.png
 description: Set stream rate param and use Dronkit on_message decorate to handle message
