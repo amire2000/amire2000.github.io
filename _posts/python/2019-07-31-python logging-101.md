@@ -8,6 +8,36 @@ description: Using python logging with json file chat sheet
 public: true
 ---
 
+# Logger players
+- Loggers
+  - level
+  - propagate
+  - filters
+  - handlers
+- Handlers
+  - class
+  - level
+  - filters
+  - formatter
+- Formatters
+  - format
+  - date format
+  - style (%, {, $}) (string format)
+- Filters
+  - function of type: filter(recored: LogRecored) -> bool
+
+
+- Logging levels
+  - debug
+  - info
+  - warning
+  - error
+  - critical
+
+
+# Log message flow
+
+![](/images/pythonlogger.png)
 # json config file
 {% gist 8a69bfb7a2444e1ce3d592c609b314b5 %}
 
