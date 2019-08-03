@@ -1,0 +1,36 @@
+---
+layout: default
+permalink: /math/
+description: math
+---
+<section id="banner" style="height: 100px">
+    <table>
+        <tr>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/math.png"/></td>
+            <td style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>Math: <em> Linear , Trigonometry and other robotics math</em></h2>
+            
+            </td>
+        </tr>
+    </table>
+</section>
+
+
+<div class="row">
+    {% assign i=0 %}
+    {% for post_item in site.data.math %}
+    {% include 2columns.html %}
+    {% endfor %}
+</div>
+
+<hr />
+<!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
+
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'math'%}
+    {% include list.html %}
+    {% endif %}
+    {% endfor %}
+</div>

@@ -1,0 +1,36 @@
+---
+layout: default
+permalink: /python/
+description: python
+---
+<section id="banner" style="height: 100px">
+    <table>
+        <tr>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/python.png"/></td>
+            <td style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>Python: <em> </em></h2>
+            
+            </td>
+        </tr>
+    </table>
+</section>
+
+
+<div class="row">
+    {% assign i=0 %}
+    {% for post_item in site.data.python %}
+    {% include 2columns.html %}
+    {% endfor %}
+</div>
+
+<hr />
+<!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
+
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'python'%}
+    {% include list.html %}
+    {% endif %}
+    {% endfor %}
+</div>
