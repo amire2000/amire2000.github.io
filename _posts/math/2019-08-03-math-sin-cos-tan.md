@@ -2,7 +2,10 @@
 layout: post
 title: Sine, Cosine and Tangent
 categories: math
-tags: []
+tags: [sin, cos, tan]
+public: true
+description: Basic Trigonometry, Sin, Cos, tan, inverse and unit circle
+image: trigo.png
 ---
 
 # Sin Cos Tan
