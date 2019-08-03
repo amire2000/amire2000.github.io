@@ -1,14 +1,14 @@
 ---
 layout: default
-permalink: /python/
-description: python
+permalink: /cpp/
+description: cpp
 ---
 <section id="banner" style="height: 100px">
     <table>
         <tr>
-            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/python.png"/></td>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/cpp-icon.svg"/></td>
             <td style="color: #fff;text-align: left;vertical-align: middle">
-                <h2>Python: <em> Simple is better than complex</em></h2>
+                <h2>C++: <em> Don't leak any resources</em></h2>
             
             </td>
         </tr>
@@ -18,7 +18,7 @@ description: python
 
 <div class="row">
     {% assign i=0 %}
-    {% for post_item in site.data.python %}
+    {% for post_item in site.data.cpp %}
     {% include 2columns.html %}
     {% endfor %}
 </div>
@@ -29,7 +29,7 @@ description: python
 
 <div class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'python'%}
+    {% if post.categories contains 'cpp'%}
     {% include list.html %}
     {% endif %}
     {% endfor %}

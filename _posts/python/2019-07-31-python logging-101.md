@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Python logging basic
-categories: code
+categories: python
 tags: [python, logging]
 image: logging.png
 description: Using python logging with json file chat sheet

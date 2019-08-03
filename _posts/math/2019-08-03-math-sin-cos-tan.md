@@ -41,11 +41,11 @@ $$
 
 ## Number to remember
 
-|     | 0 | 45                   | 90 |
-|-----|---|----------------------|----|
-| sin | 0 | $\frac{\sqrt(2)}{2}$ | 1  |
-| cos | 1 | $\frac{\sqrt(2)}{2}$ | 0  |
-| tan | 0 | 1                    | -- |
+|     | 0 | 45        | 90 |
+|-----|---|-----------|----|
+| sin | 0 | sqrt(2)/2 | 1  |
+| cos | 1 | sqrt(2)/2 | 0  |
+| tan | 0 | 1         | -- |
 
 # Reference
 - [latex online editor](https://www.codecogs.com/latex/eqneditor.php)
