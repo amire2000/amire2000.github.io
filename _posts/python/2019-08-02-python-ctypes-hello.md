@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Python ctypes 
-categories: code
+categories: python
 tags: [python, ctypes]
 image: ctypes.png
 description: Using python ctypes to call c/cpp libraries
@@ -213,5 +213,54 @@ extern "C"
     void reg(void (*func)(int)){
             func(10);
         }
+}
+```
+
+# Makefile
+```
+all: foo.so
+
+clean:
+	rm -f *.so *.o 
+	
+foo.so: foo.o
+	g++ -shared -Wl,-soname,libfoo.so -o libfoo.so  foo.o
+
+foo.o: foo.cpp
+	g++ -c -fPIC foo.cpp -o foo.o
+```
+
+# VSCode task
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "options": {
+                "cwd": "ctype_example"
+            },
+            "command": "make",
+            "args": [
+                "all"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "options": {
+                "cwd": "ctype_example"
+            },
+            "command": "make",
+            "args": [
+                "clean"
+            ]
+        }
+    ]
 }
 ```
