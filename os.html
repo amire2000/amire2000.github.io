@@ -1,0 +1,36 @@
+---
+layout: default
+permalink: /os/
+description: os
+---
+<section id="banner" style="height: 100px">
+    <table>
+        <tr>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/linux.png"/></td>
+            <td style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>OS: <em> Linux and other OS config and settings</em></h2>
+            
+            </td>
+        </tr>
+    </table>
+</section>
+
+
+<div class="row">
+    {% assign i=0 %}
+    {% for post_item in site.data.os %}
+    {% include 2columns.html %}
+    {% endfor %}
+</div>
+
+<hr />
+<!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
+
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'os'%}
+    {% include list.html %}
+    {% endif %}
+    {% endfor %}
+</div>
