@@ -3,7 +3,7 @@ layout: post
 title: Python Protocol buffer and zeroMQ
 categories: python
 tags: [protobuf]
-description: First step usage protobuf and usage it with zeromq
+description: First step usage protobuf, install python support and config vscode 
 image: protobuf.png
 public: true
 ---
