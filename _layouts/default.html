@@ -92,6 +92,28 @@
     {{ content }}
   </div>
 
+  <div class="container">
+    <table>
+      <tr>
+    {% for qlink in site.data.quick_links %}
+    {% assign item=qlink[1] %}
+      <td  style="width: 30px">
+          <div class="box post">
+              <a href="{{ site.baseurl }}/{{ item.page }}" >
+              <img class="image left" 
+                src="{{ site.baseurl }}/images/{{ item.image }}" 
+                width="64" height="64"
+                alt="{{ post.title }}" 
+                title="{{ item.title }}" />
+              </a>
+          </div>
+        
+      </td>
+      {% endfor %}
+    </tr>
+    </table>
+  </div>
+  
   <div class="wrapper-footer">
     <div class="container">
       <footer class="footer">
