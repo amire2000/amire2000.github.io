@@ -123,6 +123,59 @@ PYTHONPATH=./src:${PYTHONPATH}
 &nbsp;  
 &nbsp;  
 &nbsp;  
+## Publisher
+```python
+PRICE_TOPIC = b'price'
+
+def make_price_update_bytes():
+    price_update = price_update_pb2.PriceUpdate()
+    price_update.timestamp = str(utcdatetime.utcdatetime.now())
+    price_bytes = price_update.SerializeToString()
+    return price_bytes
+
+def send_messages(socket):
+    logging.debug("Sending messages to topics.")
+    price_bytes = make_price_update_bytes()
+    socket.send(PRICE_TOPIC + b' ' + price_bytes)
+
+def main():
+    logging.basicConfig(level=logging.DEBUG)
+    context = zmq.Context()
+    socket = context.socket(zmq.PUB)
+
+    socket.bind("tcp://*:{}".format(PORT))
+    try:
+        while True:
+            send_messages(socket)
+            time.sleep(5)
+
+```
+
+## Subscriber
+```python
+def worker1():
+    context = zmq.Context()
+
+    socket = context.socket(zmq.SUB)
+
+    socket.connect("tcp://{ip}:{port}".format(ip=PUBLISHER_IP, port=PORT))
+    socket.setsockopt(zmq.SUBSCRIBE, TOPIC)
+
+    while True:
+        topic_and_data = socket.recv()
+        msg = topic_and_data.split(b' ', 1)
+        log.info(msg[0])
+        data = msg[1]
+        log.info(repr(data) + '\n')
+
+def main():
+    t1 = Thread(target=worker1)
+    t1.setDaemon(True)
+    t1.start()
+
+    t1.join()
+```
+
 # Reference
 - [Protobuf Language Guide](https://developers.google.com/protocol-buffers/docs/proto3)
 - [Exploring Google Protobuffers with Python](https://dev.to/chen/exploring-google-protobuffers-with-python-1gmd)
