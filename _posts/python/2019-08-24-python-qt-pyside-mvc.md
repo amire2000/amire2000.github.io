@@ -8,9 +8,24 @@ description: Using PySide to implement MVC pattern
 image: mvc.png
 ---
 
+# Install Qt creator
+
 ![](/images/2019-08-24-12-56-57.png)
 
 ![](/images/2019-08-24-13-43-25.png)
+
+# Tools
+
+## convert xml ui to python
+```
+pyuic5 main_view.ui -o main_view_ui.py
+```
+
+- pyuic is part of `pyqt5-dev-tools`
+  
+```
+sudo apt install pyqt5-dev-tools
+```
 
 ## main (mvc_app.py)
 ```python
@@ -35,6 +50,42 @@ if __name__ == "__main__":
     app = App(sys.argv)
     sys.exit(app.exec_())
 
+```
+## view (xml)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>93</width>
+    <height>86</height>
+   </rect>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout">
+    <item>
+     <widget class="QSpinBox" name="spinBox_amount"/>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_even_odd"/>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_reset">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
 ```
 
 ## view (main_view.py)
