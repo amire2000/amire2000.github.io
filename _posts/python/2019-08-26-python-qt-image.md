@@ -130,3 +130,7 @@ if __name__ == '__main__':
     window.show()
     sys.exit(app.exec_())
 ```
+
+
+# Reference
+- [Qt + OpenCV - Displaying images on QLabel](https://stackoverflow.com/questions/11543298/qt-opencv-displaying-images-on-qlabel)
