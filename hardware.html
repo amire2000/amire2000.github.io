@@ -25,12 +25,27 @@ description: Post about hardware setup and integration, RPi, NVIDIA, Intel, Odro
 </div>
 
 <hr />
+<table style="border:2px">
+    <tr>
+      <td style="width: 30px">
+        <a href="{{ site.baseurl }}/rpi">
+          <img src="{{ site.baseurl }}/images/rpi.png" alt="RPI" title="RPI" width="64" height="64"/>
+        </a>
+      </td>
+      <td style="width: 30px">
+        <a href="{{ site.baseurl }}/rpi">
+          <img src="{{ site.baseurl }}/images/rpi.png" alt="RPI" title="RPI" width="64" height="64"/>
+        </a>
+      </td>
+    </tr>
+</table>
+<hr/>
 <!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
 
 
 <table class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'hw' or post.categories contains 'arduino' or post.categories contains 'iot'%}
+    {% if post.categories contains 'hw' or post.categories contains 'arduino' or post.categories contains 'iot' or post.categories contains 'rpi'%}
     {% include list.html %}
     {% endif %}
     {% endfor %}
