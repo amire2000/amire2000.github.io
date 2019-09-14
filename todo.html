@@ -18,10 +18,3 @@ permalink: /todo/
 
 <hr/>
 
-<div class="posts">
-    {% for post in site.posts %}
-    {% if post.categories contains 'todo'%}
-    {% post.content %}
-    {% endif %}
-    {% endfor %}
-</div>
