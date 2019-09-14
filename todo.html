@@ -1,0 +1,27 @@
+---
+layout: default
+permalink: /todo/
+---
+<section id="banner" style="height: 100px">
+    <table >
+        <tr>
+            <td  style="color: #fff;text-align: center;vertical-align: middle">
+                <h2></h2>
+            </td>
+            <td >
+                <img style="width: 40%" src="{{ site.baseurl }}/images/to-do.png" />
+            </td>
+        </tr>
+    </table>
+</section>
+
+
+<hr/>
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'todo'%}
+    {% post.content %}
+    {% endif %}
+    {% endfor %}
+</div>
