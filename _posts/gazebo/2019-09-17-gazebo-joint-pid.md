@@ -8,4 +8,4 @@ public: true
 
 
 
-<script src="http://gist-it.appspot.com/github/robobe/gazebo_tutorial/blob/master/models/mybox/model.sdf"></script>
+<script src="http://gist-it.appspot.com/http://github.com/robobe/gazebo_tutorial/blob/master/models/mybox/model.sdf"></script>
