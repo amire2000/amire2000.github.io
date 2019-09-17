@@ -5,16 +5,28 @@ permalink: /todo/
 <section id="banner" style="height: 100px">
     <table >
         <tr>
+                <td >
+                        <img style="width: 60%" src="{{ site.baseurl }}/images/to-do-list.png" />
+                    </td>
             <td  style="color: #fff;text-align: center;vertical-align: middle">
-                <h2></h2>
+                <h2>TODO: <em> Links Posts Blogs and other pointers in the web</em></h2>
             </td>
-            <td >
-                <img style="width: 40%" src="{{ site.baseurl }}/images/to-do.png" />
-            </td>
+            
         </tr>
     </table>
 </section>
-
-
+&nbsp;
+&nbsp;
+&nbsp;
+<ul>
+{% for line in site.data.todo %}
+{% assign item=line[1] %}
+<li>{{ item['cat'] }} - 
+        <a href="{{ item['link'] }}" target="_blank">
+            {{ item['name'] }}
+        </a>
+    </li>
+{% endfor %}
+</ul>
 <hr/>
 

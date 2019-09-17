@@ -1,13 +1,15 @@
 ---
 layout: post
-title: Python Linting and VSCode
+title: Python pylint and VSCode
 categories: python
-tags: [vscode, python, pylint]
+tags: [vscode,  pylint]
+image: pylint.svg
+public: true
+description: Keep your code standard and helping to find errors
 ---
 Linting highlights syntactical and stylistic errors in your Python source code. return code feedback and suggestion how to fix the code  
-There are number of linter (pylint pep8 and others)
 
-## Install linter
+# Install linter
 ```bash
 #python2
 sudo pip install pylint
@@ -15,25 +17,29 @@ sudo pip install pylint
 sudo pip3 install pylint
 ```
 
-## Run
+# Run / usage
 - Linting run automatically when file are saved.
 - From command `Python: Run Linting`
 
-### Pylint result
+## Pylint result
 In `Output` panel select `python` from combo
 
 ![](/images/2018-12-25-21-57-34.png)
 
 ## Pylint
-Pylint messages fall into the categories
+Pylint messages fall into this categories
 - E: Error (red underline) Code bug
 - W: Warning 
 - R: Refactor ()
 - C: Convention (green underline)
 
 By default only errors and warnings are shown.
-## Settings and Control
-### .pylintrc
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# Settings and Control
+## .pylintrc
 - create
   ```
   pylint --generate-rcfile > .pylintrc
@@ -56,18 +62,22 @@ By default only errors and warnings are shown.
   - Create `.pylintrc` file
   - Set `init-hook` under `MASTER`
   
-    ```init
-    [MASTER]
-    init-hook='import sys; sys.path.append("<project source root folder></project>")'
-    ```
+```init
+[MASTER]
+init-hook='import sys; sys.path.append("<project source root folder></project>")'
+```
 - Disabled `C0111` Convention by add `disable` entry
     - Example disabled C0111 and W0401 Convention and Warning
-    ```
-    [MASTER]
-    disable=C0111,W0401
-    ```
-## Tips
-### Example: disabled pylint warning 
+  
+```
+[MASTER]
+disable=C0111,W0401
+```
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# Tips
+## disabled pylint warning 
 ```python
 def calc(arg_a, arg_b)
     print arg_a
@@ -77,15 +87,32 @@ def calc(arg_a, arg_b)
 ```
 3,16,warning,W0613:Unused argument 'arg_b'
 ```
-- Add special comment syntax to disable pylint warning
+
+- Disable pylint warning for current line
 
 ```python
 def calc(arg_a, arg_b):#pylint: disable=unused-argument
     print arg_a
-    
 ```
-- Know there are no errors, warnings
-- > It't better tp use `.pylintrc`
+
+- Disable the warring globally from `.pylintrc`
+
+```
+[MESSAGES CONTROL]
+disable=unused-argument
+```
+
+## OpenCV (cv2) no-member
+from `.pylintrc` at [MASTER]
+
+```
+[MASTER]
+extension-pkg-whitelist=cv2
+```
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
 ## Reference
 - [Pylint](https://www.pylint.org/)
 - [VSCode linting](https://code.visualstudio.com/docs/python/linting)
