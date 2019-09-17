@@ -6,6 +6,12 @@ tags: [pid, joint]
 public: true
 ---
 
+<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
+<pre class="prettyprint">class Voila {
+public:
+  // Voila
+  static const string VOILA = "Voila";
 
-<script src="http://gist-it.appspot.com/http://github.com/robobe/gazebo_tutorial/blob/master/models/mybox/model.sdf"></script>
+  // will not interfere with embedded <a href="#voila2">tags</a>.
+}</pre>
