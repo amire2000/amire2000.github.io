@@ -5,7 +5,17 @@ categories: gazebo
 tags: [pid, joint]
 public: true
 ---
-
+<style>
+pre.prettyprint {
+    display: block;
+    overflow: auto;
+    width: auto;
+    max-height: 300px;
+    white-space: pre;
+    word-wrap: normal;
+    padding: 10px;   
+}
+</style>
 <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
 <pre class="prettyprint">class Voila {
