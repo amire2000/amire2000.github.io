@@ -80,6 +80,16 @@ GZ_REGISTER_MODEL_PLUGIN(ModelMove)
 } // namespace gazebo
 ```
 
+### code  explain
+#### Position
+- Get the position of an axis according to its index.
+- For rotational axes, the value is in radians. For prismatic axes, it is in meters.
+  
+```cpp
+double angle = this->joint->Position(0);
+```
+
+
 # Appendix
 ```xml
 <?xml version="1.0" ?>
