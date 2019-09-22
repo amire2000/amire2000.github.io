@@ -7,6 +7,18 @@ description: Basic example show how to control joint with force, velocity and po
 public: true
 image: gjoint.png
 ---
+# Content
+- Velocity
+  - instant velocity
+  - pid velocity
+- Position
+  - instant position
+- Force
+  - pid
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # Joint velocity
 
 - Set Instantaneous Velocity
@@ -29,6 +41,21 @@ this->model->GetJoint("b2c")->SetVelocity(0, 1.0);
 ## PID Controller
 
 ![](/images/vel-joint.gif)
+
+### using joint controller
+```c
+void Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/)
+  {
+    this->model = _parent;
+    this->pid = common::PID(1, 0, 0);
+    this->joint = this->model->GetJoint("b2c");
+    this->model->GetJointController()->SetVelocityPID(
+    this->joint->GetScopedName(), this->pid);
+    this->model->GetJointController()->SetVelocityTarget(
+    this->joint->GetScopedName(), 5.0);
+    
+  }
+```
 
 &nbsp;  
 &nbsp;  
