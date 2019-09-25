@@ -28,11 +28,32 @@ public: true
 - Plugin usage sensor manager to get and read imu sensor data
 
 ```cpp
- void Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/)
+ #include <functional>
+#include <gazebo/gazebo.hh>
+#include <gazebo/physics/physics.hh>
+#include <gazebo/common/common.hh>
+#include <ignition/math.hh>
+#include <sensors/sensors.hh> // sensor manager
+#include <math.h>
+
+namespace gazebo
+{
+class ModelMove : public ModelPlugin
+{
+public:
+  void Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/)
   {
     this->model = _parent;
+    
+    this->pid = common::PID(1, 0, 0);
+    this->joint = this->model->GetJoint("b2c");
+    this->model->GetJointController()->SetVelocityPID(
+        this->joint->GetScopedName(), this->pid);
+    this->model->GetJointController()->SetVelocityTarget(
+        this->joint->GetScopedName(), this->SPEED);
 
-this->sensor_mgr = sensors::SensorManager::Instance();
+    //init sensor manager
+    this->sensor_mgr = sensors::SensorManager::Instance();
     sensors::SensorPtr pSensor = this->sensor_mgr->GetSensor("imu_sensor");
      if (pSensor == nullptr)
     {
@@ -43,22 +64,30 @@ this->sensor_mgr = sensors::SensorManager::Instance();
     {
       gzerr<<"fail load imu data\n";
     }
-    else
-    {
-      /*Do something ... for example to read the linear accel from the IMU:*/
-      ignition::math::v4::Quaterniond o = pImuSensor->Orientation();
-      o.Yaw();
-    }
-
+    
     this->updateConnection = event::Events::ConnectWorldUpdateBegin(
         std::bind(&ModelMove::OnUpdate, this));
-}
+  }
 
- void OnUpdate()
+  void OnUpdate()
   {
       ignition::math::v4::Quaterniond o = pImuSensor->Orientation();
       gzmsg << o.Yaw() << "\n";
-    }
+  }
+
+private:
+  sensors::ImuSensorPtr pImuSensor;
+  physics::ModelPtr model;
+  event::ConnectionPtr updateConnection;
+  physics::JointPtr joint;
+  common::PID pid;
+  sensors::SensorManager *sensor_mgr;
+  const int SPEED = 0.5;
+};
+
+// Register this plugin with the simulator
+GZ_REGISTER_MODEL_PLUGIN(ModelMove)
+} // namespace gazebo
 ```
 
 # meson.build
@@ -77,7 +106,27 @@ myplug = library('my_joint_vel', sources: sources,
         install_dir: [install_dir])
 ```
 
-# Run and usage
-```bash
-ninja -C build install
+
+# Demo
+- imu show box `yaw`
+
+![](/images/2019-09-25-06-01-23.png)
+
+## Euler
+The order of operations  
+is roll, pitch, yaw around a fixed body frame axis  
+(the original frame of the object before rotation is applied).  
+Roll is a rotation about x, pitch is about y, yaw is about z.  
+
+```cpp
+ignition::math::v4::Quaterniond o = 
+pImuSensor->Orientation();
+gzmsg << "Roll: " << o.Euler()[0] << "\n";
+gzmsg << "Pitch: " << o.Euler()[1] << "\n";
+gzmsg << "Yaw: " << o.Euler()[2] << "\n";
 ```
+
+
+# Reference
+- [Read IMU sensor from a plugin](http://answers.gazebosim.org/question/20276/read-imu-sensor-from-a-plugin/)
+- [Ignition math](https://osrf-distributions.s3.amazonaws.com/ign-math/api/1.0.0/classignition_1_1math_1_1Quaternion.html)
