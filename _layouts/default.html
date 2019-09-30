@@ -68,7 +68,7 @@
                   <div class="dropdown-content">
                       {% for qlink in site.data.quick_links %}
                       {% assign item=qlink[1] %}
-                      <a href="{{ item.page }}" style="text-align: left">{{ site.baseurl }}/{{ item.title }}</a>
+                      <a href="{{ site.baseurl }}/{{ item.page }}" style="text-align: left">{{ item.title }}</a>
                     
                     {% endfor %}
                   </div>
