@@ -66,9 +66,11 @@
                 <div class="dropdown">
                   <button class="dropbtn">Blog</button>
                   <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+                      {% for qlink in site.data.quick_links %}
+                      {% assign item=qlink[1] %}
+                      <a href="{{ item.page }}" style="text-align: left">{{ item.title }}</a>
+                    
+                    {% endfor %}
                   </div>
                 </div>
                 

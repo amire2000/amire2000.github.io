@@ -13,33 +13,46 @@
       "description": "ROS2: ROS Framework next generation, No more roscore, support Real time, new Ideas better performance"
     },
     "gazebo": {
-      "title": "gazebo",
+      "title": "Gazebo",
       "page": "gazebo",
       "image": "gazebo.png",
       "description": "gazebo"
     },
     "autopilot": {
-      "title": "ardupilot",
+      "title": "Ardupilot",
       "page": "autopilot",
       "image": "drone_icon.png",
       "description": "uav ugc and al other"
     },
     "python": {
-      "title": "python",
+      "title": "Python",
       "page": "python",
       "image": "python-icon.png",
       "description": "python"
     },
     "vscode": {
-      "title": "vscode",
+      "title": "VSCode",
       "page": "vscode",
       "image": "vscode.png",
       "description": "vscode"
     },
     "opencv": {
-      "title": "opencv",
+      "title": "OpenCV",
       "page": "opencv",
       "image": "opencv-notitle.png",
       "description": "opencv"
+    },
+    "cpp": {
+      "title": "C++",
+      "page": "cpp",
+      "image": "opencv-notitle.png",
+      "description": "opencv"
+    },
+    "math": {
+      "title": "Math and Physics",
+      "page": "math",
+      "image": "opencv-notitle.png",
+      "description": "opencv"
     }
+
   }
