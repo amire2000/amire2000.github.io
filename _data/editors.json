@@ -1,0 +1,11 @@
+{
+        "todo1": {
+            "name": "Math symbolic editor",
+            "link": "https://www.codecogs.com/latex/eqneditor.php"
+        },
+        "link1": {
+            "name": "Online drawing",
+            "link": "https://www.draw.io/"
+        }
+        
+}

@@ -6,7 +6,7 @@ permalink: /tips/
     <table >
         <tr>
                 <td >
-                        <img style="width: 60%" src="{{ site.baseurl }}/images/to-do-list.png" />
+                        <img style="width: 60%" src="{{ site.baseurl }}/images/elemental-tip.png" />
                     </td>
             <td  style="color: #fff;text-align: center;vertical-align: middle">
                 <h2>Tips: <em> Blog tips and shortcut</em></h2>
@@ -18,7 +18,16 @@ permalink: /tips/
 &nbsp;
 &nbsp;
 &nbsp;
-
+<ul>
+{% for line in site.data.editors %}
+{% assign item=line[1] %}
+<li>
+    <a href="{{ item['link'] }}" target="_blank">
+        {{ item['name'] }}
+    </a>
+</li>
+{% endfor %}
+</ul>
 
 <hr/>
 
