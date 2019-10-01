@@ -2,6 +2,10 @@
 layout: post
 title: Launch gazebo sdf model from ROS
 categories: ros
+tags: [101]
+public: true
+description: Using ROS launch to spawn sdf model and gazebo world
+image: launch.png
 ---
 
 ## Lab steps
