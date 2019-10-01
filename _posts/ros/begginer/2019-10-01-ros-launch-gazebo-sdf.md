@@ -2,10 +2,6 @@
 layout: post
 title: Launch gazebo sdf model from ROS
 categories: ros
-tags: [101]
-public: true
-description: Launch gazebo world and model basic using ROS launch
-image: launch.png
 ---
 
 ## Lab steps
