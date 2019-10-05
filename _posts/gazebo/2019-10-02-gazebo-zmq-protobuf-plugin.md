@@ -10,7 +10,7 @@ public: true
 
 # Source code
 - CPP
-{{% gist bc20c603e3f5d9257b4a701923c45794 %}}
+{% gist bc20c603e3f5d9257b4a701923c45794 %}
 
 - HEADER
 
