@@ -23,8 +23,17 @@ permalink: /gazebo/
 </div>
 
 <hr />
-<!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
+<table>
+<tr>
+    <td>
+        {% assign tags =  site.posts | where: 'public','true' | where: 'categories','gazebo'| map: 'tags' | join: ','  | split: ',' | sort %}
+        {% include tags_func.html %}
+    </td>
+</tr>
 
+</table>
+
+<hr />
 
 <table class="posts">
     {% for post in site.posts %}
