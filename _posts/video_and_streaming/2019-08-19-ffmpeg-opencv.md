@@ -52,7 +52,6 @@ command = [
     "-i", "-",          # Read from piped stdin
     "-an",              # No audio
     "-c:v", "libx264",
-    "-r", "30",
     "-preset", "ultrafast",
     "-pix_fmt", "yuv420p",
     "-f", "rtp",
@@ -78,6 +77,57 @@ if __name__ == "__main__":
 
 ![](/images/2019-08-26-21-17-32.png)
 
+## Stream capture image
+```python
+import cv2
+import subprocess as sp
+import numpy as np
+from datetime import datetime
+
+FFMPEG = "/usr/bin/ffmpeg"
+HEIGHT = 480
+WIDTH = 640
+GREEN_COLOR = (0, 255, 0)
+TXT_POS = (20, 20)
+FPS = 15
+
+command = [
+    FFMPEG,
+    "-f", "rawvideo",
+    "-pix_fmt", "bgr24",
+    "-s", "{}x{}".format(WIDTH, HEIGHT), 
+    "-r", str(FPS),
+    "-i", "-",          # Read from piped stdin
+    "-an",              # No audio
+    "-c:v", "libx264",
+    "-preset", "ultrafast",
+    "-pix_fmt", "yuv420p",
+    "-f", "rtp",
+    "udp://127.0.0.1:5600"
+]
+
+
+if __name__ == "__main__":
+    font_face = cv2.FONT_HERSHEY_COMPLEX
+    proc = sp.Popen(command, stdin=sp.PIPE)
+
+    cap = cv2.VideoCapture(1)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT,HEIGHT)
+    cap.set(cv2.CAP_PROP_FPS, FPS)
+
+
+    while True:
+        ret, frame = cap.read()
+        
+        cv2.putText(frame, str(datetime.now()), TXT_POS, font_face, 1, GREEN_COLOR)
+        cv2.imshow("source", frame)
+        key = cv2.waitKey(1) & 0xFF
+        if key == ord("q"):
+            break
+
+        proc.stdin.write(frame)
+```
 
 # Reference
 - [ffmpeg-python: Python bindings for FFmpeg](https://github.com/kkroening/ffmpeg-python)

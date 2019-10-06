@@ -1,4 +1,15 @@
 {
+    "ego.power-tools": {
+        "buttons": [
+            {
+                "text": "click",
+                "action":{
+                    "script": "my_tags.js",
+                    "type": "script"
+                }
+            }
+        ]
+    },
     "python.autoComplete.extraPaths": [
         "/home/user/git_ws/devel/lib/python2.7/dist-packages",
         "/home/user/catkin_ws/devel/lib/python2.7/dist-packages",

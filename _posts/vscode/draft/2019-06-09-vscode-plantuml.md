@@ -5,7 +5,7 @@ categories: vscode
 tags: [uml]
 description: PlatUML It is an open source tool that allows you to define UML diagrams with plain text, This post show how to integrated with vscode and markdown
 image: plantuml.png
-public: true
+public: false
 ---
 # Content
 - Install

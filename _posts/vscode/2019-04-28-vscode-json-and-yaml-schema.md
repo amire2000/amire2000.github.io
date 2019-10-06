@@ -2,7 +2,7 @@
 layout: post
 title: JSON and YAML schema
 categories: VSCode
-tags: [vscode, yaml, json]
+tags: [yaml, json]
 image: xsd.png
 description: Adding vscode intellisense by attach JSON schema to file type
 public: True

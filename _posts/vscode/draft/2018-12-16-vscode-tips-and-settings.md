@@ -3,7 +3,7 @@ layout: post
 title: VSCode settings and tips
 categories: vscode
 tags: [vscode]
-public: true
+public: false
 description: vscode settings extension tips and trouble shotting
 image: vscode.png
 ---
