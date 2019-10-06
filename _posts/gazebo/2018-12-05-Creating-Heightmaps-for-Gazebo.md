@@ -2,8 +2,8 @@
 layout: post
 title: Creating Terrain maps for Gazebo
 categories: gazebo
-tags: [gazebo, sdf]
-description: Create and using 
+tags: [maps, terrain]
+description: Create and using bitmap to build terrain map
 image: terrain.png
 public: true
 ---

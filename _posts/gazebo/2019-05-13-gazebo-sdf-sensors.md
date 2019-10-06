@@ -2,7 +2,7 @@
 layout: post
 title: Gazebo SDF and sensors
 categories: gazebo
-tags: [gazebo, sdf, sensors]
+tags: [sdf, sensors]
 image: sensor_logo.png
 description: Use SDF to create model with sensors 
 public: true

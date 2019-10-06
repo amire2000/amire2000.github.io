@@ -2,7 +2,7 @@
 layout: post
 title: Gazebo wind plugin
 categories: gazebo
-tags: [plugins, world_plugin]
+tags: [plugins, wind]
 public: true
 description: Create custom wind plugin base on exists gazebo wind plugin, This post show basic steps to create gazebo world plugins and introduction to gazebo physics and other API
 image: pinwheel.png

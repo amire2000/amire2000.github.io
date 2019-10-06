@@ -5,7 +5,7 @@ categories: gazebo
 tags: [camera, stream, opencv, gstreamer]
 description: Using gazebo sensor plugin to stream the camera image capture to external application using OpenCV and gstreamer
 image: gstreamer-opencv.jpg
-public: true
+public: false
 ---
 
 # Content

@@ -2,7 +2,7 @@
 layout: post
 title: Gazebo color and texture
 categories: gazebo
-tags: [sdf]
+tags: [sdf, color, texture]
 description: Set color and texture in sdf files
 image: terrain.png
 public: true

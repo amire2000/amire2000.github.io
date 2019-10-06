@@ -2,7 +2,7 @@
 layout: post
 title: Gazebo test fields
 categories: gazebo
-tags: [uav, maps worlds]
+tags: [uav, maps]
 image: worldwide.png
 description: Using maps to create gazebo worlds
 public: true

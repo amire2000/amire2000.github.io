@@ -5,7 +5,7 @@ categories: gazebo
 tags: [opencv, plugin, meson]
 description: Using opencv to capture image frame from gazebo encode as jpeg and send it over udp stream, build plugin code using meson build system
 image: plug.png
-public: true
+public: false
 ---
 
 ```python

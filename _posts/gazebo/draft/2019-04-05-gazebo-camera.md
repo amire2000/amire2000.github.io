@@ -2,8 +2,8 @@
 layout: post
 title: Gazebo make a movie
 categories: gazebo
-tags: [gazebo, camera]
-public: true
+tags: [camera]
+public: false
 description: Create video movie from gazebo camera sensor
 image: gazebo.png
 ---
