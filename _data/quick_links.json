@@ -53,6 +53,12 @@
       "page": "math",
       "image": "math.png",
       "description": "opencv"
+    },
+    "math": {
+      "title": "Robotics",
+      "page": "robotics",
+      "image": "robotics.png",
+      "description": "robotics"
     }
 
   }

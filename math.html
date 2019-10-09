@@ -24,13 +24,28 @@ description: math
 </div>
 
 <hr />
-<!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
+<table>
+    <tr>
+        <td>
+            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','math'| map: 'tags' | join: ','  | split: ',' | sort %}
+            {% include tags_func.html %}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','physics'| map: 'tags' | join: ','  | split: ',' | sort %}
+            {% include tags_func.html %}
+        </td>
+    </tr>
+    </table>
+    
+    <hr />
 
 
 <div class="posts">
     {% for post in site.posts %}
     {% if post.categories contains 'math' or post.categories contains 'physics'%}
-    {% include list.html %}
+    {% include list_ng.html %}
     {% endif %}
     {% endfor %}
 </div>

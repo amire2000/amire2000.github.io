@@ -2,7 +2,7 @@
 layout: post
 title: orb2-slam
 categories: robotics
-tags: [orb, SLAM, robotics]
+tags: [orb, SLAM]
 ---
 
 - Pull docker `youyu/orb_slam2`

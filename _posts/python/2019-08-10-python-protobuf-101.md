@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python Protocol buffer and zeroMQ
+title: Python Protocol buffer 101
 categories: python
 tags: [protobuf]
 description: First step usage protobuf, install python support and config vscode 
@@ -15,12 +15,17 @@ Protocol Buffers is a way to serialize structured data into a binary stream in a
 # Content
 - [Install](#install)
 - [Hello protocol buffer](#Protobuf-hello-world)
+- [Message]()
+- [API]()
 - [Tips](#Tips)
 
 &nbsp;  
 &nbsp;  
 &nbsp;  
-# install 
+# install
+- Download and install protobuf compiler
+- Install python libraries
+  
 ## Install protoc compiler 
 Download the correct binary for example [protoc-3.9.1-linux-x86_64.zip](https://github.com/protocolbuffers/protobuf/releases)
 
@@ -88,10 +93,54 @@ print (pp)
 &nbsp;  
 &nbsp;  
 &nbsp;  
-# Tips
-## Install protobuf extension
-![](../../images/2019-08-10-16-15-15.png)
+# Message
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# API
 
+```python
+from proto import msg_pb2
+from google.protobuf import json_format
+
+p = msg_pb2.DemoMsg()
+p.id = 1
+p.name = "demo 1"
+
+json = json_format.MessageToJson(p)
+print (type(json))
+print (json)
+print("---")
+message = json_format.Parse(json, msg_pb2.DemoMsg())
+print (type(message))
+print (message)
+print("---")
+json = json_format.MessageToDict(p)
+print (type(json))
+print (message)
+```
+
+### out
+```bash
+<class 'str'>
+{
+  "id": 1,
+  "name": "demo 1"
+}
+---
+<class 'msg_pb2.DemoMsg'>
+id: 1
+name: "demo 1"
+
+---
+<class 'dict'>
+id: 1
+name: "demo 1"
+```
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# Tips
 ## PYTHONPATH
 - Setup `PYTHONPATH` using .env file
     -  place `.env` file at the project root folder
@@ -179,3 +228,5 @@ def main():
 # Reference
 - [Protobuf Language Guide](https://developers.google.com/protocol-buffers/docs/proto3)
 - [Exploring Google Protobuffers with Python](https://dev.to/chen/exploring-google-protobuffers-with-python-1gmd)
+- [Using pyZMQ for inter-process communication: Part 1](https://www.pythonforthelab.com/blog/using-pyzmq-for-inter-process-communication-part-1/)
+- [Using pyZMQ for inter-process communication: Part 2](https://www.pythonforthelab.com/blog/using-pyzmq-for-inter-process-communication-part-2/)
