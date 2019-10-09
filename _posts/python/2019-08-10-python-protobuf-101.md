@@ -15,8 +15,12 @@ Protocol Buffers is a way to serialize structured data into a binary stream in a
 # Content
 - [Install](#install)
 - [Hello protocol buffer](#Protobuf-hello-world)
-- [Message]()
-- [API]()
+- [Message](#message)
+  - [Array](#array)
+  - [Nested](#nestedimport-message)
+  - [Enums](#enums)
+  - [Packages and Import]
+- [API](#api)
 - [Tips](#Tips)
 
 &nbsp;  
@@ -94,6 +98,119 @@ print (pp)
 &nbsp;  
 &nbsp;  
 # Message
+## Array
+### proto  msg
+```
+syntax = "proto3";
+
+message Foo {
+    repeated int32 items = 1;
+}
+```
+
+### code
+```python
+from proto import msg_pb2
+from google.protobuf import json_format
+
+m = msg_pb2.Foo()
+m.items.append(1)
+m.items.extend([2, 3])
+d = json_format.MessageToDict(m)
+print (d)
+```
+
+### Result
+```
+{'items': [1, 2, 3]}
+```
+&nbsp;  
+&nbsp;  
+## Nested/Import message
+
+### msg
+> Same result if we declare the nested message outside the parent message (class)
+```
+syntax = "proto3";
+
+message DemoMsg {
+    int32 id = 1;
+    string name = 2;
+    repeated Foo foo = 3;
+}
+
+message Foo {
+    string phone = 1;
+    string address = 2;
+}
+```
+
+### code
+```python
+from proto import msg_pb2
+from google.protobuf import json_format
+
+m = msg_pb2.DemoMsg()
+m.id = 1
+m.name = "nested"
+n = m.foo.add()
+n.phone = "12345"
+n.address = "public"
+
+n = m.foo.add()
+n.phone = "00000"
+n.address = "private"
+
+d = json_format.MessageToJson(m)
+print (d)
+```
+
+### output
+```json
+{
+  "id": 1,
+  "name": "nested",
+  "foo": [
+    {
+      "phone": "12345",
+      "address": "public"
+    },
+    {
+      "phone": "00000",
+      "address": "private"
+    }
+  ]
+}
+```
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
+## Enums
+Enums are expanded by the metaclass into a set of symbolic constants with integer values
+
+### proto msg
+```
+```
+
+### code
+```python
+from proto import msg_pb2
+from google.protobuf import json_format
+
+m = msg_pb2.Phone()
+m.phone_number = "12345"
+m.type = msg_pb2.Phone.phone_type.WORK
+print(json_format.MessageToJson(m))
+```
+
+### result
+```
+{
+  "phoneNumber": "12345",
+  "type": "WORK"
+}
+```
 &nbsp;  
 &nbsp;  
 &nbsp;  
