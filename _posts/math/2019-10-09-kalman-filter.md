@@ -1,6 +1,6 @@
 ---
 layout: post
-title: title
+title: Kalman filter beginner 
 categories: math
 tags: [kalman-filter]
 desctiption: What is Kalman filter and how is it used.

@@ -54,10 +54,10 @@
       "image": "math.png",
       "description": "opencv"
     },
-    "math": {
+    "Robotics": {
       "title": "Robotics",
       "page": "robotics",
-      "image": "drone_icon.png",
+      "image": "uav.jpeg",
       "description": "robotics"
     }
 

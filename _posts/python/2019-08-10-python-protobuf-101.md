@@ -130,6 +130,7 @@ print (d)
 
 ### msg
 > Same result if we declare the nested message outside the parent message (class)
+
 ```
 syntax = "proto3";
 
@@ -191,6 +192,18 @@ Enums are expanded by the metaclass into a set of symbolic constants with intege
 
 ### proto msg
 ```
+syntax = "proto3";
+
+message Phone {
+    enum phone_type {
+        MOBILE = 0;
+        HOME = 1;
+        WORK = 2;
+    }
+
+    string phone_number = 1;
+    phone_type type = 2;
+}
 ```
 
 ### code
