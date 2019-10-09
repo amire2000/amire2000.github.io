@@ -2,11 +2,11 @@
     <table>
         <tr>
             {% if post.image != null %}
-            <td>
+            <td style="width: 256px">
                     <img src="{{ site.baseurl }}/images/{{ post.image }}" alt="{{ post.title }}" width="256" width="256"/>
             </td>
             {% endif %}
-            <td>
+            <td style="vertical-align: top;">
                     <h3>{{ post.title }}</h3>
                     <div class="date">
                         Written on: {{ post.date | date: "%B %e, %Y" }}
