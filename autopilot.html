@@ -54,7 +54,7 @@ permalink: /autopilot/
 <div class="posts">
     {% for post in site.posts %}
     {% if post.categories contains 'PX4' or post.categories contains 'APM'%}
-    {% include list.html %}
+    {% include list_ng.html %}
     {% endif %}
     {% endfor %}
 </div>
