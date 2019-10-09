@@ -1,5 +1,4 @@
 {% if post.public %}
-<div class="row">
     <table>
         <tr>
             {% if post.image != null %}
@@ -19,23 +18,20 @@
                         {% else %}
                         <a href="#" name="{{ tag }}">{{ tag }}</a>,
                     {% endif %}
+                    </div>
             </td>
         </tr>
         <tr>
-            <td>
+            <td colspan="2">
                     <p>{{ post.description }}</p>
             </td>
         </tr>
         <tr>
-            <td>
+            <td colspan="2">
                     <a href="{{ site.baseurl }}{{ post.url }}" class="button">Continue Reading</a>
             </td>
         </tr>
     </table>
-   
-
-
-
-
+<hr />
 <hr />
 {% endif %}
