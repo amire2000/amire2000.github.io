@@ -58,6 +58,7 @@ Diagrams from [real-world-plantuml](https://real-world-plantuml.com/)
 - [sequence](https://real-world-plantuml.com/?type=sequence)
 - [usecase](https://real-world-plantuml.com/?type=usecase)
 - [class](https://real-world-plantuml.com/?type=class)
+- http://plantuml.com/activity-diagram-beta
 - [activity](https://real-world-plantuml.com/?type=activity)
 - [component](https://real-world-plantuml.com/?type=component)
 
@@ -66,11 +67,7 @@ Diagrams from [real-world-plantuml](https://real-world-plantuml.com/)
   
 ![](/images/2019-06-09-21-09-45.png)
 
-Planuml server proxy
-- src: url to diagram file 
-```
-![cached image](http://www.plantuml.com/plantuml/proxy?src=https://raw.github.com/plantuml/plantuml-server/master/src/main/webapp/resource/test2diagrams.txt]
-```
+
 # Reference
 - [Real world PlantUML](https://real-world-plantuml.com/)
 - [Markdown native diagrams with PlantUML](https://blog.anoff.io/2018-07-31-diagrams-with-plantuml/)

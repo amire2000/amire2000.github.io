@@ -2,7 +2,7 @@
 layout: post
 title: Python ctypes 
 categories: python
-tags: [python, ctypes]
+tags: [ctypes]
 image: ctypes.png
 description: Using python ctypes to call c/cpp libraries
 public: true

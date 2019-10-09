@@ -2,7 +2,7 @@
 layout: post
 title: Qt using PySide2 to implement MVC
 categories: python  
-tags: [mvc, qt]
+tags: [mvc, qt, pyside2]
 public: true
 description: Using PySide to implement MVC pattern
 image: mvc.png

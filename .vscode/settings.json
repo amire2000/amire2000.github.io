@@ -41,5 +41,8 @@
         "*.world": "xml",
         "*.sdf": "xml",
         "iostream": "cpp"
-    }
+    },
+    "cSpell.words": [
+        "multithread"
+    ]
 }

@@ -2,7 +2,7 @@
 layout: post
 title: Signal running thread to stop
 categories: python
-tags: [multi-thread]
+tags: [multithread]
 public: true
 description: Simple code using Event to signal running thread to stop
 ---
