@@ -17,7 +17,8 @@
     "os": "linux.png",
     "hw": "hardware.png",
     "apm": "ardupilot.png",
-    "math": "math1.png"
+    "math": "math1.png",
+    "robotics": "uav.jpeg"
 
     
 }
