@@ -7,8 +7,57 @@ public: true
 description: URDF and XACRO hello world, How to spawn and using urdf/xacro in gazebo, check urdf tree and embedded gazebo sensor and other tags.
 image: urdf.png
 ---
+The Universal Robotic Description Format (URDF) is an XML file format used in ROS to describe all elements of a robot.
+
+# urdf and gazebo
+[http://gazebosim.org](http://gazebosim.org/tutorials?tut=ros_urdf)   
+To use a URDF file in Gazebo, some additional simulation-specific tags must be added to work properly with Gazebo
+
+- inertia: 
+An `<inertia>` element within each `<link>` element must be properly specified and configured.
+
+- gazebo (robot)
+  - plugin
+    ```xml
+    <robot>
+        ...
+        <gazebo>
+            <plugin name="model_plugin" filename="libmy_joint_vel.so"/>
+        </gazebo>
+    </robot>
+    ```
+- gazebo (link)
+  - Visual color
+    ```xml
+    <link name="link1">
+        ...
+    </link>
+    <gazebo reference="link1">
+        <material>Gazebo/Orange</material>
+    </gazebo>
+    ```
+
+  - Sensors
+    ```xml
+    <link name="link2">
+        ...
+    </link>
+    <gazebo reference="link2">
+		<sensor name="imu_sensor" type="imu">
+			<pose>0 0 0 0 0 0</pose>
+			<always_on>1</always_on>
+			<update_rate>10.0</update_rate>
+		</sensor>
+	</gazebo>
+    ```
 
 # urdf
+## link
+![](/images/2019-10-15-08-29-08.png)
+
+## joint
+![](/images/2019-10-15-08-29-36.png)
+
 ```xml
 <robot name="test_robot">
 	<link name="link1">
