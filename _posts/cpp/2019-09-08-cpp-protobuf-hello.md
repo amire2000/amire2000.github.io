@@ -56,7 +56,7 @@ int main()
 ```
 
 ## compile with meson
-> Add `xxx.pb.cc` file to sources file list \
+> Add `xxx.pb.cc` file to sources file list  
 > [C++ Protobuf undefined reference to constructor/destructor](https://stackoverflow.com/questions/39261897/c-protobuf-undefined-reference-to-constructor-destructor)
 
 ```python
