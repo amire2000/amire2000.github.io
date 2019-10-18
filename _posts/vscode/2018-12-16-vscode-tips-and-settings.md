@@ -3,20 +3,34 @@ layout: post
 title: VSCode settings and tips
 categories: vscode
 tags: [vscode]
-public: false
+public: true
 description: vscode settings extension tips and trouble shotting
 image: vscode.png
 ---
 
-# Extensions
+# Content
+- [Extensions](#extensions)
+- [Settings](#settings)
+- [Keybindings](#keybindings)
+- [Q & A](#q--a)
 
-| Name               |                                      | Desc                              |
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# Extensions
+## Better Comments
+
+Improve your code commenting by annotating with alert, informational, TODOs, and more!
+
+![](https://raw.githubusercontent.com/aaron-bond/better-comments/master/images/better-comments.PNG)
+
+<!-- | Name               |                                      | Desc                              |
 |--------------------|--------------------------------------|-----------------------------------|
 | Paste Image        | ![](/images/2018-12-19-07-16-19.png) | install xclip `apt install xclip` |
 | Code runner        | ![](/images/2018-12-19-07-07-33.png) | Run Current code                  |
 | Projects Manager   | ![](/images/2018-12-19-07-17-55.png) |                                   |
 | Code Spell checker | ![](/images/2018-12-19-07-08-18.png) | Spell checker                     |
-| XML Tools          | ![](/images/2018-12-19-07-15-36.png) |                                   |
+| XML Tools          | ![](/images/2018-12-19-07-15-36.png) |                                   | -->
 
 
 &nbsp;  
