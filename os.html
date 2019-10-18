@@ -38,7 +38,7 @@ description: os
 
 <div class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'os'%}
+    {% if post.categories contains 'os' or post.tags contains 'os'%}
     {% include list_ng.html %}
     {% endif %}
     {% endfor %}
