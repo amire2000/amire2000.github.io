@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Arduino and VSCode
-categories: arduino
+categories: hw
 tags: [arduino, vscode]
 image: 2019-01-18-08-42-04.png
 public: true

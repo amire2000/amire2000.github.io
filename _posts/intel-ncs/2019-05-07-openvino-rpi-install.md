@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Openvino RaspberryPi setup
-categories: vision
+categories: hw
 tags: [openvino, intel, opencv, rpi, setup]
 description: Setup intel Neural compute stick with raspberry pi 3+, Install toolkit and run sample application 
 public: true

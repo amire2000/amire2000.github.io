@@ -2,7 +2,7 @@
 layout: post
 title: Install ROS melodic on RPI 3+
 categories: ros
-tags: [rpi, ]
+tags: [rpi, hw]
 image: rpi_ros.jpeg
 description: Install ROS Melodic on Raspberry PI 3+ using ubuntu Bionic 18.04
 public: true

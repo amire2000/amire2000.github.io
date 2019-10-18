@@ -49,7 +49,7 @@ description: Post about hardware setup and integration, RPi, NVIDIA, Intel, Odro
 <table>
     <tr>
         <td>
-            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','os'| map: 'tags' | join: ','  | split: ',' | sort %}
+            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','hw'| map: 'tags' | join: ','  | split: ',' | sort %}
             {% include tags_func.html %}
         </td>
     </tr>
@@ -59,8 +59,9 @@ description: Post about hardware setup and integration, RPi, NVIDIA, Intel, Odro
 
 
 <table class="posts">
+    <!-- or post.categories contains 'arduino' or post.categories contains 'iot' or post.categories contains 'rpi' -->
     {% for post in site.posts %}
-    {% if post.categories contains 'hw' or post.categories contains 'arduino' or post.categories contains 'iot' or post.categories contains 'rpi' or post.tags contains 'rpi'%}
+    {% if post.categories contains 'hw' or post.tags contains 'hw'%}
     {% include list_ng.html %}
     {% endif %}
     {% endfor %}
