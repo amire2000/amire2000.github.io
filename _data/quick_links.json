@@ -59,6 +59,12 @@
       "page": "robotics",
       "image": "uav.jpeg",
       "description": "robotics"
+    },
+    "os": {
+      "title": "OS",
+      "page": "os",
+      "image": "linux-small.png",
+      "description": "os"
     }
 
   }
