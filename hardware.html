@@ -44,14 +44,24 @@ description: Post about hardware setup and integration, RPi, NVIDIA, Intel, Odro
       </td>
     </tr>
 </table>
+
+<hr />
+<table>
+    <tr>
+        <td>
+            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','os'| map: 'tags' | join: ','  | split: ',' | sort %}
+            {% include tags_func.html %}
+        </td>
+    </tr>
+    
+    </table>
 <hr/>
-<!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
 
 
 <table class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'hw' or post.categories contains 'arduino' or post.categories contains 'iot' or post.categories contains 'rpi'%}
-    {% include list.html %}
+    {% if post.categories contains 'hw' or post.categories contains 'arduino' or post.categories contains 'iot' or post.categories contains 'rpi' or post.tags contains 'rpi'%}
+    {% include list_ng.html %}
     {% endif %}
     {% endfor %}
 </table>

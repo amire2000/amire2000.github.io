@@ -1,16 +1,16 @@
 {
     "ros": {
-      "title": "ROS",
+      "title": "ROS/ROS2",
       "page": "ros",
       "image": "ros_logo.png",
       "description": "ROS"
     },
     
-    "ros2": {
-      "title": "ROS2",
-      "page": "ros2",
-      "image": "ros2.png",
-      "description": "ROS2: ROS Framework next generation, No more roscore, support Real time, new Ideas better performance"
+    "HW": {
+      "title": "Hardware",
+      "page": "hardware",
+      "image": "hardware.png",
+      "description": "Raspberry pi, odroid, intel ncs and ..."
     },
     "gazebo": {
       "title": "Gazebo",
