@@ -8,9 +8,9 @@ description: python asyncio first step, basic terms, event loop, task and corout
 public: true
 ---
 
-**Concurrency**: Two threads running on signal core CPU
-**Parallelism**: Two threads running simultaneously on different core of multi core CPU
-**Asynchronous**: Is a programming concept, When execute some `Task` (like networking or other IO) and decide to do some other work instead of waiting.
+**Concurrency**: Two threads running on signal core CPU  
+**Parallelism**: Two threads running  simultaneously on different core of multi core CPU
+**Asynchronous**: Is a programming concept, When execute some `Task` (like networking or other IO) and decide to do some other work instead of waiting.  
 
 # Python asyncio
 - event loop: manage the execution of tasks
@@ -41,6 +41,10 @@ if __name__ == "__main__":
 
 > The `await asyncio.sleep(1)` simulate io function
 > The `await` pause the current function run and give back control to `event_loop`
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # Reference
 - [Coroutines and Tasks](https://docs.python.org/3/library/asyncio-task.html#asyncio.ensure_future)
 - [asyncio.ensure_future vs. BaseEventLoop.create_task vs. simple coroutine?](https://stackoverflow.com/questions/36342899/asyncio-ensure-future-vs-baseeventloop-create-task-vs-simple-coroutine)
