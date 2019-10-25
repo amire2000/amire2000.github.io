@@ -28,9 +28,7 @@ int main()
 {
     zmq::context_t context(1);
     zmq::socket_t publisher(context, ZMQ_PUB);
-    // publisher.bind("tcp://*:5556");
-    publisher.connect("tcp://localhost:5556");
-
+    publisher.bind("tcp://*:5556");
     std::string aEnv("A");
     std::string aCon("This is A message");
     std::string bEnv("B");
@@ -64,9 +62,7 @@ int main()
 {
     zmq::context_t context(1);
     zmq::socket_t subscriber(context, ZMQ_SUB);
-    subscriber.bind("tcp://*:5556");
-    // subscriber.connect("tcp://localhost:5556");
-    
+    subscriber.connect("tcp://localhost:5556");
     subscriber.setsockopt(ZMQ_SUBSCRIBE, 
         "", 
         0); // 1
