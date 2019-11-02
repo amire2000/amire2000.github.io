@@ -85,7 +85,7 @@
                 <div class="dropdown">
                   <button class="dropbtn">Blog</button>
                   <div class="dropdown-content">
-                      {% assign menu_links=site.data.quick_links | sort%}
+                      {% assign menu_links=site.data.quick_links.title | sort%}
                       {% for qlink in  menu_links%}
                       {% assign item=qlink[1] %}
                       <a href="{{ site.baseurl }}/{{ item.page }}" style="text-align: left">{{ item.title }}</a>
