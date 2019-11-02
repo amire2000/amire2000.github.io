@@ -65,6 +65,12 @@
       "page": "os",
       "image": "linux-small.png",
       "description": "os"
+    },
+    "ai": {
+      "title": "AI",
+      "page": "ai",
+      "image": "ai.png",
+      "description": "ai"
     }
 
   }
