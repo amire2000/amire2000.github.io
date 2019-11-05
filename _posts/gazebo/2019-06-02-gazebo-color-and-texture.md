@@ -71,7 +71,11 @@ material Gazebo/Red
 # Textures
 For requested model add folders
 - materials/textures 
+    - add texture image
 - materials/scripts
+    - add script that point to texture image
+- add `<script>` tag to sdf
+
 
 ```
 ├── materials
@@ -86,7 +90,7 @@ For requested model add folders
 ## mybox.material
 
 ```
-material mybox/aruco
+material YourMaterialName
 {
     technique
     {
@@ -116,7 +120,7 @@ material mybox/aruco
         <script>
             <uri>model://mybox/materials/scripts</uri>
             <uri>model://mybox/materials/textures</uri>
-            <name>mybox/aruco</name>
+            <name>YourMaterialName</name>
         </script>
     </material>
 </visual>
