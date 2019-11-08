@@ -18,7 +18,8 @@ description: mini_projects
 
 <div class="row">
     {% assign i=0 %}
-    {% for post_item in site.data.mini_posts %}
+    {% for post_item in site.data.mini_projects.json %}
+    {% assign item=post_item[1] %}
     {% include 2columns.html %}
     {% endfor %}
 </div>
