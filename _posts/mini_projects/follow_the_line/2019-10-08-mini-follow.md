@@ -1,6 +1,8 @@
 ---
 layout: post
-title: follow the line
+title: follow_the_line
 categories: mini
 tags: []
 ---
+
+# Follow the line, main project page

@@ -96,7 +96,19 @@
                 
               </td>
               <td>
-                <a href="{{ site.baseurl }}/mini_projects">Mini Proj</a>
+                  <div class="dropdown">
+                      <button class="dropbtn">Mini Proj</button>
+                      <div class="dropdown-content">
+                          {% assign menu_links=site.data.mini_projects %}
+                          {% for qlink in  menu_links%}
+                          {% assign item=qlink[1] %}
+                          <a href="{{ site.baseurl }}/{{ item.page }}" style="text-align: left">{{ item.title }}</a>
+                        
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </td>
+                
                 <a href="{{ site.baseurl }}/about">About</a>
                 <a href="{{ site.baseurl }}/categories">Categories</a>
                 <a href="{{ site.baseurl }}/tags">Tags</a>
