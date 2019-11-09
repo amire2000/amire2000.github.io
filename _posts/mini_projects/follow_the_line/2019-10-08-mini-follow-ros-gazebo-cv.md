@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Follow the line - part 01
-categories: mini
+categories: [mini, line]
 tags: [ros, opencv, gazebo, urdf]
 public: true
 description: Mini project implement mini bot to tracking line on ground, using opencv gazebo and ros

@@ -4,6 +4,12 @@
       "page": "mini",
       "image": "follow_line.jpeg",
       "description": "mini"
+    },
+    "follow": {
+      "title": "test",
+      "page": "miniline",
+      "image": "follow_line.jpeg",
+      "description": "mini"
     }
 
   }

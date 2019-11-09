@@ -39,7 +39,7 @@ description: mini
 
 <div class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'mini' %}
+    {% if post.categories contains 'mini' and post.categories contains 'line' %}
     {% include list_ng.html %}
     {% endif %}
     {% endfor %}
