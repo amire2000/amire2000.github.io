@@ -1,7 +1,7 @@
 {
     "follow": {
       "title": "follow the line",
-      "page": "mini-follow-the-line",
+      "page": "miniline",
       "image": "follow_line.jpeg",
       "description": "mini"
     }

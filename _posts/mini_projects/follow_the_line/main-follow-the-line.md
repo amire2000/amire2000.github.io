@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /mini-follow-the-line/
+permalink: /miniline/
 description: mini-follow-the-line
 ---
 <div class="posts">
