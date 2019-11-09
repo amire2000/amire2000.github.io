@@ -132,3 +132,4 @@ xacro cart.xacro > cart.urdf
 
 # Reference
 - [Exploring ROS using a 2 Wheeled Robot #1: Basics of Robot Modeling using URDF](https://www.theconstructsim.com/exploring-ros-2-wheeled-robot-part-01/)
+- [line_follower_turtlebot](https://github.com/sudrag/line_follower_turtlebot)

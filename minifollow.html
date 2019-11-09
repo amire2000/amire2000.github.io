@@ -6,11 +6,7 @@ description: follow the line main
 <section id="banner" style="height: 100px">
     <table>
         <tr>
-            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/ai.png"/></td>
-            <td style="color: #fff;text-align: left;vertical-align: middle">
-                <h2>Mini: <em> follow the line</em></h2>
-            
-            </td>
+            <td ><img style="height: 80px" src="{{ site.baseurl }}/images/path_to_follow.jpg"/></td>
         </tr>
     </table>
 </section>
@@ -22,7 +18,7 @@ description: follow the line main
 <table>
     <tr>
         <td>
-            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','mini'| map: 'tags' | join: ','  | split: ',' | sort %}
+            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','mini' | where: 'categories','line' | map: 'tags' | join: ','  | split: ',' | sort %}
             {% include tags_func.html %}
         </td>
     </tr>
@@ -33,7 +29,7 @@ description: follow the line main
 
 
 <div class="posts">
-    {% assign posts =  site.posts | where: 'public','true' | where: 'categories','mini' %}
+    {% assign posts =  site.posts | where: 'public','true' | where: 'categories','mini' | where: 'categories','line' %}
     {% for post in posts %}
     {% include list_ng.html %}
     {% endfor %}
