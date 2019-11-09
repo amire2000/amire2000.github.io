@@ -1,8 +1,7 @@
 ---
-layout: post
-title: follow the line
-categories: mini
-tags: []
+layout: default
+permalink: /mini-follow-the-line/
+description: mini-follow-the-line
 ---
 
 # Follow the line, main project page
