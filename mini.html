@@ -1,0 +1,46 @@
+---
+layout: default
+permalink: /mini/
+description: mini
+---
+<section id="banner" style="height: 100px">
+    <table>
+        <tr>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/ai.png"/></td>
+            <td style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>Mini: <em> projects</em></h2>
+            
+            </td>
+        </tr>
+    </table>
+</section>
+&nbsp;
+
+<div class="row">
+    {% assign i=0 %}
+    {% for post_item in site.data.mini %}
+    {% include 2columns.html %}
+    {% endfor %}
+</div>
+
+<hr />
+<table>
+    <tr>
+        <td>
+            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','mini'| map: 'tags' | join: ','  | split: ',' | sort %}
+            {% include tags_func.html %}
+        </td>
+    </tr>
+    
+    </table>
+    
+    <hr />
+
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'mini' %}
+    {% include list_ng.html %}
+    {% endif %}
+    {% endfor %}
+</div>
