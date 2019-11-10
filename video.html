@@ -29,7 +29,7 @@ description: video and streaming
 
 <div class="posts">
     {% assign posts =  site.posts | where: 'public','true' | where: 'categories','video' %}
-    {% for post in site.posts %}
+    {% for post in posts %}
     
     {% include list_ng.html %}
     

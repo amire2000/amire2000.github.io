@@ -63,3 +63,24 @@ ffmpeg -re \
   - open capture device 
 
 ![](/images/2019-08-21-23-16-16.png)
+
+
+## Gstreamer example
+- Writer
+  
+```bash
+gst-launch-1.0 videotestsrc ! v4l2sink device=/dev/video2
+```
+
+- Player
+
+```
+ffplay /dev/video2
+```
+
+
+
+# Reference
+- [v4l2loopback_cpp](https://github.com/eruffaldi/v4l2loopback_cpp)
+- [image2 loopback](https://gist.github.com/TimSC/6532334)
+- [Stream a mp4 video file to V4l2loopback](https://jiafei427.wordpress.com/2019/04/17/stream-a-mp4-video-file-to-v4l2loopback-device-02/)
