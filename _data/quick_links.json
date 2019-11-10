@@ -71,6 +71,12 @@
       "page": "ai",
       "image": "ai.png",
       "description": "ai"
+    },
+    "video": {
+      "title": "Video",
+      "page": "video",
+      "image": "video.png",
+      "description": "video"
     }
 
   }
