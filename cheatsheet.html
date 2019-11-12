@@ -1,0 +1,37 @@
+---
+layout: default
+permalink: /cheatsheet/
+description: cheat sheet
+---
+<section id="banner" style="height: 100px">
+    <table>
+        <tr>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/cheatsheet.png"/></td>
+            <td style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>Cheat: <em> sheet of information</em></h2>
+            
+            </td>
+        </tr>
+    </table>
+</section>
+
+
+<div class="row">
+    {% assign i=0 %}
+    {% for post_item in site.data.cheat_posts %}
+    {% include 2columns.html %}
+    {% endfor %}
+</div>
+
+<hr />
+<!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
+
+
+<div class="posts">
+    {% assign posts =  site.posts | where: 'public','true' | where: 'categories','cheat' %}
+    {% for post in posts %}
+    
+    {% include list_ng.html %}
+    
+    {% endfor %}
+</div>

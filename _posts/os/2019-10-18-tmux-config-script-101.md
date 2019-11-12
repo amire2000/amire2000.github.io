@@ -62,6 +62,31 @@ bind -n M-Down select-pane -D
 set -g mouse on
 ```
 
+# config file example
+- `.tmux.conf`
+
+```bash
+# remove ctrl-b prefix
+unbind C-b
+# bund ctrl-a as global prefix
+set -g prefix C-a
+
+# pane navigation activate with prefix and arrows
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+
+# activate mouse as pane selector
+set -g mouse on
+
+# allow pane title
+set -g pane-border-status top
+
+# reload config on runtime
+bind r source-file ~/.tmux.conf
+```
+
 # Scripting
 ## Very basic
 - open tmux with two pans
