@@ -8,24 +8,37 @@ description: Mini project implement mini bot to tracking line on ground, using o
 image: follow_line.jpeg
 ---
 
-# LAB1 - Create Robot Sim
-- Create catkin w.s and package
-- Create urdf
-  - using xacro
-- launch files
-  - spawn rviz
-  - spawn model
+# LAB1 - Robot and Environment
+- Create catkin w.s
+- Create urdf package `cart_description`
+  - urdf
+    - using xacro
+  - launch files
+    - spawn rviz
+- Create sim package `cart_sim`
+  - launch files
+    - spawn model
+  
+# Content
 
+- [cart_description](#cartdescription)
+- [cart_sim](#cartsim)
 
-## Create catkin w.s and package
+&nbsp;  
+&nbsp;  
+&nbsp;  
+## Create workspace
 
 ```bash
 mkdir -p sim_ws/src
 cd sim_ws
 catkin_make
 ```
-
-- Create pkg
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# cart_description
+## Create `cart_description` package
 
 ```bash
 cd src
@@ -58,6 +71,7 @@ catkin_create_pkg cart_description urdf
 
 ### Tips
 - urdf validation
+
 ```bash
 #cmd
 check_urdf <(xacro cart.xacro)
@@ -77,35 +91,11 @@ root Link: link_chassis has 3 child(ren)
 xacro cart.xacro > cart.urdf
 ```
 
-&nbsp;  
-&nbsp;  
+
 &nbsp;  
 ## launch files
-- `gazebo.launch`: launch empty world with the robot model
-  - spawn model
-  - run teleop node
+
 - `rviz.launch`: launch `rviz` with robot and camera view
-  
-### gazebo.launch
-```xml
-<launch>
-    <param name="robot_description" 
-    command="$(find xacro)/xacro '$(find cart_description)/urdf/cart.xacro'" />
-
-    <arg name="x" default="0"/>
-    <arg name="y" default="0"/>
-    <arg name="z" default="0.5"/>
-
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    </include>
-
-    <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
-          args="-urdf -param robot_description -model cart -x $(arg x) -y $(arg y) -z $(arg z)" />
-
-    <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop">
-  	</node>
-</launch>
-```
 
 ### rviz.launch
 ```xml
@@ -125,10 +115,128 @@ xacro cart.xacro > cart.urdf
 
 &nbsp;  
 &nbsp;  
+![](/images/2019-11-08-17-34-02.png)
+&nbsp;  
+&nbsp;  
+========================================
+&nbsp;  
+&nbsp;  
+# cart_sim
+
+- Folders
+
+```
+├── CMakeLists.txt
+├── launch
+│   └── gazebo.launch
+├── media
+│   └── materials
+│       ├── scripts
+│       │   └── line.material
+│       └── textures
+│           └── course.png
+├── models
+│   └── line_plane
+│       ├── materials
+│       │   ├── scripts
+│       │   │   └── line.material
+│       │   └── textures
+│       │       └── line.png
+│       ├── model.config
+│       └── model.sdf
+├── package.xml
+├── src
+└── worlds
+    └── follow.world
+```
+
+- `gazebo.launch`: launch empty world with the robot model
+  - spawn model
+  - run teleop node
+
+
 &nbsp;  
 ![](/images/2019-11-08-17-32-35.png)
 
-![](/images/2019-11-08-17-34-02.png)
+
+
+
+### Run gazebo without ROS
+- set `GAZEBO_MODEL_PATH` variable before run
+  
+```bash
+# Run from root package folder
+cd cart_sim
+export GAZEBO_MODEL_PATH=$(pwd)/models:$GAZEBO_MODEL_PATH && gazebo --verbose worlds/follow.world
+```
+
+### gazebo.launch
+- load `follow` line world
+
+```xml
+<launch>
+      <env name="GAZEBO_MODEL_PATH" value="$(find cart_sim)/models/" />
+    <param name="robot_description" 
+    command="$(find xacro)/xacro '$(find cart_description)/urdf/cart.xacro'" />
+
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="0.5"/>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <arg name="world_name" value="$(find cart_sim)/worlds/follow.world"/>
+      <arg name="verbose" value="true" />
+    </include>
+
+    <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+          args="-urdf -param robot_description -model cart -x $(arg x) -y $(arg y) -z $(arg z)" />
+
+    <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop">
+  	</node>
+</launch>
+```
+
+> Point to world file full path using `$(find cart_sim)/worlds/follow.world`
+
+> Set environment variable with `env` tag
+```bash
+<env name="GAZEBO_MODEL_PATH" value="$(find cart_sim)/models/" />
+ ```
+
+### Load model texture
+- Add material to `visual` node
+- Using `model` prefix to load texture declare at model scope
+
+```xml
+<material>
+    <script>
+        <uri>model://line_plane/materials/scripts</uri>
+        <uri>model://line_plane/materials/textures</uri>
+        <name>course/line</name>
+    </script>
+</material>
+```
+
+#### script file
+- `line.material` file
+
+```
+material course/line
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture line.png
+            }
+        }
+    }
+}
+```
+
+![](/images/2019-11-14-23-27-47.png)
 
 # Reference
 - [Exploring ROS using a 2 Wheeled Robot #1: Basics of Robot Modeling using URDF](https://www.theconstructsim.com/exploring-ros-2-wheeled-robot-part-01/)
