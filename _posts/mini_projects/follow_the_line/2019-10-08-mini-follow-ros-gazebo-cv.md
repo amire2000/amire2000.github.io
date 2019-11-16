@@ -87,6 +87,7 @@ root Link: link_chassis has 3 child(ren)
 ```
 
 - Save xacro as urdf
+
 ```bash
 xacro cart.xacro > cart.urdf
 ```
