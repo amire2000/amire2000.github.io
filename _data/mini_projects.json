@@ -1,12 +1,12 @@
 {
-    "follow": {
+    "turtle": {
       "title": "turtle sim",
       "page": "turtlesim",
       "image": "turtle.png",
       "description": "learn ros using turtle sim"
     },
-    "test": {
-      "title": "test",
+    "follow": {
+      "title": "follow the line",
       "page": "minifollow",
       "image": "follow_line.jpeg",
       "description": "mini"
