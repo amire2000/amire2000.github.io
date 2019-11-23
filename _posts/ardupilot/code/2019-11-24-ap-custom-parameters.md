@@ -3,7 +3,7 @@ layout: post
 title: Add custom parameters to ardupilot
 categories: apm
 tags: [code, parameter]
-public: True
+public: true
 image: parameters.jpg
 description: Add custom parameters to ardupilot code
 ---
