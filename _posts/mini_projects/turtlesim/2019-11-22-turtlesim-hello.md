@@ -10,8 +10,8 @@ description: Learn ROS basic with turtlesim, launch nodes, publish and subscribe
 
 # LAB
 - Create package
-- Run turtlesim and control it with keyboard
-- View topics and messages
+- Run turtlesim and control it using keyboard teleop
+- View topics and messages  
 - `remap` topics
 
 # Install
@@ -112,8 +112,8 @@ Subscribers:
 ![](/images/2019-11-21-20-58-48.png)
 
 # topics
-- publish message int topic using `` command
-- subscribe to topic and view message data
+- publish message into topic using `rostopic pub` command
+- subscribe to topic and view message data using `rostopic echo` command
 
 ## publish
 
