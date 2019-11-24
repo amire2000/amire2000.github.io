@@ -1,8 +1,11 @@
 ---
 layout: post
 title: gstreamer first step
-categories: gstreamer
-tags: [gstreamer]
+categories: video
+tags: [streaming, h264]
+public: True
+description: Install and basic usage, create pipes, encode and stream over network
+image: gstreramer.png
 ---
 ## Install
 ```bash
@@ -69,8 +72,10 @@ cp gstreamer-completion  /etc/bash_completion.d/
 source /etc/bash_completion.d/gstreamer-completion
 ```
 
-
-
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# Network stream
 ##  Streaming  pipeline
 ### Sender
 - acquire video data
@@ -88,6 +93,44 @@ source /etc/bash_completion.d/gstreamer-completion
 Gstreamer  pipline  that use h264  as codec and rtp as transmit protocol over udp
 - `videotestsrc`  and `autovideosink` to  genereate and display an image
 - `x264enc` and `` as codec
+  
+```bash
+#sender
+gst-launch-1.0 videotestsrc \
+! video/x-raw,width=640,height=480 \
+!  jpegenc \
+! rtpjpegpay \
+! udpsink host=127.0.0.1 port=1234
+
+#receiver
+gst-launch-1.0 -v udpsrc port=1234 \
+! application/x-rtp, encoding-name=JPEG,payload=26 \
+! rtpjpegdepay \
+! jpegdec \
+! autovideosink
+
+
+#sender
+gst-launch-1.0 videotestsrc \
+! video/x-raw,width=640,height=480 \
+! x264enc  tune=zerolatency byte-stream=true \
+ bitrate=3000 threads=2 \
+! rtph264pay \
+! udpsink host=127.0.0.1 port=1234
+
+#receiver
+gst-launch-1.0 -v udpsrc port=1234 \
+! application/x-rtp, encoding-name=H264,payload=96 \
+! rtph264depay \
+! avdec_h264 ! \
+ autovideosink
+
+
+```
+
+&nbsp;  
+&nbsp;  
+&nbsp; 
 ### Video
 - install `sudo  apt install v4l-utils`
 - My camera support to types of video capture
@@ -118,12 +161,6 @@ Size: Discrete 1280x720
 gst-launch-1.0 v4l2src device="/dev/video1" ! video/x-raw,width=1280,height=720,framerate=30/1 ! videoconvert ! autovideosink
 # framerate supoorted
 gst-launch-1.0 v4l2src device="/dev/video1" ! video/x-raw,width=1280,height=720,framerate=10/1 ! videoconvert ! autovideosink
-```
-
-- Get video / jpeg stream from camera
-```
-gst-launch-1.0 v4l2src device="/dev/video1" ! video/x-raw,width=640,height=480 ! videoconvert ! autovideosink
-gst-launch-1.0 v4l2src device="/dev/video1" ! image/jpeg,width=1280,height=720,framerate=30/1 ! decodebin ! glimagesink
 ```
 
 - Convert video to gray
@@ -274,3 +311,4 @@ Gtk.main()
 - [gstreamer python example git](https://github.com/brettviren/pygst-tutorial-org)
 - [Python GStreamer Tutorial](http://brettviren.github.io/pygst-tutorial-org/pygst-tutorial.html)
 - [getting to know gstreamer](http://westside-consulting.blogspot.com/2017/03/getting-to-know-gstreamer.html)
+- [Mission planner gstreamer](https://discuss.ardupilot.org/t/mission-planner-gstreamer-pipeline-question/35254/2)

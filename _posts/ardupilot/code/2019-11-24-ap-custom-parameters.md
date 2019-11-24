@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Add custom parameters to ardupilot
-categories: apm
+categories: APM
 tags: [code, parameter]
 public: true
 image: parameters.jpg
@@ -12,6 +12,7 @@ description: Add custom parameters to ardupilot code
 - open `Parameters.hpp` file under `Copter` folder
 - The reference guide to search for a slot
   - I put it at the end and set index number
+  
 ```cpp
 enum {
         k_param_format_version = 0,
@@ -98,6 +99,9 @@ STABILIZE> param show my_new_parameter
 STABILIZE> MY_NEW_PARAMETER 100.000000
 ```
 
+# TODO
+- check parameter name length and mavlink param protocol
+- 
 &nbsp;  
 &nbsp;  
 &nbsp;  
