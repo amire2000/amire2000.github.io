@@ -78,6 +78,21 @@ ffmpeg -re \
 gst-launch-1.0 videotestsrc ! v4l2sink device=/dev/video2
 ```
 
+```
+gst-launch-1.0 videotestsrc \
+! tee name=t \
+! queue \
+! autovideosink \
+t. \
+! queue \
+! v4l2sink device=/dev/video2
+```
+
+# to-check
+```
+max_buffers=2
+```
+
 - Player
 
 ```

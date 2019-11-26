@@ -131,6 +131,48 @@ gst-launch-1.0 -v udpsrc port=1234 \
 &nbsp;  
 &nbsp;  
 &nbsp; 
+# Play file
+> Check file encoding and other info with `gst-discoverer-1.0` from `gstreamer1.0-plugins-base-apps` package
+
+
+```bash
+gst-discoverer-1.0 SampleVideo_640x360_5mb.mp4 
+#
+Analyzing file:///home/user/Downloads/SampleVideo_640x360_5mb.mp4
+Done discovering file:///home/user/Downloads/SampleVideo_640x360_5mb.mp4
+
+Topology:
+  container: Quicktime
+    audio: MPEG-4 AAC
+    video: MPEG-4 Video (Simple Profile)
+
+Properties:
+  Duration: 0:00:30.379000000
+  Seekable: yes
+  Live: no
+  Tags: 
+      audio codec: MPEG-4 AAC audio
+      maximum bitrate: 416704
+      bitrate: 383327
+      datetime: 1970-01-01T00:00:00Z
+      encoder: Lavf53.24.2
+      container format: ISO MP4/M4A
+      video codec: MPEG-4 video
+
+```
+
+# Play mp4 movie
+```
+gst-launch-1.0 filesrc location=SampleVideo_640x360_5mb.mp4 \
+! decodebin \
+! videoconvert \
+! autovideosink 
+```
+
+
+
+
+
 ### Video
 - install `sudo  apt install v4l-utils`
 - My camera support to types of video capture
