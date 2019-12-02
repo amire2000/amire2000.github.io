@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Drone tutorial unity 3d 
-categories: robotics
-tags: [unity, simulation, drone]
+categories: unity
+tags: [drone]
 public: true
 description: Unity flying drone, beginner tutorial based on Mario Haberel series.
 image: unity_drone.jpg

@@ -1,0 +1,46 @@
+---
+layout: default
+permalink: /ai/
+description: ai
+---
+<section id="banner" style="height: 100px">
+    <table>
+        <tr>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/unity_icon.jpg"/></td>
+            <td style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>Unity: <em> Made with</em></h2>
+            
+            </td>
+        </tr>
+    </table>
+</section>
+&nbsp;
+
+<div class="row">
+    {% assign i=0 %}
+    {% for post_item in site.data.unity %}
+    {% include 2columns.html %}
+    {% endfor %}
+</div>
+
+<hr />
+<table>
+    <tr>
+        <td>
+            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','unity'| map: 'tags' | join: ','  | split: ',' | sort %}
+            {% include tags_func.html %}
+        </td>
+    </tr>
+    
+    </table>
+    
+    <hr />
+
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'unity' %}
+    {% include list_ng.html %}
+    {% endif %}
+    {% endfor %}
+</div>

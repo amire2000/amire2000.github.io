@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Unity hello
-categories: robotics
-tags: [simulation, unity, hello-world]
+categories: unity
+tags: [hello-world]
 image: unity.png
 description: Install and setup unity on ubuntu
 public: true
