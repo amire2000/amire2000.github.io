@@ -6,7 +6,8 @@ tags: [gst, gstreamer]
 public: true
 ---
 
-```
+
+```bash
 ln -s /usr/lib/python2.7/dist-packages/glib
 ln -s /usr/lib/python2.7/dist-packages/gobject
 ln -s /usr/lib/python2.7/dist-packages/gst-0.10
@@ -18,7 +19,7 @@ ln -s /usr/lib/python2.7/dist-packages/pygtk.pth
 ln -s /usr/lib/python2.7/dist-packages/pygtk.py
 ```
 
-```
+```python
 import gi
 gi.require_version('Gst', '1.0')
 from gi.repository import Gst, GObject

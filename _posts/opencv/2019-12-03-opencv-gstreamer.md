@@ -1,0 +1,34 @@
+---
+layout: post
+title: Read and Write into gstreamer pipe
+categories: opencv
+tags: [gstreamer]
+public: true
+description: using opencv with gstreamer, read from pipe using gst appsink, write  into pipe using appsrc
+---
+- Check that opencv support gstreamer with `cv2.getBuildInformation()` method
+
+![](/images/2019-12-03-23-16-48.png)
+
+# Simple demo
+- appsink -> opencv using VideoCapture
+- opencv -> appsrc using VideoWriter
+
+
+```python
+import cv2
+
+cap = cv2.VideoCapture("videotestsrc ! video/x-raw,width=640,height=480,framerate=10/1 ! videoconvert ! timeoverlay ! appsink")
+out_pipe = "appsrc ! video/x-raw,width=640,height=480,framerate=10/1 ! videoconvert ! timeoverlay xpad=100 ypad=100 ! autovideosink sync=false"
+out = cv2.VideoWriter(out_pipe, 0, 10.0, (640,480))
+
+while True:
+    ret, frame = cap.read()
+    cv2.imshow("cv", frame)
+    out.write(frame)
+    if cv2.waitKey(1) & 0xff == ord('q'):
+        break
+cap.release()
+out.release()
+cv2.destroyAllWindows()
+```
