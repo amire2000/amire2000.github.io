@@ -8,5 +8,11 @@
             "name": "How to make a Video Game in Unity - PROGRAMMING (brackeys)",
             "link": "https://youtu.be/9ZEu_I-ido4?list=PLPV2KyIb3jR53Jce9hP7G5xC4O9AgnOuL"
         }
+    ],
+    "gazebo": [
+        {
+            "name": "Simulating a tracked robot in Gazebo",
+            "link": "https://youtu.be/dHWFviA2S3E"
+        }
     ]
 }
