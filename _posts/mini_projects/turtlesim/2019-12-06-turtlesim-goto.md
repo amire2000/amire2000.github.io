@@ -20,9 +20,7 @@ Distance between to points in straight line
 
 ### 2d distance
 
-$$
-\sqrt{{(x_2-x_1)}^2-{(y_2-y_1)}^2}
-$$
+
 &nbsp;  
 &nbsp;  
 ## atan2
