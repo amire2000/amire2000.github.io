@@ -7,16 +7,11 @@ image: turtle_twist.jpg
 public: True
 description: Move turtle to goal , using Euclidean Distance and atan2 function, send Twist msg and subscribe to pose callback
 ---
-<style>
-img[src*='#size1'] {
-    width: 400px;
-    height: 200px;
-}
-</style>
+
 ## Euclidean Distance
 Distance between to points in straight line
 
-![](/images/2019-12-07-08-37-10.png#size1)
+![](/images/2019-12-07-08-37-10.png)
 
 ### 2d distance
 
@@ -31,7 +26,7 @@ $$
 \alpha = atan2(\frac{y}{x})
 $$
 
-![](/images/2019-12-07-08-57-58.png#size1)
+![](/images/2019-12-07-08-57-58.png)
 
 &nbsp;  
 &nbsp;  
