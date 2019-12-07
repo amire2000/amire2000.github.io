@@ -25,7 +25,13 @@ permalink: /gazebo/
 <hr />
 <div class="row">
         <img style="height: 50px" src="{{ site.baseurl }}/images/link.png"/>
-    
+        <ul>
+    {% for item in site.data.links_sites.gazebo %}
+    <li>
+        <a href="{{ item.link }}"  rel="noopener noreferrer" target="_blank">{{ item.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
 </div>
 <hr/>
 <table>

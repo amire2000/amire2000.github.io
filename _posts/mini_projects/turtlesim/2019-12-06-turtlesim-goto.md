@@ -19,7 +19,7 @@ Distance between to points in straight line
 ![](/images/2019-12-07-08-37-10.png#size1)
 
 ### 2d distance
-
+![](/images/2019-12-07-16-58-39.png)
 
 &nbsp;  
 &nbsp;  
