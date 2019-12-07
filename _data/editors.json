@@ -6,10 +6,6 @@
         "link1": {
             "name": "Online drawing",
             "link": "https://www.draw.io/"
-        },
-        "image": {
-            "name": "Online image editor",
-            "link": "https://pixlr.com/x/"
         }
         
 }
