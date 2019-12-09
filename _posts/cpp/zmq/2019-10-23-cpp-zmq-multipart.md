@@ -118,7 +118,7 @@ import zmq
 import time
 context = zmq.Context()
 pub = context.socket(zmq.PUB)
-pub.connect("tcp://localhost:5556")
+pub.bind("tcp://*:5556")
 while True:
     time.sleep(1)
     msg = "This is A message from python"
