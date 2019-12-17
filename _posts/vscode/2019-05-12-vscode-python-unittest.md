@@ -75,3 +75,7 @@ project/
 ```
 
 > Set `"python.testing.cwd": "/my_app"`
+
+
+# Reference
+- [Python Unit Testing – Structuring Your Project](https://www.patricksoftwareblog.com/python-unit-testing-structuring-your-project/)

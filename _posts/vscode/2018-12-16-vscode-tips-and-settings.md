@@ -37,8 +37,17 @@ Improve your code commenting by annotating with alert, informational, TODOs, and
 &nbsp;  
 &nbsp;  
 # Settings
-### Hide certain file from explorer
+### Remove folder from file watcher
+- Remove python virtualenv from vscode file watcher
+
+```json
+"files.watcherExclude": {
+        "**/venv/**": true
+    }
 ```
+
+### Hide certain file from explorer
+```json
 "files.exclude": {
         "**/__pycache__": true
     }
@@ -59,6 +68,16 @@ Improve your code commenting by annotating with alert, informational, TODOs, and
 &nbsp;  
 &nbsp;  
 # Keybindings
+### Refresh file explorer
+```json
+{
+    "key": "ctrl+f5",
+    "command": "workbench.files.action.refreshFilesExplorer",
+    "when": "explorerViewletFocus"
+}
+```
+&nbsp;  
+&nbsp;  
 ### Add new file under the selected working directory
 ```json
   {
