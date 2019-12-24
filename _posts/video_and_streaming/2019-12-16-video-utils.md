@@ -18,5 +18,5 @@ v4l2-ctl --list-device
 - check device support formats
 
 ```
-v4l2-ctl --list-formats-ext --device=/dev/vide1
+v4l2-ctl --list-formats-ext --device=/dev/video1
 ```

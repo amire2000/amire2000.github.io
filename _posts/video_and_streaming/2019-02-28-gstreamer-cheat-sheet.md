@@ -223,6 +223,12 @@ gst-launch-1.0 v4l2src device="/dev/video1" \
 ```
 
 
+```
+gst-launch-1.0 v4l2src device=/dev/video1 \
+! autovideosink
+# 
+```
+
 # Reference
 - [NVIDIA Accelerated gstreamer user guide](https://usermanual.wiki/Document/AcceleratedGStreamerUserGuideRelease2421.1763245798/view)
 - [RTP UDP](https://m.blog.naver.com/PostView.nhn?blogId=chandong83&logNo=221263551742&categoryNo=54&proxyReferer=https%3A%2F%2Fwww.google.com%2F)

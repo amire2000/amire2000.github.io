@@ -32,3 +32,26 @@ cap.release()
 out.release()
 cv2.destroyAllWindows()
 ```
+
+```python
+import cv2
+
+cap_str = '-v udpsrc port=1234 caps="application/x-rtp,media=(string)video,encoding-name=(string)H264" ! rtph264depay ! avdec_h264 ! videoconvert ! appsink'
+cap = cv2.VideoCapture(cap_str)
+
+while True:
+    ret, frame = cap.read()
+    cv2.imshow("cv", frame)
+
+    if cv2.waitKey(1) & 0xff == ord('q'):
+        break
+cap.release()
+
+cv2.destroyAllWindows()
+```
+
+```
+ gst-launch-1.0 -v udpsrc port=1234 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtph264depay ! decodebin ! videoconvert ! autovideosink
+ ```
+ 
+# https://qiita.com/satoyoshiharu/items/72a540a92578faa7929d
