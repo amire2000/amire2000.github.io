@@ -125,7 +125,25 @@ gst-launch-1.0 -v udpsrc port=1234 \
 ! avdec_h264 ! \
  autovideosink
 
+```
+&nbsp;  
+&nbsp;  
+&nbsp; 
+# GStreamer streamer VLC as player
+```
+gst-launch-1.0 -v videotestsrc \
+! video/x-raw,width=640,height=480,framerate=20/1 \
+! x264enc tune=zerolatency bitrate=500 speed-preset=superfast \
+! rtph264pay \
+! udpsink host=127.0.0.1 port=5000
+```
 
+## sdp file
+
+```
+c=IN IP4 127.0.0.1
+m=video 5000 RTP/AVP 96
+a=rtpmap:96 H264/90000
 ```
 
 &nbsp;  
