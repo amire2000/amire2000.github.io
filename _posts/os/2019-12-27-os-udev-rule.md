@@ -155,7 +155,7 @@ The Linux kernel actually represents devices in a tree-like structure
 ### String matching and substitution
 > more string substitution and string matching in [Writing udev rule](http://www.reactivated.net/writing_udev_rules.html#strsubst)
 
-## Acction
+## Action
 - NAME: node name to be created
 - SYMLINK: Add name link to targeting node
 - RUN: Add a program to the list of programs to be executed for a specific device

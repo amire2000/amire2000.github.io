@@ -7,6 +7,21 @@ public: True
 description: Install and basic usage, create pipes, encode and stream over network
 image: gstreramer.png
 ---
+# Content
+- Install
+- Basic
+  - Elements
+- Tools
+  - Bash autocomplete
+- [Streaming](#network-stream)
+  - JPEG Demo
+  - H264 Demo
+  - Multicast
+  - VLC (sdp file)
+- [Plugin]()
+  
+&nbsp;  
+&nbsp;  
 ## Install
 ```bash
 sudo apt-get install gstreamer1.0-tools \
@@ -14,10 +29,26 @@ sudo apt-get install gstreamer1.0-tools \
   gstreamer1.0-plugins-good \
   gstreamer1.0-plugins-bad \
   gstreamer1.0-plugins-ugly \
-  gstreamer1.0-libav \
+  gstreamer1.0-gtk3 \
   gstreamer1.0-doc \
   gstreamer1.0-tools
 ```
+
+### Other Plugins
+#### libav
+GStreamer plugin for the libav* library (former FFmpeg) 
+```
+sudo apt install gstreamer1.0-libav
+```
+#### vaapi
+Video acceleration API (Intel )  
+```
+sudo apt install gstreamer1.0-vaapi
+```  
+[usage](https://github.com/GStreamer/gstreamer-vaapi)
+&nbsp;  
+&nbsp;  
+&nbsp;  
 ## Basic
 Gstreamer difine a pipeline, The pipe contain elements the first  element are source  and the last are sink
  
@@ -60,6 +91,15 @@ Caps / Capabilities describe the type off data that is streamed between two pads
   - rtp
     - rtph264/rtph264depay
 
+&nbsp;  
+&nbsp;  
+## Environment
+- `GST_PLUGIN_PATH`: where gstreamer look for plugins
+
+> Default plugin location `/usr/lib/x86_64-linux-gnu/gstreamer-1.0`
+
+&nbsp;  
+&nbsp;  
 ## Tools
 - gst-inspect: discover gstreamer  elements
 - gst-launch: build a  gstreamer pipeline on the command line
@@ -93,7 +133,8 @@ source /etc/bash_completion.d/gstreamer-completion
 Gstreamer  pipline  that use h264  as codec and rtp as transmit protocol over udp
 - `videotestsrc`  and `autovideosink` to  genereate and display an image
 - `x264enc` and `` as codec
-  
+
+### jpeg  
 ```bash
 #sender
 gst-launch-1.0 videotestsrc \
@@ -108,8 +149,10 @@ gst-launch-1.0 -v udpsrc port=1234 \
 ! rtpjpegdepay \
 ! jpegdec \
 ! autovideosink
+```
 
-
+### H264 (x264)
+```
 #sender
 gst-launch-1.0 videotestsrc \
 ! video/x-raw,width=640,height=480 \
@@ -128,8 +171,25 @@ gst-launch-1.0 -v udpsrc port=1234 \
 ```
 &nbsp;  
 &nbsp;  
+### multicast
+```
+gst-launch-1.0 videotestsrc \
+! video/x-raw,width=640,height=480 \
+! x264enc tune=zerolatency byte-stream=true bitrate=3000 \
+! rtph264pay \
+! udpsink port=5700 host=224.0.15.0 auto-multicast=true 
+
+
+gst-launch-1.0 udpsrc auto-multicast=true address=224.0.15.0 port=5700 \
+! application/x-rtp, encoding-name=H264,payload=96 \
+! rtph264depay \
+! avdec_h264 \
+! autovideosink
+```
+&nbsp;  
+&nbsp;  
 &nbsp; 
-# GStreamer streamer VLC as player
+### GStreamer and VLC as player
 ```
 gst-launch-1.0 -v videotestsrc \
 ! video/x-raw,width=640,height=480,framerate=20/1 \
@@ -149,6 +209,29 @@ a=rtpmap:96 H264/90000
 &nbsp;  
 &nbsp;  
 &nbsp; 
+# Plugin
+- clone https://gitlab.freedesktop.org/gstreamer/gst-template
+
+```bash
+# build with meson
+# from project root 
+meson builddir
+ninja -C builddir
+
+# Add / fix GST_PLUGIN_PATH
+# From meson build folder builddir/gst-plugin
+export GST_PLUGIN_PATH=$GST_PLUGIN_PATH:`pwd`
+
+# inspect 
+gst-inspect-1.0 plugin
+
+# run
+gst-launch-1.0 -v -m fakesrc ! plugin silent=FALSE ! fakesink
+# or
+gst-launch-1.0 -v -m fakesrc ! plugin silent=TRUE ! fakesink
+```
+
+
 # Play file
 > Check file encoding and other info with `gst-discoverer-1.0` from `gstreamer1.0-plugins-base-apps` package
 
