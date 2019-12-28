@@ -7,3 +7,13 @@ description:
 public: true
 image:
 ---
+
+- List all cmake options
+
+```
+cmake -LA
+```
+
+OPENCV_GENERATE_PKGCONFIG=ON
+
+opencv_videoio
