@@ -33,11 +33,10 @@ out.release()
 cv2.destroyAllWindows()
 ```
 
+## Send
 
 ```python
-
 import cv2
-from multiprocessing import Process
 
 def send():
     cap = cv2.VideoCapture("videotestsrc ! video/x-raw,width=640,height=480,framerate=10/1 ! videoconvert ! appsink", cv2.CAP_GSTREAMER)
@@ -58,8 +57,18 @@ def send():
     cap.release()
     out.release()
 
+if __name__ == "__main__":
+    print(cv2.__version__)
+    send()
+```
+
+## receiver
+
+```python
+import cv2 
+
 def receive():
-    cap_receive = cv2.VideoCapture('udpsrc port=5000 ! application/x-rtp, encoding-name=JPEG,payload=26 ! rtpjpegdepay ! jpegdec ! appsink', cv2.CAP_GSTREAMER)
+    cap_receive = cv2.VideoCapture('udpsrc port=5000 ! application/x-rtp, encoding-name=JPEG,payload=26,width=640, height=480 ! rtpjpegdepay ! jpegdec ! videoconvert ! appsink', cv2.CAP_GSTREAMER)
     if not cap_receive.isOpened():
         print('VideoCapture not opened')
         exit(0)
@@ -74,27 +83,12 @@ def receive():
         cv2.imshow('receive', frame)
         if cv2.waitKey(1)&0xFF == ord('q'):
             break
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
+    """
+    gst-launch-1.0 udpsrc port=5000 ! application/x-rtp, encoding-name=JPEG,payload=26,width=640, height=480 ! rtpjpegdepay ! jpegdec ! autovideosink
+    """
     print(cv2.__version__)
-    s = Process(target=send)
-    r = Process(target=receive)
-    s.start()
-    r.start()
-    s.join()
-    r.join()
-
-    cv2.destroyAllWindows()
-
-"""
-https://answers.opencv.org/question/202017/how-to-use-gstreamer-pipeline-in-opencv/
-gst-launch-1.0 -v udpsrc port=5000 \
-! application/x-rtp, encoding-name=JPEG,payload=26 \
-! rtpjpegdepay \
-! jpegdec \
-! autovideosink
-"""
+    receive()
 ```
 
 
