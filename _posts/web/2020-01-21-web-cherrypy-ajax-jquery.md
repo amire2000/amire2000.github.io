@@ -19,6 +19,18 @@ image: jquery_ajax.jpg
     └── test.html
 
 ```
+# jquery
+```javascript
+$.ajax({
+    type: "post", url: "/SomeController/SomeAction",
+    success: function (data, text) {
+        //...
+    },
+    error: function (request, status, error) {
+        alert(request.responseText);
+    }
+});
+```
 
 ## Server
 ```python

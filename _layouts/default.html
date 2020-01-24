@@ -106,10 +106,21 @@
                       </div>
                     </div>
                   
+                    <div class="dropdown">
+                      <button class="dropbtn">Courses</button>
+                      <div class="dropdown-content">
+                          {% assign menu_links=site.data.courses %}
+                          {% for qlink in  menu_links%}
+                          {% assign item=qlink[1] %}
+                          <a href="{{ site.baseurl }}/{{ item.page }}" style="text-align: left">{{ item.title }}</a>
+                        
+                        {% endfor %}
+                      </div>
+                    </div>
                 
-                <a href="{{ site.baseurl }}/about">About</a>
-                <a href="{{ site.baseurl }}/categories">Categories</a>
+                <!-- <a href="{{ site.baseurl }}/categories">Categories</a> -->
                 <a href="{{ site.baseurl }}/tags">Tags</a>
+                <a href="{{ site.baseurl }}/about">About</a>
               </td>
               <td>
                 <a href="{{ site.baseurl }}/search">Search: </a>

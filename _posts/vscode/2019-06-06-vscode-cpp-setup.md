@@ -39,6 +39,9 @@ TBD
     - using g++ command line
     - set as default task, 
     - run by using `ctrl-shift-b`
+  - **compile multiple**:
+    - see Tip
+    - `"${fileDirname}/**.cpp"`
 
 
 ```json
@@ -79,6 +82,9 @@ TBD
 }
 ```
 
+### Tip
+- compile multiple files
+    - Replace `"${relativeFile}"` with `"${fileDirname}/**.cpp"`
 &nbsp;  
 &nbsp;  
 &nbsp;  

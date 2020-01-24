@@ -1,0 +1,37 @@
+---
+layout: default
+permalink: /courses/
+description: courses
+---
+<section id="banner" style="height: 100px">
+    <table>
+        <tr>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/course.png"/></td>
+            <td style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>Courses: Learn something new<em> </em></h2>
+            
+            </td>
+        </tr>
+    </table>
+</section>
+
+
+<!-- <div class="row">
+    {% assign i=0 %}
+    {% for post_item in site.data.courses.json %}
+    {% assign item=post_item[1] %}
+    {% include 2columns.html %}
+    {% endfor %}
+</div> -->
+
+<hr />
+<!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
+
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'courses'%}
+    {% include list.html %}
+    {% endif %}
+    {% endfor %}
+</div>

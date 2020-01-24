@@ -31,9 +31,14 @@ The Arduino extension makes it easy to develop, build, deploy and debug your Ard
   - .vscode/c_cpp_properties.json  
   - .vscode/settings.json
 
-- Arduino board and port selection from VSCode status bar
-  
+- From VSCode status bar
 ![](/images/2019-05-29-23-27-46.png)
+  - Set arduino board 
+  - Set port selection 
+
+![](/images/2020-01-17-08-06-48.png)
+  
+
 
 ## `arduino.json`
 ```
