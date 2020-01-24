@@ -2,7 +2,7 @@
 layout: post
 title: 2020 courses plan
 categories: courses
-tags: [2020]
+tags: []
 public: true
 ---
 - [Coursera - arial robotics](https://www.coursera.org/learn/robotics-flight)
