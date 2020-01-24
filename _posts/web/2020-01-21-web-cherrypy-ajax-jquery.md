@@ -87,48 +87,59 @@ if __name__ == "__main__":
 
 ```
 
+# HTML
+- refrash page every one second
+- using jquery
+- using svg gauge
+
+
 ```html
 <html>
-   <head>
-      <title>AJAX with jQuery and cherrypy</title>
-      <script type = "text/javascript" src = "jquery-1.4.2.min.js"></script>
-      <script src="gauge.js"></script>
-      <script>
-          var Gauge = window.Gauge;
-          var cpuGauge;
-
-          function render(){
-            
-        
-         cpuGauge = Gauge(document.getElementById("cpuSpeed"), {
+  <head>
+    <title>AJAX with jQuery and cherrypy</title>
+    <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+    <script src="gauge.js"></script>
+    <script>
+      var Gauge = window.Gauge;
+      var cpuGauge;
+      //init gauge
+      function initGauge() {
+        cpuGauge = Gauge(document.getElementById("cpuSpeed"), {
           max: 100,
           label: function(value) {
-              return Math.round(value) + "/" + this.max;
+            return Math.round(value) + "/" + this.max;
           },
           value: 50
+        });
+      }
+
+      //get data
+      function get_data() {
+        $.ajax({
+          url: "m2",
+          type: "get",
+
+          success: function(response) {
+            cpuGauge.setValue(parseInt(response));
+          }
+        });
+        setTimeout(get_data, 1000);
+      }
+
+      //document ready
+      var ONE_SEC = 1000;
+      $(document).ready(function() {
+        initGauge();
+        setTimeout(get_data, ONE_SEC);
       });
-    };
-          
-            $(document).ready(function(){
-                render();
-                $.ajax({
-                url: 'm2',
-                type: 'get',
-                
-                success: function(response){
-                    cpuGauge.setValue(parseInt(response));
-                }
-            });
-            });
-            </script>
-		
-   </head>
-	
-   <body>
-        <div id="cpuSpeed" class="gauge-container"></div>
-   </body>
-	
+    </script>
+  </head>
+
+  <body>
+    <div id="cpuSpeed" class="gauge-container"></div>
+  </body>
 </html>
+
 ```
 > The dollar sign is commonly used as a shortcut to the function document.getElementById().
 # References
