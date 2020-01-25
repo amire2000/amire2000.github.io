@@ -19,7 +19,15 @@ image: jquery_ajax.jpg
     └── test.html
 
 ```
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # jquery
+- success
+- error
+- complete 
+
+
 ```javascript
 $.ajax({
     type: "post", url: "/SomeController/SomeAction",
@@ -28,11 +36,18 @@ $.ajax({
     },
     error: function (request, status, error) {
         alert(request.responseText);
+    },
+    complete: function() {
+      // Schedule the next request when the current one's complete
+      setTimeout(worker, 5000);
     }
 });
 ```
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# Server
 
-## Server
 ```python
 import cherrypy
 import os
@@ -86,9 +101,11 @@ if __name__ == "__main__":
     start()
 
 ```
-
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # HTML
-- refrash page every one second
+- refresh page data every one second
 - using jquery
 - using svg gauge
 
@@ -142,6 +159,10 @@ if __name__ == "__main__":
 
 ```
 > The dollar sign is commonly used as a shortcut to the function document.getElementById().
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # References
 - [CherryPy tutorial](https://www.tutorialspoint.com/cherrypy/index.htm)
 - [jQuery download](https://blog.jquery.com/2010/02/19/jquery-142-released/)
