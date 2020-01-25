@@ -78,7 +78,7 @@ int main()
 g++ m.cpp -o app `pkg-config --cflags --libs opencv`
 ```
 
-- find request lib's
+- Only with requested lib's
 
 ```
 g++ main.cpp -o app \
