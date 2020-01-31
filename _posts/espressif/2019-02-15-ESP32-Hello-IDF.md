@@ -72,8 +72,8 @@ make monitor
 ```
 ## Board (ESP32 DevKitC)
 - ESP32-WROOM-32D
+![](/images/2020-01-29-00-02-05.png)
 
-![](../../images/esp32_board.png)
 
 
 ## Terms
