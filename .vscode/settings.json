@@ -43,7 +43,9 @@
         "iostream": "cpp"
     },
     "cSpell.words": [
+        "bootloader",
         "kalman",
-        "multithread"
+        "multithread",
+        "pixhawk"
     ]
 }
