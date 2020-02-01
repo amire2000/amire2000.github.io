@@ -18,7 +18,10 @@
     "hw": "hardware.png",
     "apm": "ardupilot.png",
     "math": "math1.png",
-    "robotics": "uav.jpeg"
+    "robotics": "uav.jpeg",
+    "courses": "courses.png",
+    "web": "web.png"
+
 
     
 }

@@ -8,6 +8,31 @@ description: Blog about robotics, Posts about ROS, Gazebo, Implement robotics us
     <h2>Robotics: <em> T engineering</em></h2>
   </header>
 </section>
+<!-- last posts -->
+<table>
+  {% assign counter = 0 %}
+  {% assign posts =  site.posts | where: 'public','true' | sort: "date" | reverse %}
+  {% for post in posts %}
+  
+  <tr>
+      <td>
+        <div>
+          <img src="{{ site.baseurl }}/images/{{ site.data.categories[post.categories.first] }}"  width="32" height="32" alt="{{ site.data.categories[post.categories.first] }}"/>&nbsp;
+          {{ post.date | date: "%B %e, %Y" }}
+          &nbsp;->&nbsp;
+          <a href="{{ site.baseurl }}{{ post.url }}">
+            {{ post.title }}
+          </a>
+</div>
+</td>
+</tr>
+  {% assign counter=counter | plus: 1 %}
+  {% if counter > 5 %}
+    {% break %}
+  {% endif %}
+  {% endfor %}
+      
+</table>
 <!-- Posts -->
 <section class="wrapper style1">
   <div class="container">
