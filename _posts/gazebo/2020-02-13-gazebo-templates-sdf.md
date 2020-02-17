@@ -138,3 +138,49 @@ var is not defined.
 % for i in ["a", "b", "c"]:
     ${loop.index}: ${i}
 % endfor
+
+# Demo
+
+- sdf.mako
+
+
+{% gist 977de27cb638d24594778536bdca3c16 %}
+
+- color.mako
+
+```xml
+<%def name="color(color_name)">
+<lighting>1</lighting>
+<script>
+    <uri>file://media/materials/scripts/gazebo.material</uri>
+    <name>Gazebo/${color_name}</name>
+</script>
+</%def>
+
+<%def name="red()">
+${color("Red")}
+</%def>
+
+<%def name="black()">
+${color("Black")}
+</%def>
+```
+
+- macros.mako
+
+```xml
+<%def name="cylinder(radius, length)">
+    <geometry>
+        <cylinder>
+            <radius>${radius}</radius>
+            <length>${length}</length>
+        </cylinder>
+    </geometry>
+</%def>
+
+<%def name="box(width, length, height)">
+	<box>
+		<size>${width} ${length} ${height}</size>
+	</box>
+</%def>
+```
