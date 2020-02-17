@@ -15,13 +15,29 @@ permalink: /px4/
     </table>
 </section>
 
+<div class="row">
+    {% assign i=0 %}
+    {% for post_item in site.data.px4 %}
+    {% include 2columns.html %}
+    {% endfor %}
+</div>
 
+<hr />
+<table>
+    <tr>
+        <td>
+            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','px4'| map: 'tags' | join: ','  | split: ',' | sort %}
+            {% include tags_func.html %}
+        </td>
+    </tr>
+    
+    </table>
 <hr/>
 
 <div class="posts">
     {% for post in site.posts %}
     {% if post.categories contains 'PX4'%}
-    {% include list.html %}
+    {% include list_ng.html %}
     {% endif %}
     {% endfor %}
 </div>
