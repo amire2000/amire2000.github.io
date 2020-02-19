@@ -60,5 +60,5 @@ make px4_sitl gazebo_my_rover
 &nbsp;  
 &nbsp;  
 # Reference
-- [Create custom moddedl for sitl](https://discuss.px4.io/t/create-custom-model-for-sitl/6700/3)
+- [Create custom model for sitl](https://discuss.px4.io/t/create-custom-model-for-sitl/6700/3)
 - [Adding new airframe](https://dev.px4.io/v1.9.0/en/airframes/adding_a_new_frame.html)
