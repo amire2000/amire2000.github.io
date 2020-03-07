@@ -227,6 +227,37 @@ xPSR           0x1000000	16777216
 - Open nuttx folder with `vscode`
   - Add setting to `launch.json`
 
+### SVD file
+- [STM32 svd files](https://github.com/posborne/cmsis-svd/tree/master/data/STMicro)
+
+### launch file
+- toolchain path
+- svd file path
+- config files
+
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "nuttx",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "device": "stm32f4x",
+            "configFiles": [
+                "interface/stlink.cfg",
+                "target/stm32f4x.cfg"
+            ],
+            "armToolchainPath": "~/toolchains/gcc-arm/bin/",
+            "svdFile": "~/svd/STM32F446.svd"
+        }
+    ]
+}
+```
 
 &nbsp;  
 &nbsp;  
@@ -356,6 +387,7 @@ Hello world!  Here I go...
 &nbsp;  
 &nbsp;  
 # Resource
+- [SVD files](https://github.com/posborne/cmsis-svd/tree/master/data/STMicro)
 - [Nuttx tutorial](https://youtu.be/heSkSd-_70g?list=PLd73yQk5Fd8JEsVD-lhwYRQKVu6glfDa8)
 - [My first Nuttx Application](http://nuttx.nl/index.php/2018/03/30/my-first-nuttx-application/)
 - [First app](https://hmchung.gitbooks.io/stm32-tutorials/write-an-application-on-nuttx.html)

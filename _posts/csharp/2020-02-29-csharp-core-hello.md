@@ -9,10 +9,10 @@ image: dotnet-core.png
 ---
 
 # LAB
-Install .Net core on ubuntu machine
-Config VSCode 
-Write C# hello world
-Using nuget to get json library
+- Install .Net core on ubuntu machine
+- Config VSCode 
+- Write C# hello world
+- Using nuget to get json library
 &nbsp;  
 &nbsp;  
 &nbsp;  

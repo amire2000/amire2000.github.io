@@ -104,11 +104,11 @@ description: Blog about robotics, Posts about ROS, Gazebo, Implement robotics us
           <td>
             <table>
               <tr>
-                <td  align="center">
+                <td style="text-align:left;">
                   <img src="{{ site.baseurl }}/images/{{ site.data.categories[post.categories.first] }}"  width="32" height="32" alt="{{ site.data.categories[post.categories.first] }}"/>
                 </td>
-                <td align="left">{{ post.date | date: "%B %e, %Y" }}</td>
-                <td align="left">
+                <td style="text-align:left;">{{ post.date | date: "%B %e, %Y" }}</td>
+                <td style="text-align:left;">
                   <a href="{{ site.baseurl }}{{ post.url }}">
                     {{ post.title }}
                   </a>
