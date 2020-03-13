@@ -5,15 +5,41 @@ categories: Gstreamer
 tags: [video, gstreamer]
 ---
 
-# First pipe
+# Index
+- [Basic](#basic)
+- [Network](#network)
+- Multi pipe
+- Misl
+  - [text overlay](#add-text-to-image)
+  - [mixer](#mixer)
+  - [compositor](#compositor)
+  - [scale](#video-scale)
+  - [rate](#video-scale)
+  - [v4l2loopback](#write-to-v4l2loopback)
+&nbsp;
+&nbsp;
+# Basic
+- Test src
+- USB Camera
+
+
 ```
-gst-launch-1.0 videotestsrc ! video/x-raw,width=640,height=480 ! autovideosink
-```
-- Read from camera
-```
-gst-launch-1.0 v4l2src device="/dev/video1" ! video/x-raw,width=640,height=480 ! videoconvert ! autovideosink
+gst-launch-1.0 videotestsrc \
+! video/x-raw,width=640,height=480 \
+! autovideosink
 ```
 
+- Read from USB camera
+
+```
+gst-launch-1.0 v4l2src device="/dev/video1" \
+! video/x-raw,width=640,height=480 \
+! videoconvert \
+! autovideosink
+```
+&nbsp;
+&nbsp;
+# Network
 ## Encoding
 - mjpeg: jpegenc
 - VP8: vp8enc
@@ -104,7 +130,8 @@ gst-launch-1.0 -v udpsrc port=5200 \
 
 
 
-### tee and queue
+# Multi pipe
+## tee and queue
 - Split camera and display image as color and gray scale
 - Queue, Create thread that handle queue data
 ```
@@ -171,19 +198,20 @@ gst-launch-1.0 videotestsrc pattern="ball" ! \
  mix.
 ```
 
--  not work to check
+## compositor
 ```
-gst-launch-1.0 videomixer name=mix \
-    sink_0::xpos=0   sink_0::ypos=0  sink_0::alpha=0 \
-    sink_1::xpos=0   sink_1::ypos=0 \
-    sink_2::xpos=200 sink_2::ypos=0 \
-    autovideosink \
- videotestsrc pattern="ball" ! \
- videoconvert ! \
-   mix.sink1 \
- videotestsrc ! \
- videoconvert ! \
-  mix.sink2
+gst-launch-1.0 compositor name=mix \
+    sink_0::xpos=0   sink_0::ypos=0 \
+    sink_1::xpos=100   sink_1::ypos=0 \
+    ! autovideosink \
+ videotestsrc pattern="ball" \
+ ! video/x-raw, width=100 \
+ ! videoconvert \
+ ! mix.sink_0 \
+ videotestsrc \
+ ! video/x-raw, width=100 \
+ ! videoconvert \
+ ! mix.sink_1
 ```
 
 ## Add text to image
@@ -207,26 +235,6 @@ gst-launch-1.0 -v videotestsrc pattern="ball" ! \
 videorate ! \
 video/x-raw,framerate=1/1 ! \
 autovideosink
-```
-
-## Convert mjpeg to h264
-- Tx
-  - convert mjpeg to h264
-  - Use x264 rx example to watch the stream
-```
-gst-launch-1.0 v4l2src device="/dev/video1" \
-! image/jpeg,width=800,height=600,framerate=10/1 \
-! jpegdec \
-! x264enc tune=zerolatency \
-! rtph264pay \
-! udpsink host=127.0.0.1 port=5000
-```
-
-
-```
-gst-launch-1.0 v4l2src device=/dev/video1 \
-! autovideosink
-# 
 ```
 
 ## Write to v4l2loopback
