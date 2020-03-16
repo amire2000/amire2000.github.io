@@ -7,7 +7,7 @@ public: True
 image: cmake.png
 description: Using cmake to build project using vscode
 ---
-CMake is a tool that help build projects  
+CMake is a tool that generated build scripts for build system
 On Linux `cmake` scripts generated `Makefile` by default
 CMake base project contain script file named `CMakeLists.txt`  
 CMake best practice is to separate build folder from src folder  
