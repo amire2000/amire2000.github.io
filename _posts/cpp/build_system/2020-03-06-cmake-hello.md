@@ -19,7 +19,7 @@ CMake best practice is to separate build folder from src folder
 &nbsp;  
 # Basic hello CMake
 ## VSCode
-Install CMake [extension] for(https://marketplace.visualstudio.com/items?itemName=twxs.cmake)
+Install CMake [extension](https://marketplace.visualstudio.com/items?itemName=twxs.cmake)
   - color syntax
   - snippets
   - and more

@@ -150,6 +150,20 @@ TEST_F(DemoTest, test2){
 &nbsp;  
 &nbsp;  
 &nbsp;  
+# GTest tips
+### Add text to `EXPECT` 
+Extra data on test
+for example loop index in test
+
+```cpp
+TEST_F(DemoTest, test1){
+    const bool result = f();
+    EXPECT_EQ(true, result) << "-------- This text show when test failed ----------";
+}
+```
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # Reference
 - [Introduction to Google Test and CMake](https://youtu.be/Lp1ifh9TuFI)
 - [Googletest Primer](https://github.com/abseil/googletest/blob/master/googletest/docs/primer.md)
