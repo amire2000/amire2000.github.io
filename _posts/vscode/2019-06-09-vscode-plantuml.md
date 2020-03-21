@@ -5,7 +5,7 @@ categories: vscode
 tags: [uml]
 description: PlatUML It is an open source tool that allows you to define UML diagrams with plain text, This post show how to integrated with vscode and markdown
 image: plantuml.png
-public: false
+public: true
 ---
 # Content
 - Install
@@ -15,20 +15,42 @@ public: false
 - Github / Git-pages integration
 - Reference
 
-# Install
-![](/images/2019-06-09-09-01-50.png)
+# PlantUML
 
 PlantUML has two render method
 - Local: For local render `java` and `Graphviz` need to be installed
+  
 ```
 sudo apt install default-jre graphviz
 ```
 - Server: Using server to render and return 
 
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# VSCode
+[VSCode market](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml)
+
+![](/images/2020-03-21-14-37-23.png)
+
+## settings.json
+```bash
+# Server mode
+"plantuml.render": "PlantUMLServer",
+"plantuml.server": "https://www.plantuml.com/plantuml",
+
+# local
+"plantuml.render": "Local",
+
+```
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # Basic usage
 ## Markdown
-- Activity diagram
+- Activity diagram for example
 
+```
 ```plantuml
 @startuml
 (*) --> "Initialization"
@@ -43,8 +65,8 @@ else
 endif
 
 @enduml
+```(TODO: just for markdown render->without the text is no output )
 ```
-
 ![](/images/2019-06-09-21-47-30.png)
 
 TBD: Render Not working for gitpages
