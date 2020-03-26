@@ -39,9 +39,9 @@ v4l2loopback-ctl set-caps "video/x-raw,format=UYVY,width=640,height=480" /dev/vi
 - CMakeLists.txt
 
 ### header
-{% 283739cd846b5328e563a243c7606386 %}
+{% gist 283739cd846b5328e563a243c7606386 %}
 ### Code
-{% 7055a9aea7ae14b3982e3f4df4d09b04 %}
+{% gist 7055a9aea7ae14b3982e3f4df4d09b04 %}
 ### CMakeLists.txt
 ```cmake
 set(PLUG_NAME v4l_camera_plugin)
