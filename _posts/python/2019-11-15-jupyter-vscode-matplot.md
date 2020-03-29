@@ -8,6 +8,15 @@ public: true
 description: Run jupiter notebook from vscode, Demo using matplotlib
 ---
 
+# Install
+- Create virtualenv
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install jupyter
+```
+
 Microsoft python extension support native editing of Jupyter notebook inside vscode
 
 ## notebook file

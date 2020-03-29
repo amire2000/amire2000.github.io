@@ -83,8 +83,36 @@ docker run -it --rm \
  cross:latest
 ```
 
+## cmake
+```
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+    -D CMAKE_INSTALL_PREFIX=/home/user/opencv-4.2.0 \
+    -D CMAKE_TOOLCHAIN_FILE=../platforms/linux/aarch64-gnu.toolchain.cmake \
+    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
+    -D OPENCV_ENABLE_NONFREE=OFF \
+    -D ENABLE_NEON=OFF \
+    -D ENABLE_VFPV3=OFF \
+    -D BUILD_TESTS=OFF \
+    -D BUILD_DOCS=OFF \
+    -D PYTHON3_INCLUDE_PATH=/usr/include/python3.6m \
+    -D PYTHON3_LIBRARIES=/usr/lib/arm-linux-gnueabihf/libpython3.6m.so \
+    -D PYTHON3_NUMPY_INCLUDE_DIRS=/usr/lib/python3/dist-packages/numpy/core/include \
+    -D BUILD_OPENCV_PYTHON2=OFF \
+    -D BUILD_OPENCV_PYTHON3=ON \
+    -D BUILD_EXAMPLES=OFF ..
+```
+
+### Notes
+- CMAKE_INSTALL_PREFIX
+- CMAKE_TOOLCHAIN_FILE
+- PYTHON3_INCLUDE_PATH
+- PYTHON3_LIBRARIES
+- PYTHON3_NUMPY_INCLUDE_DIRS
+
+
 ## rename python library name
 - cp for backup
+
 ```
 <make install path>/lib/python3.7/dist-packages/cv2/python-3.7/
 cp cv2.cpython-37m-x86_64-linux-gnu.so cv2.so
@@ -153,6 +181,7 @@ source .bashrc
 ```
 ### Python
 - create link 
+  
 ```bash
 sudo ln -s /opt/opencv-4.2.0/lib/python3.6/dist-packages/cv2 /usr/lib/python3/dist-packages/cv2
 ```
@@ -168,6 +197,8 @@ Version: 4.2.0
 Libs: -L${libdir} -lopencv_aruco -lopencv_bgsegm -lopencv_bioinspired -lopencv_calib3d -lopencv_ccalib -lopencv_core -lopencv_datasets -lopencv_dnn_objdetect -lopencv_dnn -lopencv_dpm -lopencv_face -lopencv_features2d -lopencv_flann -lopencv_freetype -lopencv_fuzzy -lopencv_gapi -lopencv_hfs -lopencv_highgui -lopencv_imgcodecs -lopencv_img_hash -lopencv_imgproc -lopencv_line_descriptor -lopencv_ml -lopencv_objdetect -lopencv_optflow -lopencv_phase_unwrapping -lopencv_photo -lopencv_plot -lopencv_quality -lopencv_reg -lopencv_rgbd -lopencv_saliency -lopencv_shape -lopencv_stereo -lopencv_stitching -lopencv_structured_light -lopencv_superres -lopencv_surface_matching -lopencv_text -lopencv_tracking -lopencv_videoio -lopencv_video -lopencv_videostab -lopencv_xfeatures2d -lopencv_ximgproc -lopencv_xobjdetect -lopencv_xphoto
 Cflags: -I${includedir}
 ```
-
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # Reference
 - [Cross compiling OpenCV 4 for Raspberry Pi and BeagleBone Black ](https://solarianprogrammer.com/2018/12/18/cross-compile-opencv-raspberry-pi-raspbian/)

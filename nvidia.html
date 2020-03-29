@@ -1,0 +1,36 @@
+---
+layout: default
+permalink: /nvidia/
+description: nvidia
+---
+<section id="banner" style="height: 100px">
+    <table>
+        <tr>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/nvidia.png"/></td>
+            <td style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>Nvidia: <em> AI On edge</em></h2>
+            
+            </td>
+        </tr>
+    </table>
+</section>
+
+
+<div class="row">
+    {% assign i=0 %}
+    {% for post_item in site.data.nvidia_posts %}
+    {% include 2columns.html %}
+    {% endfor %}
+</div>
+
+<hr />
+<!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
+
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'nvidia'%}
+    {% include list.html %}
+    {% endif %}
+    {% endfor %}
+</div>
