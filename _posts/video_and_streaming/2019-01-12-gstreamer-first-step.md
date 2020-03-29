@@ -455,7 +455,5 @@ Gtk.main()
 - [Python GStreamer Tutorial](http://brettviren.github.io/pygst-tutorial-org/pygst-tutorial.html)
 - [getting to know gstreamer](http://westside-consulting.blogspot.com/2017/03/getting-to-know-gstreamer.html)
 - [Mission planner gstreamer](https://discuss.ardupilot.org/t/mission-planner-gstreamer-pipeline-question/35254/2)
-
-
-Tnhrtbdk2611
-Tnhrtbdk2611
+- [Very good cheat](https://github.com/matthew1000/gstreamer-cheat-sheet/blob/master/network_transfer.md)
+- [to-read](https://www.dr-lex.be/info-stuff/mediaformats.html)
