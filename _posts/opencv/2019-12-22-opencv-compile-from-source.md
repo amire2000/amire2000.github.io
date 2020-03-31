@@ -2,101 +2,44 @@
 layout: post
 title: Build OpenCV from source
 categories: opencv
-tags: [source, build]
-description:
+tags: [source, build, cuda]
+description: Build OpenCV With CUDA and DNN backend, OpenCV version 4.2.0
 public: true
-image:
+image: cuda.jpg
 ---
+Install OpenCV 4.2 with CUDA DNN backend from source on ubuntu 18.04
 
+
+- Install NVIDIA Driver (Optinal-If just for build)
+- Install CUDA
+- Install cudnn
+- Install OpenCV pre-requisite
+- Download OpenCV source
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# opencv 4.2 
+- cuda support
+- cuda dnn
+- python3 support
 ```
-wget -O opencv.zip https://github.com/opencv/opencv/archive/4.1.2.zip
-wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.1.2.zip
-
+cd ~
+wget -O opencv.zip https://github.com/opencv/opencv/archive/4.2.0.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.2.0.zip
 unzip opencv.zip
 unzip opencv_contrib.zip
-
-mv opencv-4.1.2 opencv
-mv opencv_contrib-4.1.2/ opencv_contrib
-
-```
-- List all cmake options
-
-```
-cmake -LA
-```
-
-
-
-```bash
-cmake -D CMAKE_BUILD_TYPE=RELEASE \
-	-D CMAKE_INSTALL_PREFIX=/usr/local \
-	-D INSTALL_PYTHON_EXAMPLES=OFF \
-	-D INSTALL_C_EXAMPLES=OFF \
-	-D OPENCV_ENABLE_NONFREE=OFF \
-    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
-	-D PYTHON_EXECUTABLE=/usr/bin/python3 \
-	-D BUILD_EXAMPLES=OFF \
-    -D WITH_GSTREAMER=ON \
-    -D BUILD_IPP_IW=OFF \
-    -D WITH_IP=OFF \
-    -D BUILD_JAVA=OFF \
-    -D BUILD_opencv_java_bindings_generator=OFF \
-    -D BUILD_opencv_dnn=ON \
-    -D BUILD_opencv_python2=OFF \
-    -D WITH_JASPER=OFF \
-    -D WITH_ADE=OFF \
-    -D WITH_VTK=OFF \
-    -D OPENCV_GENERATE_PKGCONFIG=ON \
-    -D BUILD_opencv_xfeatures2d=OFF \
-    ..
-```
-
-```
-make -j8
-sudo make install
-pkg-config --modversion opencv
-```
-
-python3 lib
-```
--- Installing: /usr/local/lib/python3.6/dist-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so
--- Set runtime path of "/usr/local/lib/python3.6/dist-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so" to "/usr/local/lib"
-
-```
-
-pkg-config
-```
-unix-install/opencv4.pc
-```
-
-python virtualenv
-- from venv `venv/lib/python3.6/site-packages` create softlink
-
-```bash
-ln -s /usr/local/lib/python3.6/dist-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so cv2.so
-```
-
-# Build Static opencv
-
-## using pkg-config
-```bash
-export PKG_CONFIG_PATH ~/opencv/bin/pkgconfig/opencv4.pc
-
-pkg-config --cflags opencv4 --libs --static
-
-g++ main.cpp -static -static-libgcc -std=c++11 \
-`pkg-config --cflags opencv4 --libs --static`
-
-```
-
-```
-cmake -GNinja
-ninja
+mv opencv-4.2.0 opencv
+mv opencv_contrib-4.2.0 opencv_contrib
 ```
 
 # Build With cuda and cudnn for x86
+> Check opencv source code version  
+> `cat bin/include/opencv4/opencv2/core/version.hpp`
+ 
+> Check option with `cmake -LA`
 ```
-cmake -GNinja -DCMAKE_BUILD_TYPE=Release \
+cmake -DCMAKE_BUILD_TYPE=Release \
 -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
 -D INSTALL_TESTS=OFF \
 -D INSTALL_C_EXAMPLES=OFF \
@@ -140,106 +83,60 @@ cmake -GNinja -DCMAKE_BUILD_TYPE=Release \
 -D OPENCV_SKIP_PYTHON_LOADER=ON \
 -D CUDNN_INCLUDE_DIR=/usr/include \
 -D CUDNN_LIBRARY=/usr/lib/x86_64-linux-gnu/libcudnn.so.7.6.5 \
+-D OPENCV_DNN_CUDA=ON \
+-D BUILD_opencv_cudacodec=OFF \
+-D WITH_OPENCL=OFF \
+-D WITH_IMGCODEC_HDR=OFF \
+-D WITH_IMGCODEC_SUNRASTER=OFF \
+-D WITH_IMGCODEC_PXM=OFF \
+-D WITH_IMGCODEC_PFM=OFF \
 ..
 ```
 
+### Build and Install
+```
+make -j8
+sudo make install
+sudo ldconfig
+```
+
+
+## Fix Python
+- Copy / Create link 
+  - from `/usr/lib/python3/dist-packages/cv2/` to 
+  - to `~/.local/lib/python3.6/site-packages/cv2`
+  - or virtualenv folder
+
 ```bash
-python3 -m sysconfig
-# include
-python3 -c 'import sysconfig; print(sysconfig.get_paths()["include"])'
-# lib
-python3 -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])'
-# /usr/lib/python3.6/site-packages
-#
-which python3
-#/usr/bin/python3
-
-
+ln -s /usr/lib/python3/dist-packages/cv2.cpython-36m-x86_64-linux-gnu.so cv2.so
+# Run python3
+>>> import cv2
+>>> cv2.__version__
+'4.2.0'
+# If other version loaded , check module path with
+>>> cv2.__file__
+# Remove old .so version and try again
 ```
 
-```
-update-alternatives: using /usr/include/x86_64-linux-gnu/cudnn_v7.h to provide /usr/include/cudnn.h (libcudnn) in auto mode
-```
+## Verify installation 
+- Run `yolo` on cuda backend
 
-# Version 4.2
-# cuda support
+[Sample code of testing functions of OpenCV with CUDA-enabled DNN modules. ](https://github.com/Cuda-Chen/opencv-dnn-cuda-test)
 
-```
- cd ~
-$ wget -O opencv.zip https://github.com/opencv/opencv/archive/4.2.0.zip
-$ wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.2.0.zip
-$ unzip opencv.zip
-$ unzip opencv_contrib.zip
-$ mv opencv-4.2.0 opencv
-$ mv opencv_contrib-4.2.0 opencv_contrib
-```
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# Build Static opencv
 
-![](/images/2020-03-26-07-25-53.png)
+## using pkg-config
+```bash
+export PKG_CONFIG_PATH ~/opencv/bin/pkgconfig/opencv4.pc
 
-```
-cmake -D CMAKE_BUILD_TYPE=RELEASE \
-	-D CMAKE_INSTALL_PREFIX=/usr/local \
-	-D INSTALL_PYTHON_EXAMPLES=OFF \
-	-D INSTALL_C_EXAMPLES=OFF \
-	-D OPENCV_ENABLE_NONFREE=OFF \
-    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
-	-D PYTHON_EXECUTABLE=/usr/bin/python3 \
-	-D BUILD_EXAMPLES=OFF \
-    -D WITH_GSTREAMER=ON \
-    -D BUILD_IPP_IW=OFF \
-    -D WITH_IP=OFF \
-    -D BUILD_JAVA=OFF \
-    -D BUILD_opencv_java_bindings_generator=OFF \
-    -D BUILD_opencv_dnn=ON \
-    -D BUILD_opencv_python2=OFF \
-    -D WITH_JASPER=OFF \
-    -D WITH_ADE=OFF \
-    -D WITH_VTK=OFF \
-    -D OPENCV_GENERATE_PKGCONFIG=ON \
-    -D BUILD_opencv_xfeatures2d=OFF \
-    -D CUDNN_INCLUDE_DIR=/usr/include/aarch64-linux-gnu \
-    -D CUDNN_LIBRARY=/usr/lib/x86_64-linux-gnu/libcudnn.so.7.6.5 \
-    -D WITH_CUDA=ON \
-	-D WITH_CUDNN=ON \
-	-D OPENCV_DNN_CUDA=ON \
-	-D ENABLE_FAST_MATH=1 \
-	-D CUDA_FAST_MATH=1 \
-	-D CUDA_ARCH_BIN=6.2 \
-	-D WITH_CUBLAS=1 \
-    ..
+pkg-config --cflags opencv4 --libs --static
+
+g++ main.cpp -static -static-libgcc -std=c++11 \
+`pkg-config --cflags opencv4 --libs --static`
 ```
 
-
-```
-import time
-
-class EntryExit(object):
-    def __init__(self, cb=None):
-        pass
-
-    
-
-    def __call__(self, f):
-        def wrapper(*arg, **kwargs):
-            f(*arg, **kwargs)
-
-        return wrapper
-
-class Obj():
-    @staticmethod
-    def cb():
-        pass
-
-    @EntryExit(cb)
-    def func1(self, arg1):
-        print(f"{arg1}")
-
-    @EntryExit()
-    def func2(self, arg1):
-        print(f"{arg1}")
-
-if __name__ == "__main__":
-    o = Obj()
-    o.func1(1)
-    o.func2(2)
-```
+# Reference
+- [Build OpenCV DNN Module with Nvidia GPU Support on Ubuntu 18.04](https://cuda-chen.github.io/image%20processing/programming/2020/02/22/build-opencv-dnn-module-with-nvidia-gpu-support-on-ubuntu-1804.html)
