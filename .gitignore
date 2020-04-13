@@ -12,3 +12,4 @@ package.json
 .idea/
 *.ipch
 _config.yml
+.jekyll-cache
