@@ -24,8 +24,9 @@ description: MATLAB and simulink
 </div>
 <hr/>
 {% assign menu_links=site.data.links["matlab"] %}
+{{ menu_links }}
 {% for link in menu_links %}
-    <li><a href="{{ link.url }}">{{ link.name  }}</a></li>
+    <li><a href="{{ link.url }}">{{ link.title  }}</a></li>
     {% endfor %}
 <hr />
 <table>
