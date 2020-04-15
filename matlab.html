@@ -23,10 +23,14 @@ description: MATLAB and simulink
     {% endfor %}
 </div>
 <hr/>
+<lu>
 {% assign menu_links=site.data.links["matlab"] %}
-{% for link in menu_links %}
-    <li><a href="{{ link.url }}">{{ link.name  }}</a></li>
-    {% endfor %}
+{% for item in menu_links %}
+{% assign link=item[0] %}
+{{ link }}
+<li><a href="{{ link.url }}">{{ link.title  }}</a></li>
+{% endfor %}
+</lu>
 <hr />
 <table>
     <tr>
