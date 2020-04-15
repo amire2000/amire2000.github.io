@@ -1,0 +1,14 @@
+{
+    "cpp": {
+        "cmake_examples": {
+            "title": "cmake examples",
+            "url": "https://github.com/ttroy50/cmake-examples"
+        }
+    },
+    "matlab": {
+        "s-function": {
+            "title": "s-func",
+            "url": "https://www.mathworks.com/help/simulink/sfg/what-is-an-s-function.html"
+        }
+    }
+}

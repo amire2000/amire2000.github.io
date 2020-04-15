@@ -6,7 +6,7 @@ description: MATLAB and simulink
 <section id="banner" style="height: 100px">
     <table>
         <tr>
-            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/vscode.png"/></td>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/matlab.png"/></td>
             <td style="color: #fff;text-align: left;vertical-align: middle">
                 <h2>MATLAB: <em> Matrix LAB</em></h2>
             
@@ -22,7 +22,11 @@ description: MATLAB and simulink
     {% include 2columns.html %}
     {% endfor %}
 </div>
-
+<hr/>
+{% assign menu_links=site.data.links["matlab"] %}
+{% for link in menu_links %}
+    <li><a href="{{ link.url }}">{{ link.name  }}</a></li>
+    {% endfor %}
 <hr />
 <table>
     <tr>

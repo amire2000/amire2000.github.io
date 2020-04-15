@@ -78,11 +78,11 @@
       "image": "video.png",
       "description": "video"
     },
-    "unity": {
-      "title": "Unity",
-      "page": "unity",
-      "image": "unity_icon.jpg",
-      "description": "Unity"
+    "matlab": {
+      "title": "matlab",
+      "page": "matlab",
+      "image": "matlab.png",
+      "description": "matlab and simulink"
     },
     "web": {
       "title": "web",
@@ -90,7 +90,7 @@
       "image": "unity_icon.jpg",
       "description": "Unity"
     },
-    "web": {
+    "dotnet": {
       "title": ".Net",
       "page": "dotnet",
       "image": "unity_icon.jpg",
