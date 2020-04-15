@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /about/
+permalink: /about2/
 ---
 <section id="banner" style="height: 100px; width:1024px">
     <table >
