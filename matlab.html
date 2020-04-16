@@ -27,8 +27,8 @@ description: MATLAB and simulink
 <lu>
 {% assign menu_links=site.data.links["matlab"] %}
 {% for item in menu_links %}
-{% assign link=item[0] %}
-<li><a href="{{ link['url'] }}">{{ link['title'] }}</a></li>
+{% assign link=item[1] %}
+<li><a href="{{ link.url }}">{{ link.title }}</a></li>
 {% endfor %}
 </lu>
 </div>
