@@ -268,3 +268,6 @@ set(CMAKE_CXX_STANDARD 11)
 ```
 set(CMAKE_EXE_LINKER_FLAGS "-static")
 ```
+
+# References
+- [cmake-examples](https://github.com/ttroy50/cmake-examples)
