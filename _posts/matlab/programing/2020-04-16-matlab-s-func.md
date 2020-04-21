@@ -137,6 +137,95 @@ Create module usage out S-function connect input and outputs
 &nbsp;  
 &nbsp;  
 &nbsp;  
+# C S-Function
+sfuntmpl_basic.c
+
+## function name
+```cpp
+/*
+ * You must specify the S_FUNCTION_NAME as the name of your S-function
+  */
+
+#define S_FUNCTION_NAME  demo_sfunc
+#define S_FUNCTION_LEVEL 2
+```
+
+## Minimal code example
+- Has 1 input port
+- Do some calc
+- Has 1 Output port
+
+```cpp
+#define S_FUNCTION_NAME simple1
+#define S_FUNCTION_LEVEL 2
+
+#include "simstruc.h"
+
+// Specify the number of inputs, outputs, states, parameters, 
+// and other characteristics of the C MEX S-function
+static void mdlInitializeSizes(SimStruct *S)
+{
+    ssSetNumSFcnParams(S, 0);  /* Number of expected parameters */
+   
+    ssSetNumContStates(S, 0);
+    ssSetNumDiscStates(S, 0);
+
+    if (!ssSetNumInputPorts(S, 1)) return;
+    ssSetInputPortWidth(S, 0, 1);
+    ssSetInputPortRequiredContiguous(S, 0, true); 
+//      Setting direct feedthrough to 0 for an input 
+//      port is equivalent to saying that the corresponding input port signal is not used in mdlOutputs
+    ssSetInputPortDirectFeedThrough(S, 0, 1);
+
+    if (!ssSetNumOutputPorts(S, 1)) return;
+    ssSetOutputPortWidth(S, 0, 1);
+
+
+}
+
+// Specify the sample rates at which this C MEX S-function operates
+static void mdlInitializeSampleTimes(SimStruct *S)
+{
+    ssSetSampleTime(S, 0, CONTINUOUS_SAMPLE_TIME);
+    ssSetOffsetTime(S, 0, 0.0);
+}
+
+static void mdlOutputs(SimStruct *S, int_T tid)
+{
+//     Get the address of a contiguous signal entering an input port
+    int input_port_index = 0;
+    int output_port_index = 0;
+    const real_T *u = (const real_T*) ssGetInputPortSignal(S, input_port_index);
+    real_T       *y = ssGetOutputPortSignal(S, output_port_index);
+    y[0] = u[0] * 2;    
+}
+
+static void mdlTerminate(SimStruct *S)
+{
+    
+}
+#ifdef  MATLAB_MEX_FILE    /* Is this file being compiled as a MEX-file? */
+#include "simulink.c"      /* MEX-file interface mechanism */
+#else
+#include "cg_sfun.h"       /* Code generation registration function */
+#endif
+```
+
+### Build
+```
+mex simple1.c
+```
+
+### Simulink usage
+![](/images/2020-04-18-10-42-26.png)
+
+![](/images/2020-04-18-10-43-12.png)
+
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # Reference
+- [C/C++ S-Function Basics](https://www.mathworks.com/help/simulink/s-function-concepts-c.html)
 - [Simulink Level2 S Function](https://www.youtube.com/watch?v=X-qVign6BLg&list=PLY-xW01z25LXIwYbiDbuTi9zhzKZkbZyv&index=2)
 - [What Is an S-Function?](https://www.mathworks.com/help/simulink/sfg/what-is-an-s-function.html)
