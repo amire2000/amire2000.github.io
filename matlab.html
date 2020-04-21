@@ -47,7 +47,7 @@ description: MATLAB and simulink
 
 <div class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'matlab'%}
+    {% if post.categories contains 'matlab' or contains 'simulink' %}
     {% include list_ng.html %}
     {% endif %}
     {% endfor %}
