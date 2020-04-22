@@ -57,5 +57,36 @@ Arduino hello world blinking LED
 &nbsp;  
 &nbsp;  
 ## Module
+### Digital output
+- Blink internal LED
+
 
 ![](/images/2020-04-21-14-13-18.png)
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
+### Analog Input
+- Read value from potentiometer
+
+![](/images/2020-04-22-22-52-55.png)
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
+### Digital input
+- Read switch state
+  - Pull-up
+  - Pull-down
+
+![](/images/2020-04-22-22-57-28.png)
+
+## TTL level ant other
+- 5V TTL
+- 3.3 TTL
+
+
+[Logic Levels ](https://learn.sparkfun.com/tutorials/logic-levels/ttl-logic-levels)
+
+![](/images/2020-04-22-23-05-06.png)
+- image from [sparkfun](https://learn.sparkfun.com/tutorials/logic-levels/ttl-logic-levels)
