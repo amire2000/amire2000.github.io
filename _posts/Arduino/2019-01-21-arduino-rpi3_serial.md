@@ -1,8 +1,11 @@
 ---
 layout: post
 title: Arduino RPi3 Serial
-categories: Arduino
-tags: [arduino, serial, rpi3]
+categories: arduino
+tags: [serial, rpi3]
+public: true
+description:
+image: Connect arduino to RaspberryPi over serial port
 ---
 
 ![](/images/2019-01-21-20-33-40.png)
