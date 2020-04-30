@@ -1,0 +1,36 @@
+---
+layout: default
+permalink: /sensors/
+description: sensors
+---
+<section id="banner" style="height: 100px">
+    <table>
+        <tr>
+            <td width="20%"></td>
+            <td style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>Sensors: <em> Fil the physical</em></h2>
+            
+            </td>
+        </tr>
+    </table>
+</section>
+
+
+<div class="row">
+    {% assign i=0 %}
+    {% for post_item in site.data.sensors %}
+    {% include 2columns.html %}
+    {% endfor %}
+</div>
+
+<hr />
+<!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
+
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'sensors'%}
+    {% include list.html %}
+    {% endif %}
+    {% endfor %}
+</div>
