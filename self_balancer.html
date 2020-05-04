@@ -1,0 +1,30 @@
+---
+layout: default
+permalink: /self_balancer/
+description: self balancer
+---
+<img style="height: 120px" src="{{ site.baseurl }}/images/turtle.png"/>
+&nbsp;
+
+
+
+<hr />
+<table>
+    <tr>
+        <td>
+            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','mini' | where: 'categories','balancing' | map: 'tags' | join: ','  | split: ',' | sort %}
+            {% include tags_func.html %}
+        </td>
+    </tr>
+    
+    </table>
+    
+    <hr />
+
+
+<div class="posts">
+    {% assign posts =  site.posts | where: 'public','true' | where: 'categories','mini' | where: 'categories','balancing' %}
+    {% for post in posts %}
+    {% include list_ng.html %}
+    {% endfor %}
+</div>

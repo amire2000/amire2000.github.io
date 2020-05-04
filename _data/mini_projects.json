@@ -10,6 +10,12 @@
       "page": "minifollow",
       "image": "follow_line.jpeg",
       "description": "mini"
+    },
+    "balancer": {
+      "title": "self balancer",
+      "page": "self_balancer",
+      "image": "follow_line.jpeg",
+      "description": "mini"
     }
 
   }
