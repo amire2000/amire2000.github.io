@@ -16,7 +16,7 @@ Plugins allow complete access to the physical properties of models and their und
 - [Model](#model-source)
   - header
   - source
-  - meson build
+  - cmake / meson build
 - [Sdf](#modelsdf)
   - Model sdf
   - World
@@ -92,6 +92,22 @@ void DemoPlugin::OnUpdate()
 
 GZ_REGISTER_MODEL_PLUGIN(DemoPlugin)
 } // namespace gazebo
+```
+
+### cmake
+```bash
+# cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+
+# Find Gazebo
+find_package(gazebo REQUIRED)
+include_directories(${GAZEBO_INCLUDE_DIRS})
+link_directories(${GAZEBO_LIBRARY_DIRS})
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
+
+# Build our plugin
+add_library(model_plugin SHARED model_plugin.cpp)
+target_link_libraries(model_plugin ${GAZEBO_libraries})
+install(TARGETS model_plugin DESTINATION ${PROJECT_SOURCE_DIR}/bin)
 ```
 
 ### Build with meson
