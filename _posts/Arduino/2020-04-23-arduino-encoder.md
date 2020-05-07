@@ -6,9 +6,9 @@ tags: [encoder]
 public: true
 ---
 # LAB
-- Encoder
-- DC Motor and H-Bridge
-- Arduino PID 
+- [Encoder](#encoder)
+- [DC Motor and H-Bridge](#dc-motors-and-h-bridge)
+- [Arduino PID controller](#arduino-pid-controller)
 
 &nbsp;  
 &nbsp;  
@@ -81,6 +81,72 @@ The KY-040 rotary encoder is a rotary input device that provides an indication o
    pinALast = aVal;
  } 
 ```
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# DC-Motors and H-Bridge
+An H-bridge is built of four switches that control the flow of current to a load
+
+![](/images/2020-04-24-00-43-01.png)
+
+![](/images/2020-04-24-00-43-37.png)
+images from digilentinc.com
+&nbsp;  
+&nbsp;  
+## L298N
+The L298N is a dual H-Bridge motor driver which allows speed and direction control of two DC motors at the same time. The module can drive DC motors that have voltages between 5 and 35V, with a peak current up to 2A.
+![](/images/2020-04-24-00-39-32.png)
+
+## Wire
+> Power supply 12 vdc (5v occur some undefined behavior)
+
+> Share `GND` between Bridge and Arduino
+
+
+- 3 -> enb
+- 5 -> in3
+- 4 -> in4
+
+## Code
+- Control speed by using enable pin
+  
+```c
+int enB = 3;
+int in3 = 5;
+int in4 = 4;
+
+void setup() {
+
+  pinMode(enB, OUTPUT);
+  pinMode(in3, OUTPUT);
+  pinMode(in4, OUTPUT);
+  
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);
+}
+
+void loop() {
+  speedControl();
+  delay(1000);
+}
+
+void speedControl() {
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);
+  
+  for (int i = 30; i < 100; i++) {
+    analogWrite(enB, i);
+    delay(200);
+  }
+
+}
+```
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# Arduino PID Controller
+
 &nbsp;  
 &nbsp;  
 &nbsp;  

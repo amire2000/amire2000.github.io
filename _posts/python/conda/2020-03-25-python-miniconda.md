@@ -43,7 +43,10 @@ conda deactivate
 - B : Insert cell below
 - x,c,v: Cut, Copy, Paste
 - p : open command pallette
-- Shift + Enter : 
+- Shift + Enter : Run Current cell and insert a new cell below
+- Ctrl + Enter: Run current cell
+- d d: Delete cell
+- 
 
 # Misl
 Using miniconda and xeua-cling to run C++ jupyter notebook
