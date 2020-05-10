@@ -9,6 +9,96 @@ image: urdf.png
 ---
 The Universal Robotic Description Format (URDF) is an XML file format used in ROS to describe all elements of a robot.
 
+# URDF
+- Gazebo convert URDF to SDF
+
+## check
+```bash
+sudo apt-get install liburdfdom-tools
+#
+# check_urdf <urdf file>
+# for example
+check_urdf basic.urdf
+```
+
+## urdf root
+```xml
+<?xml version="1.0" ?>
+<robot name="mobilerobot">
+</robot>
+```
+
+## link
+- visual
+- collision
+- inertial
+
+
+### inertia
+> Gazebo work in SI units (mass->kg length->m moment of inertia-> Kg*m^2)
+
+### Calc demo
+- [Online](https://amesweb.info/inertia/moment-of-inertia-of-rectangular-plate.aspx)
+
+![](/images/2020-05-10-06-18-22.png)
+
+```xml
+<link>
+...
+<inertial>
+			<mass value="10"/>
+			<inertia 
+        ixx="0.833"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.833"
+        iyz="0.0"
+        izz="1.667"/>
+</link>
+```
+
+#### Origin
+- Set Center of mass
+- Check inertail origin
+
+From Gazebo menu check
+- Wirefream
+- Center of mass
+- Inertias
+
+
+```xml
+gz model --spawn-file=basic.urdf --model-name=basic 
+<inertial>
+    <origin xyz="0.0 0.0 -0.02"/>
+    <mass value="0.3"/>
+    <inertia ixx="0.000433" ixy="0.0" ixz="0.0" iyy="0.00025" iyz="0.0" izz="0.000672"/>
+</inertial>
+
+gz model --spawn-file=basic.urdf --model-name=basic -y 0.2
+<inertial>
+    <mass value="0.3"/>
+    <inertia ixx="0.000433" ixy="0.0" ixz="0.0" iyy="0.00025" iyz="0.0" izz="0.000672"/>
+</inertial>
+
+gz model --spawn-file=basic.urdf --model-name=basic -y 0.4
+<inertial>
+    <origin xyz="0.0 0.0 0.02"/>
+    <mass value="0.3"/>
+    <inertia ixx="0.000433" ixy="0.0" ixz="0.0" iyy="0.00025" iyz="0.0" izz="0.000672"/>
+</inertial>
+
+
+
+
+```
+
+![](/images/2020-05-10-23-19-09.png)
+
+## Demo
+```
+gz model --spawn-file=basic.urdf --model-name=basic
+```
 # urdf and gazebo
 [http://gazebosim.org](http://gazebosim.org/tutorials?tut=ros_urdf)   
 To use a URDF file in Gazebo, some additional simulation-specific tags must be added to work properly with Gazebo
@@ -209,6 +299,7 @@ GZ_REGISTER_MODEL_PLUGIN(ModelMove)
 } // namespace gazebo
 ```
 # Reference
+- [Design URDF](https://gbiggs.github.io/rosjp_urdf_tutorial_text/mobile_robot_urdf.html#%E3%82%B8%E3%83%A7%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E5%AE%9A%E7%BE%A9)
 - [Basic example of ROS URDF Pan / Tilt system](https://pinkwink.kr/1007)
 - [URDF in Gazebo](http://gazebosim.org/tutorials?tut=ros_urdf)
 - [pygazebo](https://pypi.org/project/pygazebo/)
