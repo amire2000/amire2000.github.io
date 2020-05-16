@@ -38,9 +38,7 @@ check_urdf basic.urdf
 > Gazebo work in SI units (mass->kg length->m moment of inertia-> Kg*m^2)
 
 ### Calc demo
-- [Online](https://amesweb.info/inertia/moment-of-inertia-of-rectangular-plate.aspx)
-
-![](/images/2020-05-10-06-18-22.png)
+![](/images/2020-05-11-18-20-55.png)
 
 ```xml
 <link>
