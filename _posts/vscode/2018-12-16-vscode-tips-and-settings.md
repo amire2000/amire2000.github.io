@@ -7,6 +7,12 @@ public: true
 description: vscode settings extension tips and trouble shotting
 image: vscode.png
 ---
+<style>
+img[src*='#icon'] {
+    width: 100px;
+    height: 100px;
+}
+</style>
 
 # Content
 - [Extensions](#extensions)
@@ -18,6 +24,30 @@ image: vscode.png
 &nbsp;  
 &nbsp;  
 # Extensions
+## Remote Development
+![](/images/2020-05-30-09-52-36.png#icon)
+
+An extension pack that lets you open any folder in a container, on a remote machine, or in WSL and take advantage of VS Code's full feature set.  
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
+
+&nbsp;  
+&nbsp;  
+## Deploy (Reloaded)
+![](/images/2020-05-30-09-55-11.png#icon)  
+
+Deploys files of a workspace to a destination.  
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=mkloubert.vscode-deploy-reloaded)
+&nbsp;  
+&nbsp;  
+
+## Code Spell Checker
+![](/images/2020-05-30-09-58-04.png#icon)
+
+Spelling checker for source code  
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
+&nbsp;  
+&nbsp;  
+
 ## Better Comments
 
 Improve your code commenting by annotating with alert, informational, TODOs, and more!
