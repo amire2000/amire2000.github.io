@@ -184,6 +184,14 @@ plt.imshow(img)
 
 ![](/images/2020-05-31-07-35-16.png)
 
+# tiny
+```
+./darknet detector test cfg/coco.data \
+cfg/yolov3-tiny.cfg \
+yolov3-tiny.weights \
+-ext_output \
+data/dog.jpg
+```
 
 &nbsp;  
 &nbsp;  
