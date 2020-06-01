@@ -143,8 +143,93 @@ sudo apt install python-gst-1.0
 sudo apt install gir1.2-gst-rtsp-server-1.0
 ```
 
-- using demo code from []()
+```python
+import gi
+gi.require_version('Gst','1.0')
+gi.require_version('GstVideo', '1.0')
+gi.require_version('GstRtspServer', '1.0')
+from gi.repository import GObject, Gst, GstVideo, GstRtspServer, GstRtsp
 
+Gst.init(None)
+
+mainloop = GObject.MainLoop()
+server = GstRtspServer.RTSPServer()
+mounts = server.get_mount_points()
+factory = GstRtspServer.RTSPMediaFactory()
+factory.set_launch('( videotestsrc is-live=1 ! x264enc speed-preset=ultrafast tune=zerolatency ! rtph264pay name=pay0 pt=96 )')
+mounts.add_factory("/test", factory)
+server.attach(None)
+
+print "stream ready at rtsp://127.0.0.1:8554/test"
+mainloop.run()
+```
+&nbsp;  
+&nbsp;  
+&nbsp;  
+### RTSP Multicast and python binding
+- Translate code from [test-multicast.c](https://github.com/GStreamer/gst-rtsp-server/blob/master/examples/test-multicast.c)
+  - for testing just run `./test-multicast` from examples folder
+- using API mapping [RTSP mapping C to python](https://lazka.github.io/pgi-docs/GstRtspServer-1.0/mapping.html)
+
+```python
+import gi
+gi.require_version('Gst','1.0')
+gi.require_version('GstVideo', '1.0')
+gi.require_version('GstRtspServer', '1.0')
+from gi.repository import GObject, Gst, GstVideo, GstRtspServer, GstRtsp
+
+Gst.init(None)
+
+mainloop = GObject.MainLoop()
+server = GstRtspServer.RTSPServer()
+mounts = server.get_mount_points()
+factory = GstRtspServer.RTSPMediaFactory()
+factory.set_launch('( videotestsrc is-live=1 pattern=ball ! x264enc speed-preset=ultrafast tune=zerolatency ! rtph264pay name=pay0 pt=96 )')
+# Configure if media created from this factory can be shared between clients.
+factory.set_shared(True)
+# declare multicast address pool
+pool = GstRtspServer.RTSPAddressPool.new()
+# When ttl > 0, min_address and max_address should be multicast addresses.
+# min_address (str) – a minimum address to add
+# max_address (str) – a maximum address to add
+# min_port (int) – the minimum port
+# max_port (int) – the maximum port
+# ttl (int) – a TTL or 0 for unicast addresses
+pool.add_range("224.3.0.0", "224.3.0.10", 5000, 5010, 16)
+factory.set_address_pool(pool)
+
+# stream GstRtsp.data over UDP multicast
+proto = GstRtsp.RTSPLowerTrans.UDP_MCAST 
+factory.set_protocols(proto)
+
+# mount
+mounts.add_factory("/test", factory)
+
+server.attach(None)
+
+print "stream ready at rtsp://127.0.0.1:8554/test"
+mainloop.run()
+```
+
+### Test client
+```
+gst-launch-1.0 rtspsrc location=rtsp://<pi ip>:8554/test latency=0 buffer-mode=auto \
+! decodebin \
+! videoconvert \
+! autovideosink
+
+```
+
+- RTSP Session
+  - note `setup` section 
+
+
+![](/images/2020-06-01-06-31-12.png)
+
+
+- Play stream with `vlc` and `gstreamer rtspsrc`
+
+![](/images/2020-06-01-06-33-16.png)
 # Reference
 - [RTSP streaming from Raspberry PI](https://gist.github.com/neilyoung/8216c6cf0c7b69e25a152fde1c022a5d)
 - [How to Enable /etc/rc.local with Systemd](https://www.linuxbabe.com/linux-server/how-to-enable-etcrc-local-with-systemd)
