@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Getting Started With Stm32 Using Arduino IDE
-categories: hw
+title: 01 - Getting Started With Stm32 Using Arduino IDE
+categories: [hw, stm32]
 tags: [stm32, arduino]
 public: true
 image: stm32icon.png
@@ -46,10 +46,9 @@ description: Using STM32 as arduino, Config arduino IDE and run first blink app
 
 ## Check ide Settings
 
-- Board: 
+- Board: Generic STM32F103C6/fake STM32F103C8
 - Upload Method: Serial
-- CPU Speed
-- Port:
+
   
 ![](/images/arduino-stm-settings.png)
 
@@ -89,7 +88,7 @@ void loop() {
 &nbsp;  
 &nbsp;  
 &nbsp;  
-# To check
+# Using RPI as Writer
 - usb connection
 
 ![](/images/2020-02-06-21-17-13.png)
