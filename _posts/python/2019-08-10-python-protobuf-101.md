@@ -19,6 +19,7 @@ Protocol Buffers is a way to serialize structured data into a binary stream in a
   - [Array](#array)
   - [Nested](#nestedimport-message)
   - [Enums](#enums)
+  - [map](#map)
   - [Packages and Import]
 - [API](#api)
 - [Tips](#Tips)
@@ -223,6 +224,87 @@ print(json_format.MessageToJson(m))
   "phoneNumber": "12345",
   "type": "WORK"
 }
+```
+&nbsp;  
+&nbsp;  
+&nbsp;  
+## map
+### proto msg
+```
+syntax = "proto3";
+
+message DemoMap {
+    map<int32, string> map1 = 1;
+}
+```
+
+### code
+```python
+from msg.map_msg_pb2 import DemoMap
+
+msg = DemoMap()
+msg.map1[1] = "a"
+msg.map1[2] = "b"
+buf = msg.SerializeToString()
+
+msg_out = DemoMap()
+msg_out.ParseFromString(buf)
+```
+
+### result
+protobuf map behave like python dictionary
+
+```python
+# get element by key
+print(f"print key:1: {msg_out.map1[1]}")
+
+# get keys
+for k in msg_out.map1.keys():
+    print(f"print key: {k}")
+
+# get values
+for v in msg_out.map1.values():
+    print(f"print val: {v}")
+
+
+for k, v in msg_out.map1.items():
+    print(f"print key: {k} val: {v}")
+```
+&nbsp;  
+&nbsp;  
+## map demo
+- hold protobuf message as map value type
+### proto msg
+```
+syntax = "proto3";
+
+message DemoData {
+    int32 f1 = 1;
+    string f2 = 2;
+}
+
+message Demo2Map {
+    map<string, DemoData> map1 = 1;
+}
+```
+
+### code
+```python
+from msg.map_msg_pb2 import Demo2Map
+from msg.map_msg_pb2 import DemoData
+
+msg = Demo2Map()
+inner = DemoData()
+inner.f1 = 1
+inner.f2 = "data"
+
+msg.map1["key1"].CopyFrom(inner) 
+```
+
+### result
+```python
+# print inner field
+print(msg.map1["key1"].f1)
 ```
 &nbsp;  
 &nbsp;  
