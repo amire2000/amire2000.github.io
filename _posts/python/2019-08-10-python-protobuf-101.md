@@ -20,6 +20,7 @@ Protocol Buffers is a way to serialize structured data into a binary stream in a
   - [Nested](#nestedimport-message)
   - [Enums](#enums)
   - [map](#map)
+  - [struct](#struct)
   - [Packages and Import]
 - [API](#api)
 - [Tips](#Tips)
@@ -274,7 +275,9 @@ for k, v in msg_out.map1.items():
 &nbsp;  
 ## map demo
 - hold protobuf message as map value type
+
 ### proto msg
+
 ```
 syntax = "proto3";
 
@@ -289,6 +292,7 @@ message Demo2Map {
 ```
 
 ### code
+
 ```python
 from msg.map_msg_pb2 import Demo2Map
 from msg.map_msg_pb2 import DemoData
@@ -302,13 +306,85 @@ msg.map1["key1"].CopyFrom(inner)
 ```
 
 ### result
+
 ```python
 # print inner field
 print(msg.map1["key1"].f1)
 ```
 &nbsp;  
 &nbsp;  
+&nbsp;
+## struct  
+- Using Struct message as a stand alone message
+- Using Struct type as part of other message
+
+### Code
+```python
+from google.protobuf.struct_pb2 import Struct
+# init
+s = Struct()
+s.update({"a": 1})
+#results
+print(s)
+print(s.fields["a"])
+print(s["a"])
+```
+
+### Results
+```xml
+<!-- print(s) -->
+fields {
+  key: "a"
+  value {
+    number_value: 1.0
+  }
+}
+
+<!-- s.fields["a"] -->
+number_value: 1.0
+
+<!-- print(s["a"]) -->
+1.0
+```
+
+## Struct as member
+```json
+syntax="proto3";
+
+import "google/protobuf/struct.proto";
+
+message TestStruct{
+    google.protobuf.Struct data = 1;
+}
+```
+
+```python
+from msg import struct_t_pb2
+
+m = struct_t_pb2.TestStruct()
+m.data.update({"a": 1, "b": "2", })
+m.data["c"] = True
+m.data["d"] = [1, 2]
+m.data["e"] = None
+m.data["f"] = {"k1":2, "k3":4}
+
+print(m.data["a"])
+print(m.data["b"])
+print(m.data["c"])
+print(m.data["d"][0])
+print(m.data["e"])
+print(m.data["f"]["k3"])
+# result
+1.0
+2
+True
+1.0
+None
+4.0
+```
 &nbsp;  
+&nbsp;  
+&nbsp;
 # API
 
 ```python
