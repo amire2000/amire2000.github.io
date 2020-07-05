@@ -140,3 +140,64 @@ g++ main.cpp -static -static-libgcc -std=c++11 \
 
 # Reference
 - [Build OpenCV DNN Module with Nvidia GPU Support on Ubuntu 18.04](https://cuda-chen.github.io/image%20processing/programming/2020/02/22/build-opencv-dnn-module-with-nvidia-gpu-support-on-ubuntu-1804.html)
+
+
+```
+cmake \
+-DCMAKE_BUILD_TYPE=Release \
+-D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
+-D INSTALL_TESTS=OFF \
+-D INSTALL_C_EXAMPLES=OFF \
+-D BUILD_EXAMPLES=OFF \
+-D BUILD_opencv_world=ON \
+-D BUILD_IPP_IW=OFF \
+-D WITH_IP=OFF \
+-D WITH_1394=OFF \
+-D WITH_TIFF=OFF \
+-D BUILD_JAVA=OFF \
+-D BUILD_opencv_java_bindings_generator=OFF \
+-D BUILD_opencv_dnn=ON \
+-D BUILD_opencv_python2=OFF \
+-D WITH_JASPER=OFF \
+-D WITH_ADE=OFF \
+-D WITH_VTK=OFF \
+-D OPENCV_GENERATE_PKGCONFIG=ON \
+-D BUILD_opencv_xfeatures2d=ON \
+-D WITH_CUDA=ON \
+-D WITH_CUDNN=ON \
+-D CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-10.0/ \
+-D CUDA_FAST_MATH=ON \
+-D WITH_CUBLAS=ON \
+-D CUDA_ARCH_BIN=6.1 \
+-D CUDA_ARCH_PTX=7.5 \
+-D WITH_NVCUVID=ON \
+-D WITH_OPENGL=OFF \
+-D WITH_MFX=OFF \
+-D BUILD_opencv_python2=OFF \
+-D BUILD_opencv_python3=ON \
+-D PYTHON3_EXECUTABLE=$(which python3) \
+-D PYTHON_INCLUDE_DIR=$(python3 -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
+-D PYTHON_INCLUDE_DIR2=$(python3 -c "from os.path import dirname; from distutils.sysconfig import get_config_h_filename; print(dirname(get_config_h_filename()))") \
+-D PYTHON_LIBRARY=$(python3 -c "from distutils.sysconfig import get_config_var;from os.path import dirname,join ; print(join(dirname(get_config_var('LIBPC')),get_config_var('LDLIBRARY')))") \
+-D PYTHON3_NUMPY_INCLUDE_DIRS=$(python3 -c "import numpy; print(numpy.get_include())") \
+-D PYTHON3_PACKAGES_PATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())") \
+-D WITH_QT=OFF \
+-D WITH_TBB=OFF \
+-D WITH_V4L=ON \
+-D WITH_EIGEN=ON \
+-D OPENCV_SKIP_PYTHON_LOADER=ON \
+-D CUDNN_INCLUDE_DIR=/usr/include/aarch64-linux-gnu/ \
+-D CUDNN_LIBRARY=/usr/lib/aarch64-linux-gnu/libcudnn.so.7.6.3 \
+-D WITH_OPENCL=OFF \
+-D OPENCV_DNN_OPENCL=OFF \
+-D OPENCV_ENABLE_NONFREE=ON \
+-D CPACK_BINARY_DEB=ON \
+-D WITH_NVCUVID=ON \
+-D BUILD_opencv_cudacodec=ON \
+..
+
+```
+
+```
+pkg-config --variable pc_path pkg-config
+```
