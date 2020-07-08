@@ -20,38 +20,84 @@ description: Running Ardupilot SITL with gazebo and control the Rover using RC o
  
 # Install Ardupilot SITL
 ## Setup environment
-- Lubuntu 18.04
+- ubuntu 18.04 
+  - ubuntu 20.04 (create symbolic link python -> python3)
 - Gazebo 9.0 (Installed with ROS melodic)
 - Installed folder ~/apm
 
 ## Install Ardupilot
 - Clone from github
+- pip3 pymavlink and mavproxy
+
 ```bash
 git clone https://github.com/ArduPilot/ardupilot
 cd ardupilot
 git submodule update --init --recursive
 ```
-> Note: [Git submodels](http://ardupilot.org/dev/docs/git-submodules.html)
 
 - Add `PATH` to .bashrc
+
 ```
 export PATH=$PATH:$HOME/ardupilot/Tools/autotest
 ```
 
-> Note: check [Setting up the Build Environment ](http://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux) for more setting instructions
   
 > Note: permission: add  user to dialout group  
 > `sudo usermod -a -G dialout $USER`
 
+&nbsp;  
+&nbsp;  
 ## First run
 ```bash
-cd ardupilot/APMRover2
+cd ardupilot/Rover
 # wipe the virtual EEPROM and load the right default parameters for your vehicle
 sim_vehicle.py -w
 ```
 &nbsp;  
 &nbsp;  
 &nbsp;  
+# Run SITL
+```
+cd ardupilot/APMRover2
+sim_vehicle.py --console
+```
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# DroneKit
+- Create Virtual Emv
+
+
+```bash
+python3 -m venv apm
+source apm/bin/activate
+pip install dronekit
+```
+
+```python
+import time
+from dronekit import connect, VehicleMode, LocationGlobal, LocationGlobalRelative
+
+connection_string = "udp:127.0.0.1:14551"
+print (f"Connecting to vehicle on: {connection_string}")
+
+vehicle = connect(connection_string, wait_ready=True)
+
+while not vehicle.is_armable:
+    print (" Waiting for vehicle to initialise...")
+    time.sleep(1)
+
+print "Arming motors"
+vehicle.mode = VehicleMode("MANUAL")
+vehicle.armed = True
+
+while not vehicle.armed:
+    print (" Waiting for arming...")
+    time.sleep(1)
+```
+
+# Gazebo as Simulator
 # Install Ardupilot GAZEBO plugins
 There are two github projects that implement Ardupilot gazebo plugins
 - [SwiftGust](https://github.com/SwiftGust/ardupilot_gazebo): checkout `gazebo9` branch
