@@ -6,7 +6,7 @@
 ```
 gst-launch-1.0 videotestsrc \
 ! 'video/x-raw, width=640, height=480, framerate=20/1' \
-! omxh264enc control-rate=2 bitrate=4000000 \
+! omxh264enc control-rate=2 bitrate=400000 \
 ! video/x-h264, stream-format=byte-stream \
 ! rtph264pay mtu=1400 \
 ! udpsink host=192.168.2.108 port=5000 sync=false async=false
@@ -78,4 +78,34 @@ gst-launch-1.0 udpsrc port=5000 \
 ! queue \
 ! avdec_h264 \
 ! xvimagesink sync=false async=false -e
+```
+
+
+# Mixer
+```
+gst-launch-1.0 videomixer name=mix \
+  sink_0::xpos=0 sink_0::ypos=0 \
+  sink_1::xpos=400 sink_1::ypos=0 \
+  sink_2::xpos=0 sink_2::ypos=300 \
+  sink_3::xpos=400 sink_3::ypos=300 ! videoconvert ! autovideosink sync=false \
+  videotestsrc ! video/x-raw,width=400, height=300 ! mix. \
+  videotestsrc pattern=ball ! video/x-raw,width=400, height=300 ! mix. \
+  videotestsrc pattern=bar ! video/x-raw,width=400, height=300 ! mix. \
+  videotestsrc ! video/x-raw,width=400, height=300 ! mix.
+```
+
+```
+gst-launch-1.0 videomixer name=mix \
+  sink_0::xpos=0 sink_0::ypos=0 \
+  sink_1::xpos=400 sink_1::ypos=0 \
+  sink_2::xpos=0 sink_2::ypos=300 \
+  sink_3::xpos=400 sink_3::ypos=300  ! videoconvert \
+! omxh264enc bitrate=40000 preset-level=2 iframeinterval=100 \
+! video/x-h264, stream-format=byte-stream \
+! rtph264pay mtu=1400 \
+! udpsink host=192.168.2.108 port=5000 sync=false async=false \
+  videotestsrc ! video/x-raw,width=400, height=300,format=GRAY8 ! videoconvert ! mix. \
+  videotestsrc pattern=ball ! video/x-raw,width=400, height=300 ! mix. \
+  videotestsrc pattern=bar ! video/x-raw,width=400, height=300 ! mix. \
+  videotestsrc ! video/x-raw,width=400, height=300 ! mix.
 ```
