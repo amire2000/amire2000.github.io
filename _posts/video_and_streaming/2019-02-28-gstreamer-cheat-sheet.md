@@ -1,21 +1,34 @@
 ---
 layout: post
 title: Gstreamer cheat-sheet
-categories: Gstreamer
-tags: [video, gstreamer]
+categories: video
+tags: [gst, gstreamer]
+public: true
+image: gstreramer.png
 ---
 
 # Index
+- [Index](#index)
 - [Basic](#basic)
 - [Network](#network)
-- Multi pipe
-- Misl
-  - [text overlay](#add-text-to-image)
-  - [mixer](#mixer)
+  - [Encoding](#encoding)
+  - [Payload](#payload)
+    - [Examples](#examples)
+    - [MJPEG](#mjpeg)
+    - [h264](#h264)
+    - [Mpeg 2 streaming](#mpeg-2-streaming)
+- [Multi pipe](#multi-pipe)
+  - [tee and queue](#tee-and-queue)
+      - [Demo (time overlay)](#demo-time-overlay)
+  - [Mixer](#mixer)
+    - [Mixer with network](#mixer-with-network)
   - [compositor](#compositor)
-  - [scale](#video-scale)
-  - [rate](#video-scale)
-  - [v4l2loopback](#write-to-v4l2loopback)
+  - [video box](#video-box)
+  - [Add text to image](#add-text-to-image)
+  - [Video scale](#video-scale)
+  - [Video rate (fps)](#video-rate-fps)
+  - [Write to v4l2loopback](#write-to-v4l2loopback)
+- [Reference](#reference)
 &nbsp;
 &nbsp;
 # Basic
@@ -212,6 +225,20 @@ gst-launch-1.0 compositor name=mix \
  ! video/x-raw, width=100 \
  ! videoconvert \
  ! mix.sink_1
+```
+
+## video box
+```
+gst-launch-1.0 videomixer name=mix ! videoconvert ! autovideosink \
+videotestsrc pattern="snow" ! "video/x-raw,width=640,height=480" ! alpha alpha=1.0 ! mix. \
+videotestsrc \
+! "video/x-raw,width=180,height=120" \
+! alpha alpha=0.5 \
+! videobox top=-20 left=-20 border-alpha=0 ! mix. \
+videotestsrc \
+! "video/x-raw,width=180,height=120" \
+! alpha alpha=0.8 \
+! videobox top=-20 left=-440 border-alpha=0 ! mix.
 ```
 
 ## Add text to image
