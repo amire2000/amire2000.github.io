@@ -7,17 +7,6 @@ public: true
 ---
 
 
-```bash
-ln -s /usr/lib/python2.7/dist-packages/glib
-ln -s /usr/lib/python2.7/dist-packages/gobject
-ln -s /usr/lib/python2.7/dist-packages/gst-0.10
-ln -s /usr/lib/python2.7/dist-packages/gstoption.so
-ln -s /usr/lib/python2.7/dist-packages/gtk-2.0
-ln -s /usr/lib/python2.7/dist-packages/pygst.pth
-ln -s /usr/lib/python2.7/dist-packages/pygst.py
-ln -s /usr/lib/python2.7/dist-packages/pygtk.pth
-ln -s /usr/lib/python2.7/dist-packages/pygtk.py
-```
 
 ```python
 import gi
@@ -25,6 +14,22 @@ gi.require_version('Gst', '1.0')
 from gi.repository import Gst, GObject
 import threading
 import signal
+import time
+import cherrypy
+
+class HelloWorld(object):
+    @cherrypy.expose
+    def index(self, i=0):
+        obj = pipeline.videosrc
+        if int(i) == 1:
+            obj.set_property("pattern", "ball")
+        else:
+            obj.set_property("pattern", "snow")
+
+def change_pattern():
+    time.sleep(1)
+    obj = pipeline.videosrc
+    obj.set_property("pattern", "ball")
 
 class MainPipeline():
     def __init__(self):
@@ -33,7 +38,6 @@ class MainPipeline():
         self.videosink = None
 
     
-
     def gst_thread(self):
         print("Initializing GST Elements")
         Gst.init(None)
@@ -42,7 +46,7 @@ class MainPipeline():
 
         # instantiate the camera source
         self.videosrc = Gst.ElementFactory.make("videotestsrc", "test")
-        self.videosrc.set_property("pattern", "ball")
+        self.videosrc.set_property("pattern", "snow")
 
         # instantiate the appsink - allows access to raw frame data
         self.videosink = Gst.ElementFactory.make("autovideosink", "vid-sink")
@@ -72,7 +76,13 @@ if __name__ == "__main__":
     gst_thread = threading.Thread(target=pipeline.gst_thread)
     gst_thread.start()
 
+    # gst_thread = threading.Thread(target=change_pattern)
+    # gst_thread.setDaemon(True)
+    # gst_thread.start()
+    cherrypy.quickstart(HelloWorld())
+
     print("registering sigint")
     signal.signal(signal.SIGINT, signal_handler)
     signal.pause()
+
 ```

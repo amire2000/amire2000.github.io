@@ -1,7 +1,16 @@
+---
+layout: post
+title: Gstreamer nvidia
+categories: video
+tags: [nvidia]
+public: true
+image: 
+description: Streaming video using nvidia encoder 
+---
 
 ## Reference
 - [NVIDIA Jetson Nano GStreamer streaming pipelines](https://developer.ridgerun.com/wiki/index.php?title=Jetson_Nano/Gstreamer/Example_Pipelines/Streaming#OMX_Sender)
-- 
+
 # h264
 ```
 gst-launch-1.0 videotestsrc \
