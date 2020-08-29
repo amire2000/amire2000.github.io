@@ -28,6 +28,10 @@ image: gstreramer.png
   - [Video scale](#video-scale)
   - [Video rate (fps)](#video-rate-fps)
   - [Write to v4l2loopback](#write-to-v4l2loopback)
+  - [Write to file](#write-to-file)
+    - [Save](#save)
+    - [Split and Save](#split-and-save)
+    - [Split and Save](#split-and-save-1)
 - [Reference](#reference)
 &nbsp;
 &nbsp;
@@ -243,8 +247,10 @@ videotestsrc \
 
 ## Add text to image
 ```
-gst-launch-1.0 -v videotestsrc pattern="ball" !  video/x-raw,width=320,height=240 !  textoverlay text="CAM1"  font-desc="Sens 24" valignment=top halignment=left ! \
-autovideosink
+gst-launch-1.0 -v videotestsrc pattern="ball" \
+! video/x-raw,width=320,height=240 \
+! textoverlay text="CAM1"  font-desc="Sens 24" valignment=top halignment=left \
+! autovideosink
 ``` 
 ![](images/2019-02-28-21-53-45.png)
 
@@ -273,6 +279,36 @@ gst-launch-1.0 -v videotestsrc \
 ! videoconvert \
 ! v4l2sink device=/dev/video2
 
+```
+
+## Write to file
+### Save
+```
+gst-launch-1.0 videotestsrc \
+! video/x-raw,width=640,height=480 \
+! x264enc ! h264parse ! mp4mux ! filesink location=/tmp/test.mp4 -e
+```
+
+### Split and Save
+> without `tune=zerolatency` pipe hang
+
+```
+gst-launch-1.0 videotestsrc \
+! video/x-raw,width=640,height=480 \
+! videoconvert ! tee name=t ! queue ! autovideosink \
+t. ! queue \
+! x264enc tune=zerolatency ! h264parse ! mp4mux ! filesink location=/tmp/test.mp4
+```
+
+### Split and Save
+> without `queue max-size-time=0 max-size-bytes=0 max-size-buffers=0` pipe hang
+
+```
+gst-launch-1.0 videotestsrc \
+! video/x-raw,width=640,height=480 \
+! videoconvert ! tee name=t ! queue max-size-time=0 max-size-bytes=0 max-size-buffers=0 ! autovideosink \
+t. ! queue \
+! x264enc ! h264parse ! mp4mux ! filesink location=/tmp/test.mp4
 ```
 
 # Reference
