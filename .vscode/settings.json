@@ -46,6 +46,16 @@
         "bootloader",
         "kalman",
         "multithread",
-        "pixhawk"
+        "pixhawk",
+        "uart"
+    ],
+    "cSpell.ignoreWords": [
+        "darknet",
+        "jetson",
+        "jupyter",
+        "mavproxy",
+        "proto",
+        "protobuf",
+        "yolo"
     ]
 }

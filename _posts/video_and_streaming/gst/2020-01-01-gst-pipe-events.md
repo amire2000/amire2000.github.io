@@ -1,10 +1,25 @@
 ---
 layout: post
-title: Gstreamer pipe events
+title: Gstreamer pipeline in Python
 categories: video
-tags: [gst, events]
+tags: [gst, python]
 public: true
 ---
+
+# Install
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+#
+pip install --upgrade wheel pip setuptools
+
+```
+
+
+# Reference
+- [gst-python-tutorials](https://github.com/jackersson/gst-python-tutorials)
+
 
 ```python
 #!/usr/bin/env python3
