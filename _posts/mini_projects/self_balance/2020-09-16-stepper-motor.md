@@ -1,8 +1,8 @@
 ---
 layout: post
 title: balancer-stepper-motor
-categories: [mini, balancing]
-tags: [stepping motors, balancer]
+categories: [mini, self_balancer]
+tags: [stepping motors]
 public: true
 description: self balancer robot stepping motors
 image: law.png
