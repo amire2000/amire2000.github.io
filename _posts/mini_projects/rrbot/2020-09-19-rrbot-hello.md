@@ -49,6 +49,7 @@ catkin_make
 
 - robot_state_publisher
   - type change from `state_publisher` to `robot_state_publisher`
+  
 ```xml
 <node name="robot_state_publisher" 
     pkg="robot_state_publisher" 
@@ -61,7 +62,9 @@ catkin_make
 
  
 > Note: install `ros-neotic-ros-control` and `ros-neotic-ros-controllers` packages
-
+&nbsp;  
+&nbsp;  
+&nbsp;  
 # Run
 ## Rviz
 ```
