@@ -92,7 +92,7 @@ roslaunch rrbot_gazebo rrbot_world.launch
     ```
 - Terminal3 (control command)
     ```
-    rostopic pub /rrbot/joint1_position_controller/command std_msgs/Float64 "data: 1.5"
+    rostopic pub -1 /rrbot/joint1_position_controller/command std_msgs/Float64 "data: 1.5"
     ```
 
 ![](/images/2020-09-19-09-32-56.png)
@@ -102,3 +102,4 @@ roslaunch rrbot_gazebo rrbot_world.launch
 # References
 - [Gazebo and ROS Control](https://github.com/JoshMarino/gazebo_and_ros_control)
 - [[ROS Q&A] 149 – How to command joint position of a robot in ROS using Python](https://www.theconstructsim.com/ros-qa-149-how-to-command-joint-position-of-a-robot-in-ros-using-python/)
+- [Gazebo Tutorial: ROS Control](http://gazebosim.org/tutorials/?tut=ros_control)

@@ -4,7 +4,91 @@ title: Gstreamer python binding
 categories: video
 tags: [gst, gstreamer]
 public: true
+description: Using python gstreeamer binding to create and changed pipelines
 ---
+
+# Elements
+## pipeline
+![](/images/2020-09-25-11-46-02.png)
+
+## pads
+link element to outside world
+pad can add and remove (create and destroy) dynamically from element
+
+- Sink (input) pad
+- Source (output) pad
+
+![](/images/2020-09-25-11-56-00.png)
+
+## bus
+Take care of internal messaging in GStreamer
+
+### queries
+The purpose of query is to get some information from pipeline synchronous, for example ask for bitrate
+
+### events
+The purpose if event is to tell the pipeline to take some action in given condition, for example error, EOS
+
+![](/images/2020-09-25-18-40-59.png)
+
+## Plugins
+- Protocol handling
+- Sources: data input
+- Formats: parsers, formaters, muxers, demuxers, metadata
+- Codecs
+- Filters:
+- Sinks:
+   
+# Diagrams and Graphs
+
+## dot file for pipeline
+```
+```
+
+## dot file for gst binding
+```python
+#!/usr/bin/env python3
+
+import cv2
+import gi
+import traceback
+
+gi.require_version('Gst', '1.0')
+from gi.repository import Gst, GLib
+
+Gst.init(None)
+
+pipe = "videotestsrc name=src num-buffers=100 ! video/x-raw,width=640,height=480 ! autovideosink name=sink"
+pipeline = Gst.parse_launch(pipe)
+# Add for debug / dot file
+Gst.debug_bin_to_dot_file(pipeline, Gst.DebugGraphDetails.ALL, "debug_pipe")
+pipeline.set_state(Gst.State.READY)
+pipeline.set_state(Gst.State.PLAYING)
+
+loop = GLib.MainLoop()
+loop.run()
+```
+
+```bash
+mkdir /tmp/gst
+cd /tmp/gst
+# run python gst example
+GST_DEBUG_DUMP_DOT_DIR=. python3 /home/user/projects/py_tutorial/gst/gst_step1.py
+# convert to png
+dot -Tpng debug_pipe.dot > p.png
+# view
+eog p.png
+```
+
+
+# Reference
+- [python api](https://lazka.github.io/pgi-docs/Gst-1.0/index.html)
+- [Symbol Mapping](https://lazka.github.io/pgi-docs/Gst-1.0/mapping.html)
+- [gstreamer pipe line graph](https://developer.ridgerun.com/wiki/index.php/How_to_generate_a_Gstreamer_pipeline_diagram_(graph))
+- [python-gst-tutorial](https://github.com/gkralik/python-gst-tutorial)
+- [lifestyletransfer](http://lifestyletransfer.com)
+# to-read
+- [GStreamer Dynamic Pipelines](https://coaxion.net/blog/2014/01/gstreamer-dynamic-pipelines/)
 
 
 
