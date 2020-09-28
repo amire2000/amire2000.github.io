@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: /matlab/
+permalink: /simulink/
 description: MATLAB and simulink
 ---
 <section id="banner" style="height: 100px">
@@ -8,7 +8,7 @@ description: MATLAB and simulink
         <tr>
             <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/matlab.png"/></td>
             <td style="color: #fff;text-align: left;vertical-align: middle">
-                <h2>MATLAB: <em> Matrix LAB</em></h2>
+                <h2>simulink: <em> </em></h2>
             
             </td>
         </tr>
@@ -35,7 +35,7 @@ description: MATLAB and simulink
 <table>
     <tr>
         <td>
-            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','matlab' | map: 'tags' | join: ','  | split: ',' | sort %}
+            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','simulink' | map: 'tags' | join: ','  | split: ',' | sort %}
             {% include tags_func.html %}
         </td>
     </tr>
@@ -46,7 +46,7 @@ description: MATLAB and simulink
 
 <div class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'matlab' %}
+    {% if post.categories contains 'simulink' %}
     {% include list_ng.html %}
     {% endif %}
     {% endfor %}
