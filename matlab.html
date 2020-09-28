@@ -36,7 +36,7 @@ description: MATLAB and simulink
 <table>
     <tr>
         <td>
-            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','matlab'| map: 'tags' | join: ','  | split: ',' | sort %}
+            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','matlab'| | where_exp: "post", "post.categories contains 'simulink'" | map: 'tags' | join: ','  | split: ',' | sort %}
             {% include tags_func.html %}
         </td>
     </tr>
@@ -47,7 +47,7 @@ description: MATLAB and simulink
 
 <div class="posts">
     {% for post in site.posts %}
-    {% if post.categories contains 'matlab' %}
+    {% if post.categories contains 'matlab' | where_exp: "post", "post.categories contains 'simulink'" %}
     {% include list_ng.html %}
     {% endif %}
     {% endfor %}
