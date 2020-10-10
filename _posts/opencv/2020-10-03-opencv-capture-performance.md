@@ -81,6 +81,7 @@ gst-launch-1.0 v4l2src device=/dev/video2 \
 ```
 
 ### CPU and memory (using htop)
+
 | Format     | CPU(fpsdisplaysink) | cpu(fakesink) |
 | ---------- | ------------------- | ------------- |
 | RAW (YUYV) | 4.0%                | < 1%          |
@@ -112,6 +113,7 @@ gst-launch-1.0 v4l2src device=/dev/video2 \
 ```
 
 ### CPU and memory (using htop)
+
 | Format | CPU(appsink) |
 | ------ | ------------ |
 | GRAY   | 4.0%         |
@@ -216,6 +218,7 @@ cv2.destroyAllWindows()
 ```
 
 ### CPU and memory (using htop)
+
 | Format          | CPU (imshow) | CPU (Without) |
 | --------------- | ------------ | ------------- |
 | RGB(true)       | 17.0%        | 10%           |
@@ -256,9 +259,11 @@ cv2.destroyAllWindows()
 ```
 
 ### CPU and memory (using htop)
+
 | Format | CPU (imshow) | CPU (Without) |
 | ------ | ------------ | ------------- |
 | Gray   | 12.0%        | 4.6%          |
+
 # Tips
 ## using gray source like FLIR
 ```python
