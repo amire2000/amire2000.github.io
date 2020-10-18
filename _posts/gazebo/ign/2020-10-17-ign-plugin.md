@@ -19,6 +19,7 @@ In Ignition Gazebo, all systems are loaded as plugins at runtime
     ├── SampleSystem.cc
     └── SampleSystem.hh
 ```
+
 ## Header
 - class inherit from  `ignition::gazebo::System`
 - Inherit other interfaces (Check reference for more info)
@@ -96,6 +97,12 @@ target_link_libraries(SampleSystem
 ```
 
 ## World
+Add plugin Section
+
+```xml
+<plugin filename="libSampleSystem.so" name="sample_system::SampleSystem">
+        </plugin>
+```
 
 - empty_plug.sdf
 
@@ -145,6 +152,106 @@ target_link_libraries(SampleSystem
 export GN_GAZEBO_SYSTEM_PLUGIN_PATH <so location>
 ign gazebo -v 4 empty_plug.sdf
 ```
+&nbsp;  
+&nbsp;  
+&nbsp;
+# Gazebo log messages and levels
+| method  | level |
+| ------- | ----- |
+| ignerr  | 1     |
+| ignwarn | 2     |
+| ignmsg  | 3     |
+| ignsbg  | 4     |
+
+
+```bash
+# ign gazebo -v <level> <sdf file>
+ign gazebo -v 3 file.sdf
+```
+&nbsp;  
+&nbsp;  
+&nbsp;
+# ISystemConfigure
+- Has read-write access to world entities and components.
+- Executed once the moment the plugin is loaded.
+- Can be used to get custom configuration from the SDF file, register events with the event manager, as well as modifying entities and components.
+
+## Header
+ - Class implement ISystemConfigure interface
+ - > Don't forget register the interface `IGNITION_ADD_PLUGIN`
+  
+```cpp
+#include <ignition/gazebo/System.hh>
+#include <ignition/plugin/Register.hh>
+
+using namespace ignition::gazebo;
+
+namespace sample_system
+{
+    class SampleSystem : public ignition::gazebo::System,
+                         public ignition::gazebo::ISystemConfigure,
+                         public ignition::gazebo::ISystemPostUpdate
+    {
+    public:
+        SampleSystem();
+
+    public:
+        ~SampleSystem() override;
+
+    public:
+        void Configure(const ignition::gazebo::Entity &_entity,
+                       const std::shared_ptr<const sdf::Element> &_sdf,
+                       ignition::gazebo::EntityComponentManager &_ecm,
+                       ignition::gazebo::EventManager &_eventMgr) override;
+
+    public:
+        void PostUpdate(const ignition::gazebo::UpdateInfo &_info,
+                        const ignition::gazebo::EntityComponentManager &_ecm) override;
+
+    
+} // namespace sample_system
+
+IGNITION_ADD_PLUGIN(
+    sample_system::SampleSystem,
+    ignition::gazebo::System,
+    sample_system::SampleSystem::ISystemConfigure,
+    sample_system::SampleSystem::ISystemPostUpdate
+    )
+```
+
+## Code
+- implement Configure method to read init variable from `sdf`
+
+```cpp
+void SampleSystem::Configure(const Entity &_entity,
+                             const std::shared_ptr<const sdf::Element> &_sdf,
+                             EntityComponentManager &_ecm,
+                             EventManager & /*_eventMgr*/)
+{
+    double double_number;
+    std::string my_string;
+
+    //use default if not exists
+    my_string = _sdf->Get<std::string>("my_string", "default").first;
+    
+    // check if exists
+    if (_sdf->HasElement("double_number"))
+    {
+        double_number = _sdf->Get<double>("double_number");
+        ignmsg << "SampleSystem::Configure" << double_number << std::endl;
+    }
+    
+}
+```
+
+## usage is sdf
+```xml
+<plugin filename="libSampleSystem.so" name="sample_system::SampleSystem">
+    <double_number>10.9</double_number>
+    <!-- <my_string>data</my_string> -->
+</plugin>
+```
+
 &nbsp;  
 &nbsp;  
 &nbsp;  
