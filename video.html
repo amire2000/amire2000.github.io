@@ -24,6 +24,17 @@ description: video and streaming
 </div>
 
 <hr />
+<table>
+    <tr>
+        <td>
+            {% assign tags =  site.posts | where: 'public','true' | where: 'categories','video'| map: 'tags' | join: ','  | split: ',' | sort %}
+            {% include tags_func.html %}
+        </td>
+    </tr>
+    
+    </table>
+<hr/>
+
 <!-- <img src="{{ site.baseurl }}/images/vscode_banner.jpg"/> -->
 
 
