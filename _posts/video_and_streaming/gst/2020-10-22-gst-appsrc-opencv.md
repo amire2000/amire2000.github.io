@@ -2,7 +2,7 @@
 layout: post
 title: Push OpenCV frame into appsrc gstreamer pipe
 categories: video
-tags: [gst, appsrc, push-buffer]
+tags: [gst, appsrc, push-buffer, python-bindings]
 public: true
 description: Push OpenCV frame into appsrc gstreamer pipe
 ---

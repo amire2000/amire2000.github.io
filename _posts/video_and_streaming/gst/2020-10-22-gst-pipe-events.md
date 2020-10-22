@@ -2,7 +2,7 @@
 layout: post
 title: Gstreamer pipeline in Python
 categories: video
-tags: [gst, python]
+tags: [gst, python, python-bindings]
 public: true
 ---
 

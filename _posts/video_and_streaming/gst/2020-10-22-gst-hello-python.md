@@ -2,7 +2,7 @@
 layout: post
 title: Gstreamer python binding
 categories: video
-tags: [gst, gstreamer]
+tags: [gst, gstreamer, python-bindings]
 public: true
 description: Using python gstreeamer binding to create and changed pipelines
 ---

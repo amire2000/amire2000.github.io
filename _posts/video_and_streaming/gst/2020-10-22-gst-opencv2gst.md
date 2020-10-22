@@ -2,7 +2,7 @@
 layout: post
 title: Send opencv frame to gstreamer pipe
 categories: video
-tags: [gst, python, opencv, gstreamer]
+tags: [gst, python, opencv, gstreamer, python-bindings]
 public: true
 description: Send opencv frame over gstreamer pipe
 ---
