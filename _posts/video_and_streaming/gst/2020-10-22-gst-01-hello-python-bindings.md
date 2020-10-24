@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Gstreamer pipeline in Python
+title: 01 - Gstreamer Python bindings - pipeline hello
 categories: video
 tags: [gst, python, python-bindings]
 public: true
