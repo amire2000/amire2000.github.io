@@ -153,6 +153,7 @@ pipeline.set_state(Gst.State.NULL)
 - [How to launch Gstreamer pipeline in Python](http://lifestyletransfer.com/how-to-launch-gstreamer-pipeline-in-python/)
 - [gst-python-tutorials](https://github.com/jackersson/gst-python-tutorials)
 - [Gstreamer Symbol mapping C/Python](https://lazka.github.io/pgi-docs/Gst-1.0/mapping.html)
+- [Install](https://medium.com/@galaktyk01/how-to-build-opencv-with-gstreamer-b11668fa09c)
 
 
 
