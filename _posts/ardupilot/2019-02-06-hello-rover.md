@@ -120,6 +120,7 @@ There are two github projects that implement Ardupilot gazebo plugins
 
 check [project github](https://github.com/khancyr/ardupilot_gazebo) for instructions
 
+
 &nbsp;  
 &nbsp;  
 &nbsp;
@@ -137,6 +138,9 @@ gazebo --verbose rover_ardupilot.world
 ```bash
 sim_vehicle.py -v APMrover2 -f gazebo-rover  -m --mav10 -I1
 ```
+> Note GAZEBO Plugin listen on port 9013 and SITL listen on port 9012 , must run the above command with `-I1`
+
+
 - -v VEHICLE
 - -f frame
 - -m MAVPROXY_ARGS
@@ -145,6 +149,25 @@ sim_vehicle.py -v APMrover2 -f gazebo-rover  -m --mav10 -I1
 
 ![ardupilot gazebo rover](../../images/gazebo_rover.png)
 
+&nbsp;  
+&nbsp;  
+&nbsp;
+# Check Rover Servo Function
+![](/images/2020-10-28-06-17-46.png)
+
+[Ardupilot rover Motor and Servo Connections](https://ardupilot.org/rover/docs/rover-motor-and-servo-connections.html)
+
+
+from `MAVProxy` console run
+
+```
+MANUAL> param show SERVO1_F*
+MANUAL> SERVO1_FUNCTION  73.000000
+
+MANUAL> param show SERVO3_F*
+MANUAL> SERVO3_FUNCTION  74.000000
+
+```
 
 &nbsp;  
 &nbsp;  
