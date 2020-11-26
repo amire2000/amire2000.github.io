@@ -26,3 +26,11 @@ image: law.png
 - [Self Balancing Robot Using PID Algorithm](https://www.instructables.com/id/Self-Balancing-Robot-Using-PID-Algorithm-STM-MC/)
 - [Mike Moore](http://moore-mike.com/learn-controls-part-1.html)
 
+- [Arduino Self-Balancing Robot](https://www.instructables.com/Arduino-Self-Balancing-Robot-1/)
+- [Self-Balancing Robot](https://www.instructables.com/Self-Balancing-Robot/)
+- [Arduino Self Balancing Robot](https://www.viralsciencecreativity.com/post/arduino-self-balancing-robot)
+- 
+- [Implementation of Q Learning and Deep Q Network For Controlling a Self Balancing Robot Model ](https://www.groundai.com/project/implementation-of-q-learning-and-deep-q-network-for-controlling-a-self-balancing-robot-model/1)
+
+- [ROS self balancing ](https://github.com/sezan92/self_balancing_robot)
+
