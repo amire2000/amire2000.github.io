@@ -1,0 +1,25 @@
+{
+    "Control": [
+        {
+            "name": "Brian Douglas",
+            "link": "https://engineeringmedia.com/"
+        },
+        {
+            "name": "Brian Douglas YouTube",
+            "link": "https://www.youtube.com/playlist?list=PLUMWjy5jgHK1NC52DXXrriwihVrYZKqjk"
+        }
+    ],
+    "Math and Physics": [
+        {
+            "name": "Math Physics and Engineering",
+            "link": "http://www.ilectureonline.com/"
+        }
+        
+    ],
+    "Robotics Theory": [
+        {
+            "name": "Robot Control",
+            "link": "https://studywolf.wordpress.com/2013/08/21/robot-control-forward-transformation-matrices/"
+        }
+    ]
+}

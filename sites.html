@@ -18,11 +18,9 @@ permalink: /sites/
 &nbsp;
 &nbsp;
 &nbsp;
-# Control
-- [Brian Douglas](https://engineeringmedia.com/)
-- [Brian Douglas Classical Control Theory](https://www.youtube.com/playlist?list=PLUMWjy5jgHK1NC52DXXrriwihVrYZKqjk)
-
-
-# Robotics
-- [studywolf](https://studywolf.wordpress.com/2013/08/21/robot-control-forward-transformation-matrices/)
+{% for item in site.data.bookmarks %}
+    <li>
+        <a href="{{ item.link }}"  rel="noopener noreferrer" target="_blank">{{ item.name }}</a>
+    </li>
+    {% endfor %}
 
