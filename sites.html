@@ -19,8 +19,12 @@ permalink: /sites/
 &nbsp;
 &nbsp;
 {% for item in site.data.bookmarks %}
+<h3> {{ item[0] }} </h3>
+{% assign links=item[1]}
+{{ assign }}
+{% for link in links %}
     <li>
-        <a href="{{ item.link }}"  rel="noopener noreferrer" target="_blank">{{ item.name }}</a>
+        <a href="{{ link.link }}"  rel="noopener noreferrer" target="_blank">{{ link.name }}</a>
     </li>
     {% endfor %}
 
