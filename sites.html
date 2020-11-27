@@ -20,9 +20,8 @@ permalink: /sites/
 &nbsp;
 {% for item in site.data.bookmarks %}
 <h3> {{ item[0] }} </h3>
-{% assign links=item[1]}
-{{ assign }}
-{% for link in links %}
+{{ item[1] }}
+{% for link in item[1] %}
     <li>
         <a href="{{ link.link }}"  rel="noopener noreferrer" target="_blank">{{ link.name }}</a>
     </li>
