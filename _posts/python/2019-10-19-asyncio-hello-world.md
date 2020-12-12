@@ -17,7 +17,7 @@ Async is about **concurrency**, while threads and multiprocessing are about **pa
 - Python added two keywords, async and await, for creating async operations
 
 ### Coroutines
-unctions prefixed with the `async` keyword become asynchronous functions, also known as coroutines
+functions prefixed with the `async` keyword become asynchronous functions, also known as coroutines
 - Coroutines can only be called from other async functions
 - Coroutines can use another keyword, await, which allows a coroutine to wait for results from another coroutine without blocking. Until results come back from the awaited coroutine, Python switches freely among other running coroutines
 
@@ -105,6 +105,7 @@ if __name__ == "__main__":
 using `ensure_future` method instead `create_task`
 
 > [ensure_future vs create_task](https://stackoverflow.com/questions/36342899/asyncio-ensure-future-vs-baseeventloop-create-task-vs-simple-coroutine)
+
 ```python
 import asyncio
 
