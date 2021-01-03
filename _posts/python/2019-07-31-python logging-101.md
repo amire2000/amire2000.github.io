@@ -130,6 +130,7 @@ class ColorFormatter(logging.Formatter):
 ### config
 - add formatter
 > class: full path to class definition
+
 ```json
 "formatters": {
     "color": {
