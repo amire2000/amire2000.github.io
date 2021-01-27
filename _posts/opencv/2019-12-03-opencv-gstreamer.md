@@ -6,11 +6,14 @@ tags: [gstreamer]
 public: true
 description: using opencv with gstreamer, read from pipe using gst appsink, write  into pipe using appsrc
 ---
+
+# Check gstreamer support
 - Check that opencv support gstreamer with `cv2.getBuildInformation()` method
 
 ![](/images/2019-12-03-23-16-48.png)
 
-# Simple demo
+# Demos
+## Simple one
 - appsink -> opencv using VideoCapture
 - opencv -> appsrc using VideoWriter
 
@@ -33,7 +36,7 @@ out.release()
 cv2.destroyAllWindows()
 ```
 
-## Send
+## Send over network
 
 ```python
 import cv2
@@ -115,7 +118,8 @@ cv2.destroyAllWindows()
 &nbsp;  
 &nbsp;  
 &nbsp;  
-## Cpp
+
+## Cpp example
 ```cpp
 #include <opencv2/opencv.hpp>
 #include <iostream>
@@ -172,6 +176,36 @@ executable('cv2gst',
     dependencies : opencv,
     install: true,
     install_dir: [install_dir])
+```
+
+
+## Read movie file
+- pipe example
+  
+```bash
+# read from file
+# decode using decodebin
+# control fps
+# add time overlay/ or fps sink to watch rate
+
+gst-launch-1.0 filesrc location=demo.mp4 \
+! decodebin \
+! videorate \
+! "video/x-raw,framerate=5/1" \
+! timeoverlay \
+! videoconvert \
+! ximagesink
+```
+
+- pipe without decodebin
+```bash
+gst-launch-1.0 -vv filesrc location=demo.mp4 \
+! qtdemux \
+! queue \
+! h264parse \
+! avdec_h264 \
+! videoconvert \
+! ximagesink
 ```
 # Reference 
 - [demo](https://qiita.com/satoyoshiharu/items/72a540a92578faa7929d)
