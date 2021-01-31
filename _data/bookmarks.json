@@ -36,6 +36,10 @@
         {
             "name": "The open online robotics education resource",
             "link": "https://robotacademy.net.au/"
+        },
+        {
+            "name": "Introduction to Mobile Robotics",
+            "link": "http://ais.informatik.uni-freiburg.de/teaching/ss17/robotics/"
         }
     ]
 }
