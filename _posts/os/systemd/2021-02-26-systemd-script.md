@@ -102,3 +102,48 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 ```
+
+&nbsp;  
+&nbsp;  
+&nbsp;  
+# Demo2 (python file)
+
+- `my_service.py`
+```python
+#!/usr/bin/python3
+
+import time
+
+while True:
+    print ("This is a test python file!")
+    time.sleep(2)
+```
+
+## Create service file
+`sudo vim /etc/systemd/system/my-py.service`
+
+```
+[Unit]
+Description=Test Service
+After=multi-user.target
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/user/tmp/my_service.py
+StandardInput=tty-force
+
+[Install]
+WantedBy=multi-user.target
+```
+
+##  Test
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable my-py.service
+sudo systemctl start my-py.service
+sudo systemctl status my-py.service
+```
+
+![](/images/2021-02-28-00-33-21.png)
