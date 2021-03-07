@@ -122,28 +122,35 @@ while True:
 ## Create service file
 `sudo vim /etc/systemd/system/my-py.service`
 
-```
+```ini
 [Unit]
 Description=Test Service
 After=multi-user.target
-Conflicts=getty@tty1.service
 
 [Service]
 Type=simple
+Environment=PYTHONUNBUFFERED=1
 ExecStart=/usr/bin/python3 /home/user/tmp/my_service.py
-StandardInput=tty-force
+StandardOutput=file:/var/log/my_py/output.log
+StandardError=file:/var/log/my_py/error.log
 
 [Install]
 WantedBy=multi-user.target
 ```
 
+> PYTHONUNBUFFERED: disabled stdout buffering
+
+
 ##  Test
 
 ```bash
+mkdir /var/log/my_py
 sudo systemctl daemon-reload
 sudo systemctl enable my-py.service
 sudo systemctl start my-py.service
 sudo systemctl status my-py.service
+
+tail -f /var/log/my_py/output.log
 ```
 
 ![](/images/2021-02-28-00-33-21.png)
