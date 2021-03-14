@@ -84,10 +84,6 @@ USB to CAN interface
 # device
 sudo ip link set can0 type can bitrate 500000
 sudo ip link set can0 up
-
-# virtual device
-sudo ip link set vcan0 type can bitrate 500000
-sudo ip link vcan0 up
 ```
 
 ### Send and Receive
