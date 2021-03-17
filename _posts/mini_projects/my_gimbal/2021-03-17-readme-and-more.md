@@ -19,6 +19,8 @@ apt install libglfw3
 pip install p5
 ```
 
+[p5 doc](https://p5.readthedocs.io/en/latest/install.html)
+
 ### Hello
 ```python
 from p5 import *

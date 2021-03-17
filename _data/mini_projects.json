@@ -16,6 +16,12 @@
       "page": "self_balancer",
       "image": "follow_line.jpeg",
       "description": "mini"
+    },
+    "gimbal": {
+      "title": "mini gimbal",
+      "page": "mini_gimbal",
+      "image": "gimbal.jpeg",
+      "description": "mini"
     }
 
   }

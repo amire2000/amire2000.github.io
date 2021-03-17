@@ -19,6 +19,10 @@
         {
             "name": "Control Bootcamp: Overview",
             "link": "https://www.youtube.com/watch?v=Pi7l8mMjYVE&list=PLMrJAkhIeNNR20Mz-VpzgfQs5zrYi085m&index=1"
+        },
+        {
+            "name": "Introduction to Control EE313",
+            "link": "https://www.youtube.com/playlist?list=PLmK1EnKxphikZ4mmCz2NccSnHZb7v1wV-"
         }
     ],
     "Math and Physics": [
@@ -41,5 +45,6 @@
             "name": "Introduction to Mobile Robotics",
             "link": "http://ais.informatik.uni-freiburg.de/teaching/ss17/robotics/"
         }
-    ]
+    ],
+    ""
 }
