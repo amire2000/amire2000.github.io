@@ -88,6 +88,10 @@ st-flash write <firmware dfu file>.target0.image1.bin 0x08020000
 - Control user and led on board
 &nbsp;  
 &nbsp;  
+- STM F466RE
+![](/images/2021-04-24-20-19-37.png)
+&nbsp;  
+&nbsp;  
 - Pin Legend
 ![](/images/2021-04-24-09-26-17.png)
 - Left side
