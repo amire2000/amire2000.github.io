@@ -1,0 +1,25 @@
+---
+layout: default
+permalink: /cook_python/
+description: Python cookbook
+---
+<section id="banner" style="height: 100px">
+    <table>
+        <tr>
+            <td width="20%"><img style="height: 100px" src="{{ site.baseurl }}/images/courses.png"/></td>
+            <td style="color: #fff;text-align: left;vertical-align: middle">
+                <h2>Cook: Python<em> </em></h2>
+            
+            </td>
+        </tr>
+    </table>
+</section>
+
+
+<div class="posts">
+    {% for post in site.posts %}
+    {% if post.categories contains 'cook_python'%}
+    {% include list.html %}
+    {% endif %}
+    {% endfor %}
+</div>
